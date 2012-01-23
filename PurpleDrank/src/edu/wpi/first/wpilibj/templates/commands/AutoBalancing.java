@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.templates.OI;
 
 /**
  *
@@ -42,6 +43,9 @@ public class AutoBalancing extends PIDCommand{
     }
 
     protected boolean isFinished() {
+        if( OI.getButton3().get()){
+            return true;
+        }
         return false;
     }
 

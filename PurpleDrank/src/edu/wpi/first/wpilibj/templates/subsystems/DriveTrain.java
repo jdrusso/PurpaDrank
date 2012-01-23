@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.templates.commands.DefaultDriveTrain;
 
 /**
  * 
@@ -40,11 +41,11 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         lfJag = new Jaguar(1);
         rtJag = new Jaguar(2);
-        //drive = new RobotDrive(lfJag, rtJag);
+        drive = new RobotDrive(lfJag, rtJag);
         
         //lfFrontJag = new Jaguar (3);
         //rtFrontJag = new Jaguar (4);
-        //joystick1 = new Joystick(1);
+        joystick1 = new Joystick(1);
         //joystick2 = new Joystick(2);
         //sensor1 = new DigitalInput(1);
         //sensor2 = new DigitalInput (2);
@@ -52,7 +53,8 @@ public class DriveTrain extends Subsystem {
     }
       
     public void initDefaultCommand() {  
-        //drive.arcadeDrive(joystick1);                                           //depeding on which driving method we are using.
+        //                                         //depeding on which driving method we are using.
+        super.setDefaultCommand(new DefaultDriveTrain(drive, joystick1));
         //drive.tankDrive(joystick1, joystick2);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
