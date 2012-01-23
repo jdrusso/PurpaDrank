@@ -13,7 +13,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
-import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.templates.commands.ManualBalancing;
+import edu.wpi.first.wpilibj.templates.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,7 +26,16 @@ import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 public class PurpleDrank extends IterativeRobot {
 
     Command autonomousCommand;
+    private static DriveTrain DriveTrain;
+    private ManualBalancing h;
+    private OI oi;
 
+    
+    
+    public static DriveTrain getDriveTrain(){
+        
+        return DriveTrain;
+    }
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -33,9 +43,11 @@ public class PurpleDrank extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        DriveTrain = new DriveTrain();
+        oi = new OI();
 
         // Initialize all subsystems
-        CommandBase.init();
+        //CommandBase.init();
     }
 
     public void autonomousInit() {

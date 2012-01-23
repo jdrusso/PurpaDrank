@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Turret;
 public class Shooting extends CommandBase {
     
     public Shooting() {
-            requires(Turret);
+            //requires(Turret);
                          
     }
 
