@@ -1,3 +1,6 @@
 *.class
 *.jar
+image.suite
+image.suite.metadata
+image.sym
 
