@@ -10,6 +10,8 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.templates.commands.ArmDown;
+import edu.wpi.first.wpilibj.templates.commands.ArmReset;
 import edu.wpi.first.wpilibj.templates.commands.AutoBalancing;
 import edu.wpi.first.wpilibj.templates.commands.ManualBalancing;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
@@ -25,6 +27,7 @@ public class OI {
     private Joystick Joystick1;
     private Joystick Joystick2;
     private Button Balance;
+    private Button RampControl;
     private static Button endAutoBalance;
     private DriveTrain DriveTrain;
     
@@ -42,6 +45,9 @@ public class OI {
         Balance = new JoystickButton( Joystick1, 2);
         Balance.whileHeld(new ManualBalancing());
         Balance.whenReleased(new AutoBalancing(RobotMap.Kp, RobotMap.Ki, RobotMap.Kd));
+        RampControl = new JoystickButton(Joystick1, 4);
+        RampControl.whenPressed(new ArmDown());
+        RampControl.doublePressed(new ArmReset());
     
     }
     
