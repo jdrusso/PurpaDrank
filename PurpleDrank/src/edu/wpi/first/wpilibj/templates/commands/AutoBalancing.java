@@ -31,8 +31,8 @@ public class AutoBalancing extends PIDCommand{
     public AutoBalancing(double Kp, double Ki, double Kd){
         super(Kp, Ki, Kd);
         this.DriveTrain = PurpleDrank.getDriveTrain(); 
-        gyro1 = DriveTrain.getGyro1();
-        requires(DriveTrain);
+        this.gyro1 = this.DriveTrain.getGyro1();
+        requires(this.DriveTrain);
         
     }
     
