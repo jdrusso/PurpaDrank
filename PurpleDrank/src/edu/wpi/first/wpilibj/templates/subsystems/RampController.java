@@ -7,6 +7,7 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,11 +17,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author jrusso
  */
 public class RampController extends Subsystem {
+    private static Relay Relay1;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public void initDefaultCommand() {
+    public void initDefaultCommand() { 
+        Relay1= new Relay(1);      
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        //setDefaultCommand(new MySpecialCommand());      
+    }   
+    public void push() {
+        Relay1.setDirection(Relay.Direction.kBoth); 
+    }
+    public static Relay getRelay1() {
+       return Relay1; 
     }
 }

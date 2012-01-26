@@ -3,37 +3,33 @@
  * and open the template in the editor.
  */
 package edu.wpi.first.wpilibj.templates.commands;
-import edu.team2035.meta.MetaGyro;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.templates.subsystems.*;
-import edu.wpi.first.wpilibj.templates.PurpleDrank;
+
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.templates.subsystems.RampController;
 
 /**
  *
- * @author abbottk
+ * @author plevinson
  */
-public class ManualBalancing extends CommandBase{
-
-    private DriveTrain DriveTrain;
-    private MetaGyro gyro1;
+public class ArmDown extends CommandBase {
+    private RampController Ramp;
     
-   public ManualBalancing() {
-       super("ManualBalancing");
-       DriveTrain = PurpleDrank.getDriveTrain(); 
-       gyro1 = DriveTrain.getGyro1();
-       requires(DriveTrain);
+    public ArmDown() {
+        super("Arm Down");
+        requires(Ramp);
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        gyro1.reset();
-        DriveTrain.getCommandLog().setCommand(this.getName());
+        RampController.getRelay1().setDirection(Relay.Direction.kForward); 
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        DriveTrain.move(1);
-        
+        Ramp.push();
     }
 
     // Make this return true when this Command no longer needs to run execute()
