@@ -31,17 +31,23 @@ public class OI {
     
     public static void initialize() {
         mdu = new MetaUDPVariables();
+        
         joystick1 = new Joystick(1);
         joystick2 =new Joystick(2);
+        
         AutoBalance = new JoystickButton(joystick1, 3);
-        shooter = new JoystickButton( joystick2, 1);
+        AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
+        
+        //shooter = new JoystickButton( joystick2, 1);
+        //shooter.whileHeld(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+        //shooter.whileHeld(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
+        
         Balance = new JoystickButton( joystick1, 2);
-        shooter.whileHeld(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
-        shooter.whileHeld(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
         Balance.whileHeld(new ManualBalancing());
         Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
-        PushRamp = new JoystickButton(joystick1, 4);
-        PushRamp.whenPressed(new ArmDown());
+        
+        //PushRamp = new JoystickButton(joystick1, 4);
+        //PushRamp.whenPressed(new ArmDown());
     }
     
     public static Button getButton3(){
