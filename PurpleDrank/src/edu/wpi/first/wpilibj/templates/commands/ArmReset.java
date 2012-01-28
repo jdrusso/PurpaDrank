@@ -11,7 +11,8 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.subsystems.RampController;
 
 /**
- *
+ *Once the ramp is down, this command will be called to reset the arm to its original position. 
+ * 
  * @author plevinson
  */
 public class ArmReset extends CommandBase {
@@ -24,17 +25,25 @@ public class ArmReset extends CommandBase {
         // eg. requires(chassis);
     }
 
-    // Called just before this Command runs the first time
+    /* 
+     * This method makes the motor reverse before anything else happens. 
+     */
     protected void initialize() {
         RampController.getRelay1().setDirection(Relay.Direction.kReverse);
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    /* 
+     * The arm will move back to its original position and stop when it gets there.
+     */
     protected void execute() {
         Ramp.push();
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    /*
+     * When the arm is at its original position.
+     * 
+     * @return true to stop command, false to countinue execute()
+     */
     protected boolean isFinished() {
         return false;
     }

@@ -25,7 +25,9 @@ public class OI {
     private static Button AutoBalance;
     private static Button shooter;
     private static MetaUDPVariables mdu;
-    
+    private static Button endAutoBalance;
+    private DriveTrain DriveTrain;
+    private static Button PushRamp;
     
     public static void initialize() {
         mdu = new MetaUDPVariables();
@@ -38,7 +40,8 @@ public class OI {
         shooter.whileHeld(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
         Balance.whileHeld(new ManualBalancing());
         Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
-    
+        PushRamp = new JoystickButton(joystick1, 4);
+        PushRamp.whenPressed(new ArmDown());
     }
     
     public static Button getButton3(){
