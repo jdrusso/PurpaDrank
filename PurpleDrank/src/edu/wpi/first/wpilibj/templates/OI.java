@@ -24,6 +24,7 @@ public class OI {
     private Button Balance;
     private static Button endAutoBalance;
     private DriveTrain DriveTrain;
+    private Button PushRamp;
     
     public OI() {
         DriveTrain = PurpleDrank.getDriveTrain();
@@ -35,7 +36,9 @@ public class OI {
         Balance = new JoystickButton( joystick1, 2);
         Balance.whileHeld(new ManualBalancing());
         Balance.whenReleased(new AutoBalancing(.25/40, 0, .1/20));
-    
+        PushRamp = new JoystickButton(joystick1, 4);
+        PushRamp.whenPressed(new ArmDown());
+         
     }
     
     public static Button getButton3(){
