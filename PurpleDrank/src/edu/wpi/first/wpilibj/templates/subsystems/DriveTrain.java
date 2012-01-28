@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.templates.commands.DefaultDriveTrain;
 import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.templates.OI;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  * 
@@ -46,8 +47,8 @@ public class DriveTrain extends Subsystem {
         super("Drive Train");
         Log = new MetaCommandLog(this);
         gyro1 = new MetaGyro(1 , 1);
-        lfJag = new Jaguar(1);
-        rtJag = new Jaguar(2);
+        lfJag = new Jaguar(RobotMap.frontLeftMotor);
+        rtJag = new Jaguar(RobotMap.frontRightMotor);
         drive = new RobotDrive(lfJag, rtJag);
         
         //lfFrontJag = new Jaguar (3);
@@ -60,11 +61,7 @@ public class DriveTrain extends Subsystem {
     }
       
     public void initDefaultCommand() {  
-        //                                         //depeding on which driving method we are using.
         super.setDefaultCommand(new DefaultDriveTrain(drive, OI.getJoystick1()));
-        //drive.tankDrive(joystick1, joystick2);
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     }
     
     public void move(double speed) {

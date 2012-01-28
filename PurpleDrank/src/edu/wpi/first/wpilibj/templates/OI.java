@@ -7,12 +7,12 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.team2035.meta.MetaUDPVariables;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.*;
-
 /**
  * 
  * @author Team 2035 Programmers
@@ -21,25 +21,28 @@ public class OI {
     // Process operator interface input here.
     private static Joystick joystick1;
     private static Joystick joystick2;
-    private Button Balance;
-    private static Button endAutoBalance;
-    private DriveTrain DriveTrain;
+    private static Button Balance;
+    private static Button AutoBalance;
+    private static Button shooter;
+    private static MetaUDPVariables mdu;
     
-    public OI() {
-        DriveTrain = PurpleDrank.getDriveTrain();
+    
+    public static void initialize() {
+        mdu = new MetaUDPVariables();
         joystick1 = new Joystick(1);
-        //Joystick2 = DriveTrain.getJoystick2();
-        //AutoBalancing h = new AutoBalancing(.25/40, 0, .1/20); 
-        //h.start();
-        endAutoBalance = new JoystickButton (joystick1, 3);
+        joystick2 =new Joystick(2);
+        AutoBalance = new JoystickButton(joystick1, 3);
+        shooter = new JoystickButton( joystick2, 1);
         Balance = new JoystickButton( joystick1, 2);
+        shooter.whileHeld(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+        shooter.whileHeld(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
         Balance.whileHeld(new ManualBalancing());
-        Balance.whenReleased(new AutoBalancing(.25/40, 0, .1/20));
+        Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
     
     }
     
     public static Button getButton3(){
-        return endAutoBalance;
+        return AutoBalance;
     }
     
     public static Joystick getJoystick1(){
@@ -48,6 +51,10 @@ public class OI {
     
     public static Joystick getJoystick2(){
         return joystick2;
+    }
+    
+    public static MetaUDPVariables getMdu(){
+        return mdu;
     }
     
 }

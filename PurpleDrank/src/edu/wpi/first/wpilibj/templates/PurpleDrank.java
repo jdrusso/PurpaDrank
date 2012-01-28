@@ -29,14 +29,24 @@ public class PurpleDrank extends IterativeRobot {
 
     Command autonomousCommand;
     private static DriveTrain DriveTrain;
+    private static HorizontalTurretAxis HorizontalAxis;
+    private static VerticalTurretAxis VerticalAxis;
     private ManualBalancing h;
-    private OI oi;
 
     
     
     public static DriveTrain getDriveTrain(){
         
         return DriveTrain;
+    }
+    
+    public static HorizontalTurretAxis getHorizontalTurretAxis(){
+        
+        return HorizontalAxis;
+    }
+    public static VerticalTurretAxis getVerticalTurretAxis(){
+        
+        return VerticalAxis;
     }
     /**
      * This function is run when the robot is first started up and should be
@@ -46,7 +56,9 @@ public class PurpleDrank extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         DriveTrain = new DriveTrain();
-        oi = new OI();
+        HorizontalAxis = new HorizontalTurretAxis();
+        VerticalAxis = new VerticalTurretAxis();
+        OI.initialize();
 
         // Initialize all subsystems
         //CommandBase.init();
