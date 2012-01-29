@@ -8,6 +8,8 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
@@ -16,9 +18,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author jrusso
  */
 public class BallCollector extends Subsystem {
-    // Put methods for controlling this subsystem
+    private Jaguar ballCollectJag;
     // here. Call these from Commands.
-
+    
+    public BallCollector(){
+        ballCollectJag= new Jaguar(RobotMap.ballCollectMotor);
+    }
+    public void ballCollectorOn(){
+        ballCollectJag.set(1);//full foward can be switced to full back
+        
+    }
+    public void ballCollectorOff(){
+        ballCollectJag.set(0);
+        
+    }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

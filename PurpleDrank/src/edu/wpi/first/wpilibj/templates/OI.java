@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.*;
+import edu.wpi.first.wpilibj.Joystick.ButtonType;
 /**
  * 
  * @author Team 2035 Programmers
@@ -28,6 +29,7 @@ public class OI {
     private static Button endAutoBalance;
     private DriveTrain DriveTrain;
     private static Button PushRamp;
+    private static Button ballCollector;
     
     public static void initialize() {
         mdu = new MetaUDPVariables();
@@ -46,6 +48,9 @@ public class OI {
         Balance.whileHeld(new ManualBalancing());
         Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
+        ballCollector = new JoystickButton(joystick2, 1); //unsure what number joystick trigger is
+        ballCollector.whileHeld(new BallCollectionOn());
+        ballCollector.whenReleased(new BallCollectionOff());
         //PushRamp = new JoystickButton(joystick1, 4);
         //PushRamp.whenPressed(new ArmDown());
     }
