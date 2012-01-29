@@ -38,7 +38,7 @@ public class OI {
         joystick2 =new Joystick(2);
         
         AutoBalance = new JoystickButton(joystick1, 3);
-        AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
+        //AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
         //shooter = new JoystickButton( joystick2, 1);
         //shooter.whileHeld(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));

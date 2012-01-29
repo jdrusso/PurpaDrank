@@ -48,7 +48,10 @@ public class AutoBalancing extends PIDCommand{
 
     protected boolean isFinished() {
         
-            return OI.getButton3().get();
+        if(OI.getButton3().get() || PurpleDrank.getIsDisabled()){
+            return true;
+        }    
+        return false;
             
     }
 
