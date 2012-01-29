@@ -32,6 +32,7 @@ public class PurpleDrank extends IterativeRobot {
     private static HorizontalTurretAxis HorizontalAxis;
     private static VerticalTurretAxis VerticalAxis;
     private ManualBalancing h;
+    private static boolean isDisabled;
 
     
     
@@ -48,6 +49,9 @@ public class PurpleDrank extends IterativeRobot {
         
         return VerticalAxis;
     }
+    public static boolean getIsDisabled(){
+        return isDisabled;
+    }    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -65,6 +69,7 @@ public class PurpleDrank extends IterativeRobot {
     }
     public void disabledPeriodic(){
         MetaLog.closeLog();
+        isDisabled = true;
  
     }
     public void autonomousInit() {
@@ -85,6 +90,7 @@ public class PurpleDrank extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		autonomousCommand.cancel();
+                isDisabled = false;
                 
     }
 

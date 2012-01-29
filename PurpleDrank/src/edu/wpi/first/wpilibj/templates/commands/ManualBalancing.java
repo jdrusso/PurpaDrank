@@ -36,12 +36,15 @@ public class ManualBalancing extends CommandBase{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        DriveTrain.move(1);
+        DriveTrain.move(-1);
         
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+        if(PurpleDrank.getIsDisabled()){
+            return true;
+        }
         return false;
     }
 
