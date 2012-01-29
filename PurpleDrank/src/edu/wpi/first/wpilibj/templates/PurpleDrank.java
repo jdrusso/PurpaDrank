@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.team2035.meta.MetaLog;
+import edu.team2035.meta.MetaUDPVariables;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,6 +18,8 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.commands.ManualBalancing;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
+import edu.wpi.first.wpilibj.DriverStationLCD;
+import edu.wpi.first.wpilibj.DriverStationLCD.Line;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,9 +34,10 @@ public class PurpleDrank extends IterativeRobot {
     private static DriveTrain DriveTrain;
     private static HorizontalTurretAxis HorizontalAxis;
     private static VerticalTurretAxis VerticalAxis;
+    private MetaUDPVariables metaTable;
     private ManualBalancing h;
+    private static DriverStationLCD display;
 
-    
     
     public static DriveTrain getDriveTrain(){
         
@@ -58,7 +62,12 @@ public class PurpleDrank extends IterativeRobot {
         DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
         VerticalAxis = new VerticalTurretAxis();
+        metaTable = new MetaUDPVariables();
+        display = DriverStationLCD.getInstance();
+        display.updateLCD();
         OI.initialize();
+        display.println(Line.kMain6, 1, "Initializing...");
+        display.updateLCD();
 
         // Initialize all subsystems
         //CommandBase.init();
@@ -66,6 +75,15 @@ public class PurpleDrank extends IterativeRobot {
     public void disabledPeriodic(){
         MetaLog.closeLog();
  
+        display.updateLCD();
+//        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range"));
+//        display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
+//        display.println(Line.kUser4, 1, "" + metaTable.getVariableFloatValue("x2") + ", " + metaTable.getVariableFloatValue("y2"));
+//        display.println(Line.kUser5, 1, "" + metaTable.getVariableFloatValue("x3") + ", " + metaTable.getVariableFloatValue("y3"));
+//        display.println(Line.kUser6, 1, "" + metaTable.getVariableFloatValue("x4") + ", " + metaTable.getVariableFloatValue("y4"));
+        display.println(Line.kMain6, 1, "Program is running...");
+        display.println(Line.kUser2, 1, "" + metaTable.getConnections());
+        display.updateLCD();
     }
     public void autonomousInit() {
         // schedule the autonomous command (example)
@@ -94,5 +112,13 @@ public class PurpleDrank extends IterativeRobot {
     public void teleopPeriodic() {
         MetaLog.update();
         Scheduler.getInstance().run();
+        
+        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range"));
+        display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
+        display.println(Line.kUser4, 1, "" + metaTable.getVariableFloatValue("x2") + ", " + metaTable.getVariableFloatValue("y2"));
+        display.println(Line.kUser5, 1, "" + metaTable.getVariableFloatValue("x3") + ", " + metaTable.getVariableFloatValue("y3"));
+        display.println(Line.kUser6, 1, "" + metaTable.getVariableFloatValue("x4") + ", " + metaTable.getVariableFloatValue("y4"));
+        display.println(Line.kMain6, 1, "Program is running...");
+        display.updateLCD();
     }
 }
