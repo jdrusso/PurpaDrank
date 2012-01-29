@@ -35,8 +35,8 @@ public class DriveTrain extends Subsystem {
     private DigitalInput sensor2;
     private Jaguar lfJag;
     private Jaguar rtJag;
-    private Jaguar lfFrontJag;
-    private Jaguar rtFrontJag;
+    private Jaguar lfRearJag;
+    private Jaguar rtRearJag;
     private double motorSpeeds;
     private static MetaGyro gyro1;
     private static MetaCommandLog Log;
@@ -45,11 +45,13 @@ public class DriveTrain extends Subsystem {
     
     public DriveTrain(){
         super("Drive Train");
-        Log = new MetaCommandLog(this);
+        //Log = new MetaCommandLog(this);
         gyro1 = new MetaGyro(1 , 1);
         lfJag = new Jaguar(RobotMap.frontLeftMotor);
+        lfRearJag = new Jaguar(RobotMap.rearLeftMotor);
         rtJag = new Jaguar(RobotMap.frontRightMotor);
-        drive = new RobotDrive(lfJag, rtJag);
+        rtRearJag = new Jaguar(RobotMap.rearRightMotor);
+        drive = new RobotDrive(lfJag, lfRearJag, rtJag, rtRearJag);
         
         //lfFrontJag = new Jaguar (3);
         //rtFrontJag = new Jaguar (4);

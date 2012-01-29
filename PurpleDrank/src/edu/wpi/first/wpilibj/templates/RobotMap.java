@@ -31,6 +31,7 @@ public class RobotMap {
     public static final int rearRightMotor = 4;
     public static final int HorTurretMotor = 5;
     public static final int VerTurretMotor = 6;
+    public static final int ballCollectMotor = 7;//channel 7 is not definite
     
     
     /* DRIVER STATION CONTROLS
