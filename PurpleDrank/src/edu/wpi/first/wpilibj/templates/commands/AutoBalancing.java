@@ -35,7 +35,7 @@ public class AutoBalancing extends PIDCommand{
     }
 
     protected void usePIDOutput(double output) {
-        DriveTrain.move(output);
+        DriveTrain.drive(output);
     }
 
     protected void initialize() {
@@ -44,6 +44,7 @@ public class AutoBalancing extends PIDCommand{
     }
 
     protected void execute() {
+        //this.DriveTrain.resetMotorTimers();
     }
 
     protected boolean isFinished() {

@@ -66,11 +66,12 @@ public class DriveTrain extends Subsystem {
         super.setDefaultCommand(new DefaultDriveTrain(drive, OI.getJoystick1()));
     }
     
-    public void move(double speed) {
-        lfJag.set(speed);
-        //lfFrontJag.set(speed);
-        rtJag.set(-speed);
-        //rtFrontJag.set(-speed);
+    public void resetMotorTimers(){
+        RobotDrive.feed();
+    }
+    
+    public void drive(double speed) {
+        drive.drive(speed, 0);
     }
     
 

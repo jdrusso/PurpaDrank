@@ -37,6 +37,7 @@ public class PurpleDrank extends IterativeRobot {
     private MetaUDPVariables metaTable;
     private ManualBalancing h;
     private static DriverStationLCD display;
+    private static boolean isDisabled;
     
     
     public static DriveTrain getDriveTrain(){

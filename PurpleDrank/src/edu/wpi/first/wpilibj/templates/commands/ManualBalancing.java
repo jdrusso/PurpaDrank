@@ -36,7 +36,8 @@ public class ManualBalancing extends CommandBase{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        DriveTrain.move(-1);
+        DriveTrain.drive(-1);
+        this.DriveTrain.resetMotorTimers();
         
     }
 
