@@ -48,7 +48,7 @@ public class OI {
         Balance.whileHeld(new ManualBalancing());
         Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
-        ballCollector = new JoystickButton(joystick2, 1); //unsure what number joystick trigger is
+        ballCollector = new JoystickButton(joystick2, 2); //unsure what number joystick trigger is
         ballCollector.whileHeld(new BallCollectionOn());
         ballCollector.whenReleased(new BallCollectionOff());
         //PushRamp = new JoystickButton(joystick1, 4);
