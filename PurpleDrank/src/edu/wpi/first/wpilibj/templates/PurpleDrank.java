@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.team2035.meta.MetaLog;
+import edu.team2035.meta.MetaTimer;
 import edu.team2035.meta.MetaUDPVariables;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -34,8 +35,8 @@ public class PurpleDrank extends IterativeRobot {
     private static DriveTrain DriveTrain;
     private static HorizontalTurretAxis HorizontalAxis;
     private static VerticalTurretAxis VerticalAxis;
+    private MetaTimer timer;
     private MetaUDPVariables metaTable;
-    private ManualBalancing h;
     private static DriverStationLCD display;
     private static boolean isDisabled;
     
@@ -62,10 +63,11 @@ public class PurpleDrank extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
+        timer = new MetaTimer();
         autonomousCommand = new ExampleCommand();
         DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
-        VerticalAxis = new VerticalTurretAxis();
+        VerticalAxis = new VerticalTurretAxis();        
         metaTable = new MetaUDPVariables();
         display = DriverStationLCD.getInstance();
         display.updateLCD();

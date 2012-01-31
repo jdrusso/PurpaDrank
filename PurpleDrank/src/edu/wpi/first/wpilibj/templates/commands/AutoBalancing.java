@@ -30,12 +30,15 @@ public class AutoBalancing extends PIDCommand{
         
     }
     protected double returnPIDInput() {
+        DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
         return gyro1.getAngle();
+        
         
     }
 
     protected void usePIDOutput(double output) {
         DriveTrain.drive(output);
+        
     }
 
     protected void initialize() {
@@ -44,7 +47,8 @@ public class AutoBalancing extends PIDCommand{
     }
 
     protected void execute() {
-        //this.DriveTrain.resetMotorTimers();
+        DriveTrain.setMetaCommandOutputs();
+        
     }
 
     protected boolean isFinished() {

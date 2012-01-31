@@ -31,6 +31,7 @@ public class HorizontalTurretRotation extends PIDCommand {
     }
     protected double returnPIDInput() {
         return (double)mdu.getVariableFloatValue(RobotMap.VTx);
+        //TODO:  Get x values and add to meta command log, also do for vertical turret
         
     }
 
@@ -39,6 +40,7 @@ public class HorizontalTurretRotation extends PIDCommand {
     }
 
     protected void initialize() {
+        HorizontalTurretAxis.getCommandLog().setCommand(this.getName());
         
     }
 

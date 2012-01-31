@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.team2035.meta.MetaGyro;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
@@ -19,7 +20,7 @@ import edu.wpi.first.wpilibj.templates.PurpleDrank;
 public class ManualBalancing extends CommandBase{
 
     private DriveTrain DriveTrain;
-    private MetaGyro gyro1;
+    private Gyro gyro1;
     
    public ManualBalancing() {
        super("ManualBalancing");
@@ -36,6 +37,8 @@ public class ManualBalancing extends CommandBase{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
+        DriveTrain.setMetaCommandOutputs();
         DriveTrain.drive(-1);
         this.DriveTrain.resetMotorTimers();
         
