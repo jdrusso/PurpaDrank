@@ -29,7 +29,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class DriveTrain extends Subsystem {
     
-    private RobotDrive drive;
+    private static RobotDrive drive;
     private Encoder transmission1;
     private DigitalInput sensor1;
     private DigitalInput sensor2;
@@ -38,20 +38,22 @@ public class DriveTrain extends Subsystem {
     private Jaguar lfRearJag;
     private Jaguar rtRearJag;
     private double motorSpeeds;
-    private static MetaGyro gyro1;
+    private static Gyro gyro1;
     private static MetaCommandLog Log;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
     public DriveTrain(){
         super("Drive Train");
-        //Log = new MetaCommandLog(this);
-        gyro1 = new MetaGyro(1 , 1);
-        lfJag = new Jaguar(RobotMap.frontLeftMotor);
-        lfRearJag = new Jaguar(RobotMap.rearLeftMotor);
-        rtJag = new Jaguar(RobotMap.frontRightMotor);
-        rtRearJag = new Jaguar(RobotMap.rearRightMotor);
-        drive = new RobotDrive(lfJag, lfRearJag, rtJag, rtRearJag);
+        Log = new MetaCommandLog("DriveTrain", "Gyro" , "Left Jaguars,Right Jaguars");
+        gyro1 = new Gyro(1 , 1);
+        //lfJag = new Jaguar(RobotMap.frontLeftMotor);
+        //lfRearJag = new Jaguar(RobotMap.rearLeftMotor);
+        //rtJag = new Jaguar(RobotMap.frontRightMotor);
+        //rtRearJag = new Jaguar(RobotMap.rearRightMotor);
+        lfJag = new Jaguar(1);
+        rtJag = new Jaguar(3);
+        drive = new RobotDrive(lfJag, rtJag);
         
         //lfFrontJag = new Jaguar (3);
         //rtFrontJag = new Jaguar (4);
@@ -75,12 +77,17 @@ public class DriveTrain extends Subsystem {
     }
     
 
-    public static MetaGyro getGyro1(){
+    public static Gyro getGyro1(){
         return gyro1;
     }
     
     public static MetaCommandLog getCommandLog(){
         return Log;
+    }
+    
+    public static void setMetaCommandOutputs(){
+        Log.setOutputs("" + drive.getLeftOutputs() + "," + drive.getRightOutputs());
+        
     }
     
 

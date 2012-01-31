@@ -34,6 +34,7 @@ public class PurpleDrank extends IterativeRobot {
     private static DriveTrain DriveTrain;
     private static HorizontalTurretAxis HorizontalAxis;
     private static VerticalTurretAxis VerticalAxis;
+    private MetaTimer timer;
     private MetaUDPVariables metaTable;
     private ManualBalancing h;
     private static DriverStationLCD display;
@@ -62,10 +63,12 @@ public class PurpleDrank extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
+        timer = new MetaTimer();
         autonomousCommand = new ExampleCommand();
         DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
-        VerticalAxis = new VerticalTurretAxis();
+        VerticalAxis = new VerticalTurretAxis();        
+        metaTable = new MetaUDPVariables();
         display = DriverStationLCD.getInstance();
         display.updateLCD();
         OI.initialize();

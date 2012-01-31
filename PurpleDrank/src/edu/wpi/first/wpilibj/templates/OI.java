@@ -40,13 +40,13 @@ public class OI {
         AutoBalance = new JoystickButton(joystick1, 3);
         //AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
-        //shooter = new JoystickButton( joystick2, 1);
-        //shooter.whileHeld(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
-        //shooter.whileHeld(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
+        shooter = new JoystickButton( joystick2, 1);
+        shooter.whileHeld(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+        shooter.whileHeld(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
         
-        Balance = new JoystickButton( joystick1, 2);
-        Balance.whileHeld(new ManualBalancing());
-        Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
+        //Balance = new JoystickButton( joystick1, 2);
+        //Balance.whileHeld(new ManualBalancing());
+        //Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
 //        ballCollector = new JoystickButton(joystick2, 2); //unsure what number joystick trigger is
 //        ballCollector.whileHeld(new BallCollectionOn());

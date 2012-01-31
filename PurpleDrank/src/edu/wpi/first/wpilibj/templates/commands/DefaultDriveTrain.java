@@ -7,6 +7,7 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
@@ -22,10 +23,12 @@ public class DefaultDriveTrain extends CommandBase{
     private Joystick Joystick2;
     private RobotDrive drive;
     private DriveTrain DriveTrain;
+    private Gyro gyro1;
     
     public DefaultDriveTrain(RobotDrive d, Joystick j){
         super("DefaultDriveTrain");
         DriveTrain = PurpleDrank.getDriveTrain(); 
+        gyro1 = DriveTrain.getGyro1();
         requires(DriveTrain);
         Joystick1 = j;
         drive = d;    
@@ -36,7 +39,10 @@ public class DefaultDriveTrain extends CommandBase{
     }
 
     protected void execute() {
+        DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
+        DriveTrain.setMetaCommandOutputs();
         drive.arcadeDrive(Joystick1);
+    
     }
 
     protected boolean isFinished() {
