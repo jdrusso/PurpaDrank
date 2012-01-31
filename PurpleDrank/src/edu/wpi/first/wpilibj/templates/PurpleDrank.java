@@ -66,11 +66,17 @@ public class PurpleDrank extends IterativeRobot {
         DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
         VerticalAxis = new VerticalTurretAxis();
-        metaTable = new MetaUDPVariables();
         display = DriverStationLCD.getInstance();
         display.updateLCD();
         OI.initialize();
-        display.println(Line.kMain6, 1, "Initializing...");
+        display.println(Line.kMain6, 1, "Initializing...                ");
+        display.println(Line.kUser2, 1, "                               ");
+        display.println(Line.kUser3, 1, "                               ");
+        display.println(Line.kUser4, 1, "                               ");
+        display.println(Line.kUser5, 1, "                               ");
+        display.println(Line.kUser6, 1, "                               ");
+        display.updateLCD();
+        metaTable = new MetaUDPVariables();
         display.updateLCD();
 
         // Initialize all subsystems
@@ -81,11 +87,11 @@ public class PurpleDrank extends IterativeRobot {
         isDisabled = true;
  
         display.updateLCD();
-//        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range"));
-//        display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
-//        display.println(Line.kUser4, 1, "" + metaTable.getVariableFloatValue("x2") + ", " + metaTable.getVariableFloatValue("y2"));
-//        display.println(Line.kUser5, 1, "" + metaTable.getVariableFloatValue("x3") + ", " + metaTable.getVariableFloatValue("y3"));
-//        display.println(Line.kUser6, 1, "" + metaTable.getVariableFloatValue("x4") + ", " + metaTable.getVariableFloatValue("y4"));
+        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range"));
+        //display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
+        display.println(Line.kUser4, 1, "" + metaTable.getVariableFloatValue("x2") + ", " + metaTable.getVariableFloatValue("y2"));
+        display.println(Line.kUser5, 1, "" + metaTable.getVariableFloatValue("x3") + ", " + metaTable.getVariableFloatValue("y3"));
+        display.println(Line.kUser6, 1, "" + metaTable.getVariableFloatValue("x4") + ", " + metaTable.getVariableFloatValue("y4"));
         display.println(Line.kMain6, 1, "Program is running...");
         display.println(Line.kUser2, 1, "" + metaTable.getConnections());
         display.updateLCD();
