@@ -66,7 +66,7 @@ public class PurpleDrank extends IterativeRobot {
         // instantiate the command used for the autonomous period
         timer = new MetaTimer();
         autonomousCommand = new ExampleCommand();
-        DriveTrain = new DriveTrain();
+        //DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
         VerticalAxis = new VerticalTurretAxis();        
         metaTable = new MetaTCPVariables();
@@ -86,23 +86,27 @@ public class PurpleDrank extends IterativeRobot {
         // Initialize all subsystems
         //CommandBase.init();
     }
+    public void disabledInit(){
+        
+        System.out.println("Entering disabled...");
+    }
     public void disabledPeriodic(){
         MetaLog.closeLog();
         isDisabled = true;
  
         display.updateLCD();
-        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range"));
-        //display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
+        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range") + ", " + metaTable.getConnections());
+        display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
         display.println(Line.kUser4, 1, "" + metaTable.getVariableFloatValue("x2") + ", " + metaTable.getVariableFloatValue("y2"));
         display.println(Line.kUser5, 1, "" + metaTable.getVariableFloatValue("x3") + ", " + metaTable.getVariableFloatValue("y3"));
         display.println(Line.kUser6, 1, "" + metaTable.getVariableFloatValue("x4") + ", " + metaTable.getVariableFloatValue("y4"));
         display.println(Line.kMain6, 1, "Program is running...");
-        display.println(Line.kUser2, 1, "" + metaTable.getConnections());
         display.updateLCD();
     }
     public void autonomousInit() {
         // schedule the autonomous command (example)
         autonomousCommand.start();
+        System.out.println("Entering Autonomous...");
     }
 
     /**
@@ -119,6 +123,7 @@ public class PurpleDrank extends IterativeRobot {
 		// this line or comment it out.
 		autonomousCommand.cancel();
                 isDisabled = false;
+                System.out.println("Entering TeleOp...");
                 
     }
 
@@ -129,7 +134,7 @@ public class PurpleDrank extends IterativeRobot {
         MetaLog.update();
         Scheduler.getInstance().run();
         
-        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range"));
+        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range") + ", " + metaTable.getConnections());
         display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
         display.println(Line.kUser4, 1, "" + metaTable.getVariableFloatValue("x2") + ", " + metaTable.getVariableFloatValue("y2"));
         display.println(Line.kUser5, 1, "" + metaTable.getVariableFloatValue("x3") + ", " + metaTable.getVariableFloatValue("y3"));
