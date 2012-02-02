@@ -67,7 +67,7 @@ public class OI {
         return joystick2;
     }
     
-    public static MetaUDPVariables getMdu(){
+    public static MetaTCPVariables getMdu(){
         return mdu;
     }
     

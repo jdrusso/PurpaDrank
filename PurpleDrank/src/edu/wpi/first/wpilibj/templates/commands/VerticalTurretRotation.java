@@ -19,8 +19,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 public class VerticalTurretRotation extends PIDCommand {
     private VerticalTurretAxis VerticalAxis;
     private MetaTCPVariables mdu;
-    private int TargetAngle;
-    private int range;
+    
     
     public VerticalTurretRotation(double Kp, double Ki, double Kd){
         super("VerticalTurretRotation", Kp, Ki, Kd);
@@ -40,8 +39,6 @@ public class VerticalTurretRotation extends PIDCommand {
 
     protected void initialize() {
         VerticalTurretAxis.getCommandLog().setCommand(this.getName());
-        TargetAngle = 30; //Angle Calculation TBD
-        new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKp, TargetAngle, range).start();
         
     }
 
