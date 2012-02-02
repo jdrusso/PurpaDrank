@@ -7,6 +7,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.team2035.meta.MetaTCPVariables;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -24,12 +25,14 @@ public class OI {
     private static Button Balance;
     private static Button AutoBalance;
     private static Button shooter;
+    private static MetaTCPVariables mdu;
     private static Button endAutoBalance;
     private DriveTrain DriveTrain;
     private static Button PushRamp;
     private static Button ballCollector;
     
     public static void initialize() {
+        mdu = new MetaTCPVariables();
         
         joystick1 = new Joystick(1);
         joystick2 =new Joystick(2);
@@ -62,6 +65,10 @@ public class OI {
     
     public static Joystick getJoystick2(){
         return joystick2;
+    }
+    
+    public static MetaTCPVariables getMdu(){
+        return mdu;
     }
     
 }
