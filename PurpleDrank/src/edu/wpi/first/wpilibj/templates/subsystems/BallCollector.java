@@ -22,7 +22,7 @@ public class BallCollector extends Subsystem {
     // here. Call these from Commands.
     
     public BallCollector(){
-        ballCollectJag= new Jaguar(RobotMap.ballCollectMotor);
+        //ballCollectJag= new Jaguar(RobotMap.ballCollectMotor);
     }
     public void ballCollectorOn(){
         ballCollectJag.set(1);//full foward can be switced to full back

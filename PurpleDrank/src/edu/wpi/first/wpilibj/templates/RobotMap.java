@@ -22,7 +22,7 @@ public class RobotMap {
     // public static final int rangefinderPort = 1;
     // public static final int rangefinderModule = 1;
     
-    /* PWM OUTPUTS
+    /* PWM OUTPUTS for Digital Sidecar
      * These should be sequential.
      */
     public static final int frontLeftMotor = 1;
@@ -31,7 +31,16 @@ public class RobotMap {
     public static final int rearRightMotor = 4;
     public static final int HorTurretMotor = 5;
     public static final int VerTurretMotor = 6;
-    public static final int ballCollectMotor = 7;//channel 7 is not definite
+    public static final int TopShooterMotor = 7;
+    public static final int BottomShooterMotor = 8;
+    
+    /*
+     * Height Constants for shooter in inches
+     */
+    public static final double target1Height = 28;
+    public static final double target2Height = 61;
+    public static final double target3Height = 98;
+    public static final double shooterHeight = 30; //default, TBD
     
     
     /* DRIVER STATION CONTROLS
@@ -77,6 +86,14 @@ public class RobotMap {
     public static final double VerTurretKi = (double) (0);
     // Kp - K differential value for VerticalTurretRotation.
     public static final double VerTurretKd = (double) (0);
+    
+     /* ROBOT CODE DEFINED CONSTANTS */
+    // Kp - K proportional value for shooter.
+    public static final double shooterKp = (double) (.1);
+    // Ki - K integral value for shooter.
+    public static final double shooterKi = (double) (0);
+    // Kp - K differential value for shooter.
+    public static final double shooterKd = (double) (0);
     
     /*String KeyValues for Vision Tracking Hashtable*/
     //VTx - X value offset

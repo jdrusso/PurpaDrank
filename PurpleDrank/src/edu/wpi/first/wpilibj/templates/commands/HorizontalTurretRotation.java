@@ -4,7 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.team2035.meta.MetaUDPVariables;
+import edu.team2035.meta.MetaTCPVariables;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.templates.OI;
@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.HorizontalTurretAxis;
  */
 public class HorizontalTurretRotation extends PIDCommand {
     private HorizontalTurretAxis HorizontalAxis;
-    private MetaUDPVariables mdu;
+    private MetaTCPVariables mdu;
     
     
     public HorizontalTurretRotation(double Kp, double Ki, double Kd){

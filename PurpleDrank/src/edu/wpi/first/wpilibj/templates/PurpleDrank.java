@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.team2035.meta.MetaLog;
-import edu.team2035.meta.MetaUDPVariables;
+import edu.team2035.meta.MetaTCPVariables;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -35,8 +35,9 @@ public class PurpleDrank extends IterativeRobot {
     private static DriveTrain DriveTrain;
     private static HorizontalTurretAxis HorizontalAxis;
     private static VerticalTurretAxis VerticalAxis;
+    private static Shooter shooterController;
     private MetaTimer timer;
-    private MetaUDPVariables metaTable;
+    private MetaTCPVariables metaTable;
     private ManualBalancing h;
     private static DriverStationLCD display;
     private static boolean isDisabled;
@@ -55,6 +56,9 @@ public class PurpleDrank extends IterativeRobot {
         
         return VerticalAxis;
     }
+    public static Shooter getShooterController(){
+        return shooterController;
+    }
     public static boolean getIsDisabled(){
         return isDisabled;
     }    
@@ -68,8 +72,9 @@ public class PurpleDrank extends IterativeRobot {
         autonomousCommand = new ExampleCommand();
         DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
-        VerticalAxis = new VerticalTurretAxis();        
-        metaTable = new MetaUDPVariables();
+        VerticalAxis = new VerticalTurretAxis();   
+        shooterController = new Shooter();
+        metaTable = new MetaTCPVariables();
         display = DriverStationLCD.getInstance();
         display.updateLCD();
         OI.initialize();
@@ -80,7 +85,7 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kUser5, 1, "                               ");
         display.println(Line.kUser6, 1, "                               ");
         display.updateLCD();
-        metaTable = new MetaUDPVariables();
+        metaTable = new MetaTCPVariables();
         display.updateLCD();
 
         // Initialize all subsystems
