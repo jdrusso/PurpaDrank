@@ -92,15 +92,21 @@ public class PurpleDrank extends IterativeRobot {
         System.out.println("Entering disabled...");
     }
     public void disabledPeriodic(){
+        //metaTable.update();
         MetaLog.closeLog();
         isDisabled = true;
  
         display.updateLCD();
-        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range") + ", " + metaTable.getConnections());
-        display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
-        display.println(Line.kUser4, 1, "" + metaTable.getVariableFloatValue("x2") + ", " + metaTable.getVariableFloatValue("y2"));
-        display.println(Line.kUser5, 1, "" + metaTable.getVariableFloatValue("x3") + ", " + metaTable.getVariableFloatValue("y3"));
-        display.println(Line.kUser6, 1, "" + metaTable.getVariableFloatValue("x4") + ", " + metaTable.getVariableFloatValue("y4"));
+//        display.println(Line.kUser2, 1, "" + metaTable.getVariableFloatValue("range") + ", " + metaTable.getConnections() + ", " + metaTable.getCount());
+//        display.println(Line.kUser3, 1, "" + metaTable.getVariableFloatValue("x1") + ", " + metaTable.getVariableFloatValue("y1"));
+//        display.println(Line.kUser4, 1, "" + metaTable.getVariableFloatValue("x2") + ", " + metaTable.getVariableFloatValue("y2"));
+//        display.println(Line.kUser5, 1, "" + metaTable.getVariableFloatValue("x3") + ", " + metaTable.getVariableFloatValue("y3"));
+//        display.println(Line.kUser6, 1, "" + metaTable.getVariableFloatValue("x4") + ", " + metaTable.getVariableFloatValue("y4"));
+        display.println(Line.kUser2, 1, "" + metaTable.getrange() + ", " + metaTable.getConnections() + ", " + metaTable.getCount());
+        display.println(Line.kUser3, 1, "" + metaTable.x1 + ", " + metaTable.y1);
+        display.println(Line.kUser4, 1, "" + metaTable.getx2() + ", " + metaTable.y2);
+        display.println(Line.kUser5, 1, "" + metaTable.x3 + ", " + metaTable.y3);
+        display.println(Line.kUser6, 1, "" + metaTable.x4 + ", " + metaTable.y4);        
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
     }
