@@ -1,7 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Gyro;
@@ -19,6 +22,7 @@ public class AutoBalancing extends PIDCommand{
     private DriveTrain DriveTrain;
     private Gyro gyro1;
     
+    
     public AutoBalancing(double Kp, double Ki, double Kd){
         super("AutoBalancing", Kp, Ki, Kd);
         this.DriveTrain = PurpleDrank.getDriveTrain(); 
@@ -27,25 +31,35 @@ public class AutoBalancing extends PIDCommand{
         
     }
     protected double returnPIDInput() {
+        DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
         return gyro1.getAngle();
+        
         
     }
 
     protected void usePIDOutput(double output) {
-        DriveTrain.move(output);
+        DriveTrain.drive(output);
+        
     }
 
     protected void initialize() {
         DriveTrain.getCommandLog().setCommand(this.getName());
         
+        
+        
     }
 
     protected void execute() {
+        DriveTrain.setMetaCommandOutputs();
+        
     }
 
     protected boolean isFinished() {
         
-            return OI.getButton3().get();
+        if(OI.getButton3().get() || PurpleDrank.getIsDisabled()){
+            return true;
+        }    
+        return false;
             
     }
 

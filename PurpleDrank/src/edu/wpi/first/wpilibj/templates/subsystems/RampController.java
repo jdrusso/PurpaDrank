@@ -23,12 +23,17 @@ public class RampController extends Subsystem {
 
     public void initDefaultCommand() { 
         Relay1= new Relay(1);      
-        // Set the default command for a subsystem here.
+        //Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());      
-    }   
+    }  
+    
+    /*
+     * moves the motor in a certain direction, determined by command.
+     */
     public void push() {
         Relay1.setDirection(Relay.Direction.kBoth); 
     }
+    
     public static Relay getRelay1() {
        return Relay1; 
     }

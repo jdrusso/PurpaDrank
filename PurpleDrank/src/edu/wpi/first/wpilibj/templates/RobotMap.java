@@ -22,11 +22,25 @@ public class RobotMap {
     // public static final int rangefinderPort = 1;
     // public static final int rangefinderModule = 1;
     
-    /* PWM OUTPUTS
+    /* PWM OUTPUTS for Digital Sidecar
      * These should be sequential.
      */
-    public static final int leftMotor = 1;
-    public static final int rightMotor = 2;
+    public static final int frontLeftMotor = 1;
+    public static final int rearLeftMotor = 2;
+    public static final int frontRightMotor = 3;
+    public static final int rearRightMotor = 4;
+    public static final int HorTurretMotor = 5;
+    public static final int VerTurretMotor = 6;
+    public static final int TopShooterMotor = 7;
+    public static final int BottomShooterMotor = 8;
+    
+    /*
+     * Height Constants for shooter in inches
+     */
+    public static final double target1Height = 28;
+    public static final double target2Height = 61;
+    public static final double target3Height = 98;
+    public static final double shooterHeight = 30; //default, TBD
     
     
     /* DRIVER STATION CONTROLS
@@ -51,9 +65,41 @@ public class RobotMap {
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for AutoBalancing.
-    public static final double Kp = (double) (0.25 / 45);
+    public static final double AutoBalKp = (double) (0.25 / 45);
     // Ki - K integral value for AutoBalancing.
-    public static final double Ki = (double) (0);
+    public static final double AutoBalKi = (double) (0);
     // Kp - K differential value for AutoBalancing.
-    public static final double Kd = (double) (0.1 / 20);
+    public static final double AutoBalKd = (double) (0.1 / 20);
+    
+    /* ROBOT CODE DEFINED CONSTANTS */
+    // Kp - K proportional value for HorizontalTurretRotation.
+    public static final double HorTurretKp = (double) (.1);
+    // Ki - K integral value for HorizontalTurretRotation.
+    public static final double HorTurretKi = (double) (0);
+    // Kp - K differential value for HorizontalTurretRotation.
+    public static final double HorTurretKd = (double) (0);
+    
+    /* ROBOT CODE DEFINED CONSTANTS */
+    // Kp - K proportional value for VerticalTurretRotation.
+    public static final double VerTurretKp = (double) (.1);
+    // Ki - K integral value for VerticalTurretRotation.
+    public static final double VerTurretKi = (double) (0);
+    // Kp - K differential value for VerticalTurretRotation.
+    public static final double VerTurretKd = (double) (0);
+    
+     /* ROBOT CODE DEFINED CONSTANTS */
+    // Kp - K proportional value for shooter.
+    public static final double shooterKp = (double) (.1);
+    // Ki - K integral value for shooter.
+    public static final double shooterKi = (double) (0);
+    // Kp - K differential value for shooter.
+    public static final double shooterKd = (double) (0);
+    
+    /*String KeyValues for Vision Tracking Hashtable*/
+    //VTx - X value offset
+    public static final String VTx = "VTx";
+    //VTy - y value offset
+    public static final String VTy = "VTy";
+    //VTd - distance to target
+    public static final String VTd = "VTd";
 }
