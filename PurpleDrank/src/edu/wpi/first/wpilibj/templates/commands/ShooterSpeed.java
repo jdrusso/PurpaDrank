@@ -27,7 +27,7 @@ public class ShooterSpeed extends PIDCommand {
         super("ShooterSpeed", Kp, Ki, Kd);
         this.range = range;
         this.angleDegress = angle;
-        this.shootController = PurpleDrank.getShooterController(); 
+        //this.shootController = PurpleDrank.getShooterController(); 
         requires(this.shootController);
         
     }
