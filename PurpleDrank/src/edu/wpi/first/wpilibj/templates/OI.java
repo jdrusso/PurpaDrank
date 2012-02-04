@@ -48,11 +48,13 @@ public class OI {
         //Balance.whileHeld(new ManualBalancing());
         //Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
-//        ballCollector = new JoystickButton(joystick2, 2); //unsure what number joystick trigger is
-//        ballCollector.whileHeld(new BallCollectionOn());
-//        ballCollector.whenReleased(new BallCollectionOff());
+//        ballCollector = new JoystickButton(joystick1, 5); 
+//        ballCollector.whilePressed(new BallCollectionOn());
+//        ballCollector.whenDoublePressed(new BallCollectionOff());
+        //ballCollector.whileHeld(new BallCollectionReverse());
         //PushRamp = new JoystickButton(joystick1, 4);
         //PushRamp.whenPressed(new ArmDown());
+        //PushRamp.whenDoublePressed(new ArmReset());
     }
     
     public static Button getButton3(){
