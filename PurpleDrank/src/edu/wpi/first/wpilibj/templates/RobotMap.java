@@ -68,12 +68,12 @@ public class RobotMap {
     public static final double AutoBalKp = (double) (0.25 / 45);
     // Ki - K integral value for AutoBalancing.
     public static final double AutoBalKi = (double) (0);
-    // Kp - K differential value for AutoBalancing.
+    // Kd - K differential value for AutoBalancing.
     public static final double AutoBalKd = (double) (0.1 / 20);
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for HorizontalTurretRotation.
-    public static final double HorTurretKp = (double) (.1);
+    public static final double HorTurretKp = (double) (.25/15);
     // Ki - K integral value for HorizontalTurretRotation.
     public static final double HorTurretKi = (double) (0);
     // Kp - K differential value for HorizontalTurretRotation.
@@ -81,7 +81,7 @@ public class RobotMap {
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for VerticalTurretRotation.
-    public static final double VerTurretKp = (double) (.1);
+    public static final double VerTurretKp = (double) (.25/2);
     // Ki - K integral value for VerticalTurretRotation.
     public static final double VerTurretKi = (double) (0);
     // Kp - K differential value for VerticalTurretRotation.
@@ -103,9 +103,13 @@ public class RobotMap {
     //VTd - distance to target
     public static final String VTd = "VTd";
     
-   /*
+   
+    public static final double cameraXOffset = 0.0;
+    public static final double cameraYOffset = 0.0;
+    /*
     * Target Values to be edited by Target Sorting thread
     */
+    public static boolean isTargets = false;
     public static boolean isTop = false;
     public static double Ty = 0.0;
     public static double Tx = 0.0;
@@ -120,4 +124,14 @@ public class RobotMap {
     public static double Rx = 0.0;
     public static double range = 0.0;
     
+    
+    public static double desiredAngle = 0.0;
+    
+    
+    public static final double fieldZone1 = 18.0;
+    public static final double fieldZone1DesiredAngle = 45.0;
+    public static final double fieldZone2 = 36.0;
+    public static final double fieldZone2DesiredAngle = 35.0;
+    public static final double fieldZone3 = 54.0;
+    public static final double fieldZone3DesiredAngle = 25.0;
 }

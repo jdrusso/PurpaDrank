@@ -18,15 +18,12 @@ public class ShooterSpeed extends PIDCommand {
     private Shooter shootController;
     private final double gravity = 32.1895039;
     private double range; //feet
-    private double angleDegress;
     private double angleRadians;
     private double setpoint;
     private double output = 0;
     
-    public ShooterSpeed(double Kp, double Ki, double Kd, double angle, double range){
+    public ShooterSpeed(double Kp, double Ki, double Kd){
         super("ShooterSpeed", Kp, Ki, Kd);
-        this.range = range;
-        this.angleDegress = angle;
         this.shootController = PurpleDrank.getShooterController(); 
         requires(this.shootController);
         
@@ -59,8 +56,8 @@ public class ShooterSpeed extends PIDCommand {
     }
     
     protected void calculateVelocity(){
-        angleRadians = Math.toRadians(angleDegress);
-        setpoint = range*Math.sqrt(gravity/((range*Math.tan(angleRadians))-(RobotMap.target1Height)+RobotMap.shooterHeight))/(Math.sqrt(2.0)*Math.cos(angleRadians));
+        angleRadians = Math.toRadians(RobotMap.desiredAngle);
+        setpoint = RobotMap.range*Math.sqrt(gravity/((RobotMap.range*Math.tan(angleRadians))-(RobotMap.target1Height)+RobotMap.shooterHeight))/(Math.sqrt(2.0)*Math.cos(angleRadians));
         //target 1 height tBD as well as shooter height
     }
     

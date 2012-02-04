@@ -8,6 +8,9 @@ import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.HorizontalTurretRotation;
+import edu.wpi.first.wpilibj.templates.commands.horizontalDefaultCommand;
+import edu.wpi.first.wpilibj.templates.commands.verticalDefaultCommand;
 
 /**
  *
@@ -19,11 +22,12 @@ public class HorizontalTurretAxis extends Subsystem{
 
     public HorizontalTurretAxis(){
         super("HorizontalTurretAxis");
-        HorLog = new MetaCommandLog("HorizontalTurretAxis", "NA" , "Jaguar");
+        HorLog = new MetaCommandLog("HorizontalTurretAxis", "Target X-value" , "Jaguar");
         HorTurretJag = new Jaguar(RobotMap.HorTurretMotor);
     }
     protected void initDefaultCommand() {
         HorLog.setCommand("Default");
+        super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
     }
     
     public void rotate(double speed){

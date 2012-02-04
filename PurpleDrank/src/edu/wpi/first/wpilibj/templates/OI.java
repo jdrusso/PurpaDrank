@@ -24,7 +24,7 @@ public class OI {
     private static Joystick joystick2;
     private static Button Balance;
     private static Button AutoBalance;
-    private static Button shooter;
+    private static Button manualShooter;
     private static MetaTCPVariables mdu;
     private static Button endAutoBalance;
     private DriveTrain DriveTrain;
@@ -40,9 +40,9 @@ public class OI {
         AutoBalance = new JoystickButton(joystick1, 3);
         //AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
-        shooter = new JoystickButton( joystick2, 1);
-        shooter.whileHeld(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
-        shooter.whileHeld(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
+         manualShooter = new JoystickButton( joystick2, 1);
+         manualShooter.whileHeld(new verticalDefaultCommand());
+         manualShooter.whileHeld(new horizontalDefaultCommand());
         
         //Balance = new JoystickButton( joystick1, 2);
         //Balance.whileHeld(new ManualBalancing());

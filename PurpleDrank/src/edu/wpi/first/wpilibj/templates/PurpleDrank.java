@@ -80,7 +80,6 @@ public class PurpleDrank extends IterativeRobot {
         metaTable = new MetaTCPVariables();
         display = DriverStationLCD.getInstance();
         display.updateLCD();
-        OI.initialize();
         display.println(Line.kMain6, 1, "Initializing...                ");
         display.println(Line.kUser2, 1, "                               ");
         display.println(Line.kUser3, 1, "                               ");
@@ -137,6 +136,7 @@ public class PurpleDrank extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		autonomousCommand.cancel();
+                OI.initialize();
                 TargetSorting t = new TargetSorting();
                 t.start();
                 isDisabled = false;

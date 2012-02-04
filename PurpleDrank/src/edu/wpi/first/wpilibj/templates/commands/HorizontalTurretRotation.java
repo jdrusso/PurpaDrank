@@ -19,18 +19,37 @@ import edu.wpi.first.wpilibj.templates.subsystems.HorizontalTurretAxis;
  */
 public class HorizontalTurretRotation extends PIDCommand {
     private HorizontalTurretAxis HorizontalAxis;
-    private MetaTCPVariables mdu;
     
     
     public HorizontalTurretRotation(double Kp, double Ki, double Kd){
         super("HorizontalTurretRotation", Kp, Ki, Kd);
         this.HorizontalAxis = PurpleDrank.getHorizontalTurretAxis();
-        this.mdu = OI.getMdu();
         requires(this.HorizontalAxis);
         
     }
     protected double returnPIDInput() {
-        return (double)mdu.getVariableFloatValue(RobotMap.VTx);
+        if(RobotMap.isTop){
+            HorizontalTurretAxis.getCommandLog().setOutputs("" + RobotMap.Tx);
+            return RobotMap.Tx;
+            
+        }
+        else if(RobotMap.isRight){
+            HorizontalTurretAxis.getCommandLog().setOutputs("" + RobotMap.Rx);
+            return RobotMap.Rx;
+        }
+        else if(RobotMap.isLeft){
+            HorizontalTurretAxis.getCommandLog().setOutputs("" + RobotMap.Lx);
+            return RobotMap.Lx;
+        }
+        else if(RobotMap.isBottom){
+            HorizontalTurretAxis.getCommandLog().setOutputs("" + RobotMap.Bx);
+            return RobotMap.Bx;
+        }
+        
+        else{
+            HorizontalTurretAxis.getCommandLog().setOutputs("N/A");
+            return RobotMap.cameraXOffset;
+        }
         //TODO:  Get x values and add to meta command log, also do for vertical turret
         
     }
@@ -40,11 +59,13 @@ public class HorizontalTurretRotation extends PIDCommand {
     }
 
     protected void initialize() {
+        this.setSetpoint(RobotMap.cameraXOffset);
         HorizontalTurretAxis.getCommandLog().setCommand(this.getName());
         
     }
 
     protected void execute() {
+        
     }
 
     protected boolean isFinished() {
@@ -58,5 +79,6 @@ public class HorizontalTurretRotation extends PIDCommand {
 
     protected void interrupted() {
     }
+    
     
 }

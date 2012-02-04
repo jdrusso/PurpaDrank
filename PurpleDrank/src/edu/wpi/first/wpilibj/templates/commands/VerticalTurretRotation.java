@@ -5,6 +5,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.team2035.meta.MetaTCPVariables;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
@@ -18,18 +19,18 @@ import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
  */
 public class VerticalTurretRotation extends PIDCommand {
     private VerticalTurretAxis VerticalAxis;
-    private MetaTCPVariables mdu;
+    private Gyro gyro1;
     
     
     public VerticalTurretRotation(double Kp, double Ki, double Kd){
         super("VerticalTurretRotation", Kp, Ki, Kd);
         this.VerticalAxis = PurpleDrank.getVerticalTurretAxis();
-        this.mdu = OI.getMdu();
         requires(this.VerticalAxis);
         
     }
     protected double returnPIDInput() {
-        return (double)mdu.getVariableFloatValue(RobotMap.VTy);
+        this.gyro1 = this.VerticalAxis.getGyro1();
+        return gyro1.getAngle();
         
     }
 
@@ -39,10 +40,13 @@ public class VerticalTurretRotation extends PIDCommand {
 
     protected void initialize() {
         VerticalTurretAxis.getCommandLog().setCommand(this.getName());
+        new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd).start();
         
     }
 
     protected void execute() {
+        this.setSetpoint(RobotMap.desiredAngle);
+        
     }
 
     protected boolean isFinished() {
@@ -55,6 +59,31 @@ public class VerticalTurretRotation extends PIDCommand {
     }
 
     protected void interrupted() {
+    }
+    
+    protected void determineSetpoint(){
+        
+        if((RobotMap.range - RobotMap.fieldZone1) < 0 ){
+           RobotMap.desiredAngle = RobotMap.fieldZone1DesiredAngle;
+           return;
+        }
+        
+        if((RobotMap.range - RobotMap.fieldZone2) < 0 ){
+            RobotMap.desiredAngle =  RobotMap.fieldZone2DesiredAngle;
+            return;
+        }
+        
+        if((RobotMap.range - RobotMap.fieldZone3) < 0 ){
+            RobotMap.desiredAngle =  RobotMap.fieldZone1DesiredAngle;
+            return;
+        }
+        
+        if((RobotMap.range - RobotMap.fieldZone3) < 0 ){
+            RobotMap.desiredAngle =  RobotMap.fieldZone1DesiredAngle;
+            return;
+        }
+        
+        RobotMap.desiredAngle = 0;
     }
     
 }
