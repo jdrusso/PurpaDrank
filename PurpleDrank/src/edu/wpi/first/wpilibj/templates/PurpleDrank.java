@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.*;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.DriverStationLCD.Line;
 import edu.team2035.meta.MetaTimer;
+import edu.wpi.first.wpilibj.templates.commands.TargetSorting;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -136,6 +137,8 @@ public class PurpleDrank extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		autonomousCommand.cancel();
+                TargetSorting t = new TargetSorting();
+                t.start();
                 isDisabled = false;
                 System.out.println("Entering TeleOp...");
                 

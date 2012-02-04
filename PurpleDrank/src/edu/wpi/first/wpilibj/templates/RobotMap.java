@@ -102,4 +102,22 @@ public class RobotMap {
     public static final String VTy = "VTy";
     //VTd - distance to target
     public static final String VTd = "VTd";
+    
+   /*
+    * Target Values to be edited by Target Sorting thread
+    */
+    public static boolean isTop = false;
+    public static double Ty = 0.0;
+    public static double Tx = 0.0;
+    public static boolean isBottom = false;
+    public static double By = 0.0;
+    public static double Bx = 0.0;
+    public static boolean isLeft = false;
+    public static double Ly = 0.0;
+    public static double Lx = 0.0;
+    public static boolean isRight = false;
+    public static double Ry = 0.0; 
+    public static double Rx = 0.0;
+    public static double range = 0.0;
+    
 }
