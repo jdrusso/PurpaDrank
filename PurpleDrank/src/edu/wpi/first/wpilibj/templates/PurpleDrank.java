@@ -138,7 +138,7 @@ public class PurpleDrank extends IterativeRobot {
 		// this line or comment it out.
 		autonomousCommand.cancel();
                 TargetSorting t = new TargetSorting();
-                t.start();
+                //t.start();
                 isDisabled = false;
                 System.out.println("Entering TeleOp...");              
                 display.println(Line.kUser2, 1, "                               ");
