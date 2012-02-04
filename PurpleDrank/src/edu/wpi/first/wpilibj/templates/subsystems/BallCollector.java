@@ -7,33 +7,38 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.templates.RobotMap;
+
 
 /**
- *
  * Handles Ball collection motors
  * 
  * @author jrusso
  */
 public class BallCollector extends Subsystem {
-    private Jaguar ballCollectJag;
+    private static Relay ballRelay;
     // here. Call these from Commands.
-    
-    public BallCollector(){
-        //ballCollectJag= new Jaguar(RobotMap.ballCollectMotor);
-    }
-    public void ballCollectorOn(){
-        ballCollectJag.set(1);//full foward can be switced to full back
-        
-    }
-    public void ballCollectorOff(){
-        ballCollectJag.set(0);
-        
-    }
+
     public void initDefaultCommand() {
+        ballRelay = new Relay(1);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    /**
+     * sets the motor to whichever direction the command calls for
+     */
+    public void collect(){
+         ballRelay.setDirection(Relay.Direction.kBoth);
+    }
+    
+    /**
+     * 
+     * @return Relay
+     */
+    public static Relay getRelay(){
+        return ballRelay;
+    }
+           
 }

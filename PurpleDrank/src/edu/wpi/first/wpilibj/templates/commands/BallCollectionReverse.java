@@ -7,34 +7,30 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.subsystems.BallCollector;
 
-
 /**
- * The Ball Collector should be running continously but this command is just
- * here in case we need to get it to stop. 
+ * in case the robot picks up more than 3 balls, this command will reverse
+ * the direction of the motor to eject a ball. 
  *
  * @author plevinson
  */
-public class BallCollectionOff extends CommandBase {
+public class BallCollectionReverse extends CommandBase {
     private BallCollector ballCollection;
     
-    public BallCollectionOff() {
-        super ("Ball Collect Off");
-        requires (ballCollection);
+    public BallCollectionReverse() {
+        super("Ball Collector Reverse");
+        requires(ballCollection);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
-    
-    /**
-     * Called just before this Command runs the first time
-     * turns the motor off
-     */
+
+    // Called just before this Command runs the first time
     protected void initialize() {
-        BallCollector.getRelay().setDirection(Relay.Direction.kBoth);
+        BallCollector.getRelay().setDirection(Relay.Direction.kReverse);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        ballCollection.collect();  
+        ballCollection.collect();
     }
 
     // Make this return true when this Command no longer needs to run execute()
