@@ -37,10 +37,10 @@ public class RobotMap {
     /*
      * Height Constants for shooter in inches
      */
-    public static final double target1Height = 28;
-    public static final double target2Height = 61;
-    public static final double target3Height = 98;
-    public static final double shooterHeight = 30; //default, TBD
+    public static final double target1Height = 28.0/12/0;
+    public static final double target2Height = 61.0/12.0;
+    public static final double target3Height = 98.0/12.0;
+    public static final double shooterHeight = 30.0/12.0; //default, TBD
     
     
     /* DRIVER STATION CONTROLS

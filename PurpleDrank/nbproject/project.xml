@@ -110,7 +110,7 @@
             <compilation-unit>
                 <package-root>src</package-root>
                 <classpath mode="boot">${sunspot.bootclasspath}</classpath>
-                <classpath mode="compile">C:\Users\Travis\Desktop\WPILIBJ\WPILibJ\classes.jar</classpath>
+                <classpath mode="compile">C:\Documents and Settings\abbottk\My Documents\NetBeansProjects\WPILIBJ\WPILibJ\classes.jar</classpath>
                 <built-to>build</built-to>
                 <source-level>1.4</source-level>
             </compilation-unit>

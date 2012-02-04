@@ -35,6 +35,7 @@ public class PurpleDrank extends IterativeRobot {
     private static DriveTrain DriveTrain;
     private static HorizontalTurretAxis HorizontalAxis;
     private static VerticalTurretAxis VerticalAxis;
+    private static Shooter shooterController;
     private MetaTimer timer;
     private MetaTCPVariables metaTable;
     private ManualBalancing h;
@@ -55,6 +56,11 @@ public class PurpleDrank extends IterativeRobot {
         
         return VerticalAxis;
     }
+    
+    public static Shooter getShooterController(){
+        return shooterController;
+    }
+    
     public static boolean getIsDisabled(){
         return isDisabled;
     }    
@@ -69,6 +75,7 @@ public class PurpleDrank extends IterativeRobot {
         DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
         VerticalAxis = new VerticalTurretAxis();   
+        shooterController = new Shooter();
         metaTable = new MetaTCPVariables();
         display = DriverStationLCD.getInstance();
         display.updateLCD();
