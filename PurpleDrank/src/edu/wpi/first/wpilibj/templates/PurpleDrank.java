@@ -96,18 +96,23 @@ public class PurpleDrank extends IterativeRobot {
  
         display.updateLCD();
         
-        display.println(Line.kUser2, 1, "" + metaTable.dataMessage[0] + ", " + metaTable.getConnections());
-        display.println(Line.kUser3, 1, "" + metaTable.dataMessage[1] + ", " + metaTable.dataMessage[2]);
-        display.println(Line.kUser4, 1, "" + metaTable.dataMessage[3] + ", " + metaTable.dataMessage[4]);
-        display.println(Line.kUser5, 1, "" + metaTable.dataMessage[5] + ", " + metaTable.dataMessage[6]);
-        display.println(Line.kUser6, 1, "" + metaTable.dataMessage[7] + ", " + metaTable.dataMessage[8]);
+        display.println(Line.kUser2, 1, "" + truncate(metaTable.dataMessage[0]) + ", " + metaTable.getConnections() + "            ");
+        display.println(Line.kUser3, 1, "" + truncate(metaTable.dataMessage[1]) + ", " + truncate(metaTable.dataMessage[2]) + "            ");
+        display.println(Line.kUser4, 1, "" + truncate(metaTable.dataMessage[3]) + ", " + truncate(metaTable.dataMessage[4]) + "            ");
+        display.println(Line.kUser5, 1, "" + truncate(metaTable.dataMessage[5]) + ", " + truncate(metaTable.dataMessage[6]) + "            ");
+        display.println(Line.kUser6, 1, "" + truncate(metaTable.dataMessage[7]) + ", " + truncate(metaTable.dataMessage[8]) + "            ");
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
     }
     public void autonomousInit() {
         // schedule the autonomous command (example)
         autonomousCommand.start();
-        System.out.println("Entering Autonomous...");
+        System.out.println("Entering Autonomous...");              
+        display.println(Line.kUser2, 1, "                               ");
+        display.println(Line.kUser3, 1, "                               ");
+        display.println(Line.kUser4, 1, "                               ");
+        display.println(Line.kUser5, 1, "                               ");
+        display.println(Line.kUser6, 1, "                               ");
     }
 
     /**
@@ -124,8 +129,12 @@ public class PurpleDrank extends IterativeRobot {
 		// this line or comment it out.
 		autonomousCommand.cancel();
                 isDisabled = false;
-                System.out.println("Entering TeleOp...");
-                
+                System.out.println("Entering TeleOp...");              
+                display.println(Line.kUser2, 1, "                               ");
+                display.println(Line.kUser3, 1, "                               ");
+                display.println(Line.kUser4, 1, "                               ");
+                display.println(Line.kUser5, 1, "                               ");
+                display.println(Line.kUser6, 1, "                               ");
     }
 
     /**
@@ -135,12 +144,19 @@ public class PurpleDrank extends IterativeRobot {
         MetaLog.update();
         Scheduler.getInstance().run();
         
-        display.println(Line.kUser2, 1, "" + metaTable.dataMessage[0] + ", " + metaTable.getConnections());
-        display.println(Line.kUser3, 1, "" + metaTable.dataMessage[1] + ", " + metaTable.dataMessage[2]);
-        display.println(Line.kUser4, 1, "" + metaTable.dataMessage[3] + ", " + metaTable.dataMessage[4]);
-        display.println(Line.kUser5, 1, "" + metaTable.dataMessage[5] + ", " + metaTable.dataMessage[6]);
-        display.println(Line.kUser6, 1, "" + metaTable.dataMessage[7] + ", " + metaTable.dataMessage[8]);
+        display.println(Line.kUser2, 1, "" + truncate(metaTable.dataMessage[0]) + ", " + metaTable.getConnections() + "            ");
+        display.println(Line.kUser3, 1, "" + truncate(metaTable.dataMessage[1]) + ", " + truncate(metaTable.dataMessage[2]) + "            ");
+        display.println(Line.kUser4, 1, "" + truncate(metaTable.dataMessage[3]) + ", " + truncate(metaTable.dataMessage[4]) + "            ");
+        display.println(Line.kUser5, 1, "" + truncate(metaTable.dataMessage[5]) + ", " + truncate(metaTable.dataMessage[6]) + "            ");
+        display.println(Line.kUser6, 1, "" + truncate(metaTable.dataMessage[7]) + ", " + truncate(metaTable.dataMessage[8]) + "            ");
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
+    }
+    
+    public double truncate(double d){
+        
+        int temp = (int)(d*1000);
+        double result = (double)temp/1000;
+        return result;
     }
 }
