@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class TargetSorting extends CommandBase {
 
     private double[] X_values = new double[4];
-    private double[] Y_values = new double[4];
+    private double[] Y_values = new double[4];//
     private int targets;
     private int left;
     private int right;

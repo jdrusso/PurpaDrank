@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.templates.PurpleDrank;
 public class ManualBalancing extends CommandBase{
 
     private DriveTrain DriveTrain;
-    private Gyro gyro1;
+    private Gyro gyro1;//
     
    public ManualBalancing() {
        super("ManualBalancing");

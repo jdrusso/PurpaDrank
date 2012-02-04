@@ -46,7 +46,7 @@ public class VerticalTurretAxis extends Subsystem  {
     }
     
     public static Gyro getGyro1(){
-        return gyro1;
+        return gyro1;//
     }
     
 }

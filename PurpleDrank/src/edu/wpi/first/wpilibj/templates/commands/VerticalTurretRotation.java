@@ -40,7 +40,7 @@ public class VerticalTurretRotation extends PIDCommand {
 
     protected void initialize() {
         VerticalTurretAxis.getCommandLog().setCommand(this.getName());
-        new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd).start();
+        new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd).start(); //
         
     }
 

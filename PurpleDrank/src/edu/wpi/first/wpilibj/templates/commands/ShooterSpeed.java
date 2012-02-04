@@ -46,7 +46,7 @@ public class ShooterSpeed extends PIDCommand {
     }
 
     protected boolean isFinished() {
-        return false;
+        return false;//
     }
 
     protected void end() {
