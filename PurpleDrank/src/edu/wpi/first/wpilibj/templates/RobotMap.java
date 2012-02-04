@@ -101,7 +101,7 @@ public class RobotMap {
     //VTy - y value offset
     public static final String VTy = "VTy";
     //VTd - distance to target
-    public static final String VTd = "VTd";
+    public static final String VTd = "VTd";//
     
    
     public static final double cameraXOffset = 0.0;
