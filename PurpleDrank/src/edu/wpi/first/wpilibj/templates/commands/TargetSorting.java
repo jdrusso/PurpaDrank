@@ -33,13 +33,13 @@ public class TargetSorting extends CommandBase {
             Y_values[i] = OI.getMdu().dataMessage[i];
         }
         
-        targetArray[0] = new double[]{X_values[0], Y_values[0]};
-        targetArray[1] = new double[]{X_values[1], Y_values[1]};
-        targetArray[2] = new double[]{X_values[2], Y_values[2]};
-        targetArray[3] = new double[]{X_values[3], Y_values[3]};
+        targetArray[0] = new double[]{PurpleDrank.truncate(X_values[0]), PurpleDrank.truncate(Y_values[0])};
+        targetArray[1] = new double[]{PurpleDrank.truncate(X_values[1]), PurpleDrank.truncate(Y_values[1])};
+        targetArray[2] = new double[]{PurpleDrank.truncate(X_values[2]), PurpleDrank.truncate(Y_values[2])};
+        targetArray[3] = new double[]{PurpleDrank.truncate(X_values[3]), PurpleDrank.truncate(Y_values[3])};
         
         if (OI.getMdu().dataMessage[0] < 5300)
-            RobotMap.range = OI.getMdu().dataMessage[0];
+            RobotMap.range = PurpleDrank.truncate(OI.getMdu().dataMessage[0]);
         else
             RobotMap.range = 0;
         
