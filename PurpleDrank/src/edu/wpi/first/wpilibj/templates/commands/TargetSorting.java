@@ -38,7 +38,10 @@ public class TargetSorting extends CommandBase {
         targetArray[2] = new double[]{X_values[2], Y_values[2]};
         targetArray[3] = new double[]{X_values[3], Y_values[3]};
         
-        RobotMap.range = OI.getMdu().dataMessage[0];
+        if (OI.getMdu().dataMessage[0] < 5300)
+            RobotMap.range = OI.getMdu().dataMessage[0];
+        else
+            RobotMap.range = 0;
         
         sortTargets();
     }
