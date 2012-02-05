@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.commands.ManualBalancing;
+import edu.wpi.first.wpilibj.templates.commands.TargetSorting;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.DriverStationLCD.Line;
@@ -42,6 +43,7 @@ public class PurpleDrank extends IterativeRobot {
     private ManualBalancing h;
     private static DriverStationLCD display;
     private static boolean isDisabled;
+    private TargetSorting t;
     
     
     public static DriveTrain getDriveTrain(){
@@ -137,8 +139,8 @@ public class PurpleDrank extends IterativeRobot {
 		// this line or comment it out.
 		autonomousCommand.cancel();
                 OI.initialize();
-                TargetSorting t = new TargetSorting();
-                //t.start();
+                t = new TargetSorting();
+                t.start();
                 isDisabled = false;
                 System.out.println("Entering TeleOp...");              
                 display.println(Line.kUser2, 1, "                               ");
@@ -155,16 +157,16 @@ public class PurpleDrank extends IterativeRobot {
         MetaLog.update();
         Scheduler.getInstance().run();//
         
-        display.println(Line.kUser2, 1, "" + truncate(metaTable.dataMessage[0]) + ", " + metaTable.getConnections() + "            ");
-        display.println(Line.kUser3, 1, "" + truncate(metaTable.dataMessage[1]) + ", " + truncate(metaTable.dataMessage[2]) + "            ");
-        display.println(Line.kUser4, 1, "" + truncate(metaTable.dataMessage[3]) + ", " + truncate(metaTable.dataMessage[4]) + "            ");
-        display.println(Line.kUser5, 1, "" + truncate(metaTable.dataMessage[5]) + ", " + truncate(metaTable.dataMessage[6]) + "            ");
-        display.println(Line.kUser6, 1, "" + truncate(metaTable.dataMessage[7]) + ", " + truncate(metaTable.dataMessage[8]) + "            ");
+        display.println(Line.kUser2, 1, "" + RobotMap.range + ", " + metaTable.getConnections() + "            ");
+        display.println(Line.kUser3, 1, "" + RobotMap.top    + "                 ");
+        display.println(Line.kUser4, 1, "" + RobotMap.right  + "                 ");
+        display.println(Line.kUser5, 1, "" + RobotMap.bottom + "                 ");
+        display.println(Line.kUser6, 1, "" + RobotMap.left   + "                 ");
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
     }
     
-    public double truncate(double d){
+    public static double truncate(double d){
         
         int temp = (int)(d*1000);
         double result = (double)temp/1000;
