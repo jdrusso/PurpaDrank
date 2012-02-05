@@ -33,13 +33,13 @@ public class TargetSorting extends CommandBase {
             Y_values[i] = OI.getMdu().dataMessage[i];
         }
         
-        targetArray[0] = new double[]{PurpleDrank.truncate(X_values[0]), PurpleDrank.truncate(Y_values[0])};
-        targetArray[1] = new double[]{PurpleDrank.truncate(X_values[1]), PurpleDrank.truncate(Y_values[1])};
-        targetArray[2] = new double[]{PurpleDrank.truncate(X_values[2]), PurpleDrank.truncate(Y_values[2])};
-        targetArray[3] = new double[]{PurpleDrank.truncate(X_values[3]), PurpleDrank.truncate(Y_values[3])};
+        targetArray[0] = new double[]{truncate(X_values[0]), truncate(Y_values[0])};
+        targetArray[1] = new double[]{truncate(X_values[1]), truncate(Y_values[1])};
+        targetArray[2] = new double[]{truncate(X_values[2]), truncate(Y_values[2])};
+        targetArray[3] = new double[]{truncate(X_values[3]), truncate(Y_values[3])};
         
         if (OI.getMdu().dataMessage[0] < 5300)
-            RobotMap.range = PurpleDrank.truncate(OI.getMdu().dataMessage[0]);
+            RobotMap.range = truncate(OI.getMdu().dataMessage[0]);
         else
             RobotMap.range = 0;
         
@@ -47,7 +47,7 @@ public class TargetSorting extends CommandBase {
     }
 
     protected boolean isFinished() {
-        return PurpleDrank.getIsDisabled();
+        return false;
     }
 
     protected void end() {
@@ -92,4 +92,11 @@ public class TargetSorting extends CommandBase {
 
     protected void interrupted() {
     }   
+    
+    public double truncate(double d){
+
+        int temp = (int)(d*1000);
+        double result = (double)temp/1000;
+        return result;
+    }
 }
