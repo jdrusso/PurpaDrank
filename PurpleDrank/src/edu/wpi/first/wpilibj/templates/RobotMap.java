@@ -109,20 +109,11 @@ public class RobotMap {
     /*
     * Target Values to be edited by Target Sorting thread
     */
-    public static boolean isTargets = false;
-    public static boolean isTop = false;
-    public static double Ty = 0.0;
-    public static double Tx = 0.0;
-    public static boolean isBottom = false;
-    public static double By = 0.0;
-    public static double Bx = 0.0;
-    public static boolean isLeft = false;
-    public static double Ly = 0.0;
-    public static double Lx = 0.0;
-    public static boolean isRight = false;
-    public static double Ry = 0.0; 
-    public static double Rx = 0.0;
-    public static double range = 0.0;
+    public static double[] top;
+    public static double[] bottom;
+    public static double[] left;
+    public static double[] right;
+    public static double range;
     
     
     public static double desiredAngle = 0.0;
