@@ -4,7 +4,8 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.team2035.meta.MetaTCPVariables;
+import com.sun.squawk.util.Arrays;
+import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
@@ -16,51 +17,32 @@ public class TargetSorting extends CommandBase {
 
     private double[] X_values = new double[4];
     private double[] Y_values = new double[4];
+    private double[][] targetArray;
     private int targets;
-    private int left;
-    private int right;
-    private int bottom;
-    private int top;
-    private boolean noHigh;
-    private boolean noLow;
-    private boolean noLeft;
-    private boolean noRight;
     
     protected void initialize() {
     }
 
-    protected void execute() {
-        for(int i = 0; i<4; i++){
-            X_values[i] = MetaTCPVariables.dataMessage[i];            
+    protected void execute()
+    {
+        for(int i = 1; i<=7; i+=2){
+            X_values[i] = OI.getMdu().dataMessage[i];
         }
         
-        for(int i = 5; i<8; i++){
-            X_values[i] = MetaTCPVariables.dataMessage[i];
+        for(int i = 2; i<=8; i+=2){
+            Y_values[i] = OI.getMdu().dataMessage[i];
         }
         
-        RobotMap.range = MetaTCPVariables.dataMessage[9];
+        targetArray[0] = new double[]{X_values[0], Y_values[0]};
+        targetArray[1] = new double[]{X_values[1], Y_values[1]};
+        targetArray[2] = new double[]{X_values[2], Y_values[2]};
+        targetArray[3] = new double[]{X_values[3], Y_values[3]};
         
-        viableTargets();
+        RobotMap.range = OI.getMdu().dataMessage[0];
+        
         if(targets >= 3){
-            RobotMap.isBottom = true;
-            RobotMap.isTop = true;
-            RobotMap.isLeft = true;
-            RobotMap.isRight = true;
-            sortYValues(); 
-            sortXValues();
+            //sortTargets();
         }
-        
-        RobotMap.Ty = Y_values[top];
-        RobotMap.Tx = X_values[top];
-        RobotMap.By = Y_values[bottom];
-        RobotMap.Bx = X_values[bottom];
-        RobotMap.Ly = Y_values[left];
-        RobotMap.Lx = X_values[left];
-        RobotMap.Ry = Y_values[right];
-        RobotMap.Rx = X_values[right];     
-        
-        
-        
     }
 
     protected boolean isFinished() {
@@ -69,63 +51,44 @@ public class TargetSorting extends CommandBase {
 
     protected void end() {
     }
+    
+    protected double[][] sortTargets(){
+        double[][] sortedArray = new double[4][2];
+        double[] x_sort = new double[]{targetArray[0][0], targetArray[1][0], targetArray[2][0], targetArray[3][0]};
+        double[] y_sort = new double[]{targetArray[0][1], targetArray[1][1], targetArray[2][1], targetArray[3][1]};
+        Arrays.sort(x_sort);
+        Arrays.sort(y_sort);
+        for (int i = 0; i<4; i++){
+            
+            if (targetArray[i][1] == y_sort[0]) //find top
+                sortedArray[0] = targetArray[i];
+        }
+        
+        for (int i = 0; i<4; i++){
+            
+            if (targetArray[i][1] == y_sort[3]) //find bottom
+                    sortedArray[1] = targetArray[i];
+        }
+        
+        for (int i = 0; i<4; i++){
+            
+            if (targetArray[i][0] == x_sort[0]) //find left
+                    sortedArray[2] = targetArray[i];
+        }
+        
+        for (int i = 0; i<4; i++){
+            
+            if (targetArray[i][0] == y_sort[3]) //find right
+                    sortedArray[3] = targetArray[i];
+        }
+        
+        RobotMap.top = sortedArray[0];
+        RobotMap.bottom = sortedArray[1];
+        RobotMap.left = sortedArray[2];
+        RobotMap.right = sortedArray[3];
+        return sortedArray;
+    }
 
     protected void interrupted() {
-    }
-    
-    protected void viableTargets(){
-        int numTargets = 0;
-        for(int i = 0; i < X_values.length; i++){
-            if(X_values[i] != 0){
-                numTargets += 1;
-            }
-        }
-        
-        if (numTargets < 3){
-            RobotMap.isBottom = false;
-            RobotMap.isTop = false;
-            RobotMap.isLeft = false;
-            RobotMap.isRight = false;
-            return;
-        }
-        
-        else if(numTargets == 3){
-            targets = 3;
-            return;
-        }
-        
-        else if(numTargets == 4){
-            targets = 4;
-            return;
-        }
-        
-    }
-    
-    protected void sortYValues(){
-        
-        int top = 0;
-        int bottom = 0;
-        for (int i = 1; i < 4; i++){
-            if(Y_values[i] > Y_values[bottom]){                   
-                bottom = i; 
-            }
-            if(Y_values[i] < Y_values[top]){
-               top = i; 
-            }            
-        }    
-    }
-    
-    protected void sortXValues(){
-        
-        left = 0;
-        right = 0;
-        for (int i = 1; i < 4; i++){
-            if(X_values[i] > X_values[right]){                   
-                right = i; 
-            }
-            if(Y_values[i] < Y_values[left]){
-               left = i; 
-            }            
-        }    
-    }
+    }   
 }
