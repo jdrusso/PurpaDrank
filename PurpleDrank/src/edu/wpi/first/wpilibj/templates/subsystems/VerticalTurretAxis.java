@@ -26,7 +26,7 @@ public class VerticalTurretAxis extends Subsystem  {
 
     public VerticalTurretAxis(){
         super("VerticalTurretAxis");
-        gyro1 = new Gyro(1 , 1);
+        gyro1 = new Gyro(1 , 2);
         VerLog = new MetaCommandLog("VerticalTurretAxis", "Target Y-value" , "Jaguar");
         VerTurretJag = new Jaguar(RobotMap.VerTurretMotor);
     }
