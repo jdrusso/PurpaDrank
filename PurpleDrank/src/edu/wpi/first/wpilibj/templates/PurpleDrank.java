@@ -79,8 +79,8 @@ public class PurpleDrank extends IterativeRobot {
         HorizontalAxis = new HorizontalTurretAxis();
         VerticalAxis = new VerticalTurretAxis();   
         shooterController = new Shooter();
-        metaTable = new MetaTCPVariables();
         display = DriverStationLCD.getInstance();
+        OI.initialize();
         display.updateLCD();
         display.println(Line.kMain6, 1, "Initializing...                ");
         display.println(Line.kUser2, 1, "                               ");
@@ -88,9 +88,10 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kUser4, 1, "                               ");
         display.println(Line.kUser5, 1, "                               ");
         display.println(Line.kUser6, 1, "                               ");
-        display.updateLCD();
         metaTable = OI.getMdu();
         display.updateLCD();
+        t = new TargetSorting();
+        t.start();
 
         // Initialize all subsystems
         //CommandBase.init();
@@ -100,17 +101,16 @@ public class PurpleDrank extends IterativeRobot {
         System.out.println("Entering disabled...");
     }
     public void disabledPeriodic(){
-        //metaTable.update();
         MetaLog.closeLog();
         isDisabled = true;
  
         display.updateLCD();
         
-        display.println(Line.kUser2, 1, "" + truncate(metaTable.dataMessage[0]) + ", " + metaTable.getConnections() + "            ");
-        display.println(Line.kUser3, 1, "" + truncate(metaTable.dataMessage[1]) + ", " + truncate(metaTable.dataMessage[2]) + "            ");
-        display.println(Line.kUser4, 1, "" + truncate(metaTable.dataMessage[3]) + ", " + truncate(metaTable.dataMessage[4]) + "            ");
-        display.println(Line.kUser5, 1, "" + truncate(metaTable.dataMessage[5]) + ", " + truncate(metaTable.dataMessage[6]) + "            ");
-        display.println(Line.kUser6, 1, "" + truncate(metaTable.dataMessage[7]) + ", " + truncate(metaTable.dataMessage[8]) + "            ");
+        display.println(Line.kUser2, 1, "" + metaTable.dataMessage[0] + ", " + metaTable.getConnections() + "            ");
+        display.println(Line.kUser3, 1, "" + truncate(MetaTCPVariables.dataMessage[1]) + ", " + truncate(MetaTCPVariables.dataMessage[2]) + "            ");
+        display.println(Line.kUser4, 1, "" + truncate(MetaTCPVariables.dataMessage[3]) + ", " + truncate(MetaTCPVariables.dataMessage[4]) + "            ");
+        display.println(Line.kUser5, 1, "" + truncate(MetaTCPVariables.dataMessage[5]) + ", " + truncate(MetaTCPVariables.dataMessage[6]) + "            ");
+        display.println(Line.kUser6, 1, "" + truncate(MetaTCPVariables.dataMessage[7]) + ", " + truncate(metaTable.dataMessage[8]) + "            ");
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
     }
@@ -137,17 +137,15 @@ public class PurpleDrank extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		autonomousCommand.cancel();
-                OI.initialize();
-                t = new TargetSorting();
-                t.start();
-                isDisabled = false;
-                System.out.println("Entering TeleOp...");              
-                display.println(Line.kUser2, 1, "                               ");
-                display.println(Line.kUser3, 1, "                               ");
-                display.println(Line.kUser4, 1, "                               ");
-                display.println(Line.kUser5, 1, "                               ");
-                display.println(Line.kUser6, 1, "                               ");
+        t.start();
+        autonomousCommand.cancel();
+        isDisabled = false;
+        System.out.println("Entering TeleOp...");              
+        display.println(Line.kUser2, 1, "                               ");
+        display.println(Line.kUser3, 1, "                               ");
+        display.println(Line.kUser4, 1, "                               ");
+        display.println(Line.kUser5, 1, "                               ");
+        display.println(Line.kUser6, 1, "                               ");
     }
 
     /**
@@ -157,16 +155,17 @@ public class PurpleDrank extends IterativeRobot {
         MetaLog.update();
         Scheduler.getInstance().run();//
         
-        display.println(Line.kUser2, 1, "" + RobotMap.range + ", " + metaTable.getConnections() + "            ");
+        display.println(Line.kUser2, 1, "" + RobotMap.range  + ", " + metaTable.getConnections() + "            ");
         display.println(Line.kUser3, 1, "" + RobotMap.top    + "                 ");
         display.println(Line.kUser4, 1, "" + RobotMap.right  + "                 ");
         display.println(Line.kUser5, 1, "" + RobotMap.bottom + "                 ");
         display.println(Line.kUser6, 1, "" + RobotMap.left   + "                 ");
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
+        System.out.println(RobotMap.top);
     }
     
-    public static double truncate(double d){
+    public double truncate(double d){
         
         int temp = (int)(d*1000);
         double result = (double)temp/1000;
