@@ -28,22 +28,9 @@ public class HorizontalTurretRotation extends PIDCommand {
         
     }
     protected double returnPIDInput() {
-        if(RobotMap.isTop){
-            HorizontalTurretAxis.getCommandLog().setOutputs("" + RobotMap.Tx);
-            return RobotMap.Tx;
+        if(RobotMap.top[0] != 0){
+            return RobotMap.top[0];
             
-        }
-        else if(RobotMap.isRight){
-            HorizontalTurretAxis.getCommandLog().setOutputs("" + RobotMap.Rx);
-            return RobotMap.Rx;
-        }
-        else if(RobotMap.isLeft){
-            HorizontalTurretAxis.getCommandLog().setOutputs("" + RobotMap.Lx);
-            return RobotMap.Lx;
-        }
-        else if(RobotMap.isBottom){
-            HorizontalTurretAxis.getCommandLog().setOutputs("" + RobotMap.Bx);
-            return RobotMap.Bx;
         }
         
         else{
