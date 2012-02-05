@@ -153,7 +153,7 @@ public class PurpleDrank extends IterativeRobot {
      */
     public void teleopPeriodic() {
         MetaLog.update();
-        Scheduler.getInstance().run();
+        Scheduler.getInstance().run();//
         
         display.println(Line.kUser2, 1, "" + truncate(metaTable.dataMessage[0]) + ", " + metaTable.getConnections() + "            ");
         display.println(Line.kUser3, 1, "" + truncate(metaTable.dataMessage[1]) + ", " + truncate(metaTable.dataMessage[2]) + "            ");

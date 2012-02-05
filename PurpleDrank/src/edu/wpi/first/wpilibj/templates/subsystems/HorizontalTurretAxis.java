@@ -26,7 +26,7 @@ public class HorizontalTurretAxis extends Subsystem{
         HorTurretJag = new Jaguar(RobotMap.HorTurretMotor);
     }
     protected void initDefaultCommand() {
-        HorLog.setCommand("Default");
+        HorLog.setCommand("Default");//
         super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
     }
     

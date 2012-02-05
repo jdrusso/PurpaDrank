@@ -47,7 +47,7 @@ public class HorizontalTurretRotation extends PIDCommand {
         }
         
         else{
-            HorizontalTurretAxis.getCommandLog().setOutputs("N/A");
+            HorizontalTurretAxis.getCommandLog().setOutputs("N/A");//
             return RobotMap.cameraXOffset;
         }
         //TODO:  Get x values and add to meta command log, also do for vertical turret

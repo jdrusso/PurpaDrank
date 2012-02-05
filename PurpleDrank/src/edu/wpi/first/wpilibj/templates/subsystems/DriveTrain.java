@@ -82,7 +82,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public static MetaCommandLog getCommandLog(){
-        return Log;
+        return Log;//
     }
     
     public static void setMetaCommandOutputs(){

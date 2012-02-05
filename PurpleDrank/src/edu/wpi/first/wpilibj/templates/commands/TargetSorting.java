@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
- * @author abbottk
+ * @author jrusso
  */
 public class TargetSorting extends CommandBase {
 
@@ -40,9 +40,7 @@ public class TargetSorting extends CommandBase {
         
         RobotMap.range = OI.getMdu().dataMessage[0];
         
-        if(targets >= 3){
-            //sortTargets();
-        }
+        sortTargets();
     }
 
     protected boolean isFinished() {
@@ -80,11 +78,11 @@ public class TargetSorting extends CommandBase {
             
             if (targetArray[i][0] == y_sort[3]) //find right
                     sortedArray[3] = targetArray[i];
-        }
+            }
         
         RobotMap.top = sortedArray[0];
         RobotMap.bottom = sortedArray[1];
-        RobotMap.left = sortedArray[2];
+        RobotMap.left = sortedArray[2];                 
         RobotMap.right = sortedArray[3];
         return sortedArray;
     }

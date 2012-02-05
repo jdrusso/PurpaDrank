@@ -35,7 +35,7 @@ public class OI {
         mdu = new MetaTCPVariables();
         
         joystick1 = new Joystick(1);
-        joystick2 =new Joystick(2);
+        joystick2 =new Joystick(2);//
         
         AutoBalance = new JoystickButton(joystick1, 3);
         //AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
