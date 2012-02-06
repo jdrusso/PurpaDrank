@@ -41,7 +41,8 @@ public class VerticalTurretRotation extends PIDCommand {
 
     protected void initialize() {
         VerticalTurretAxis.getCommandLog().setCommand(this.getName());
-        speedController = new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd).start(); //
+        speedController = new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd); //
+        speedController.start();
         
     }
 
@@ -87,4 +88,5 @@ public class VerticalTurretRotation extends PIDCommand {
         
         RobotMap.desiredAngle = 0;
     }
+}
   
