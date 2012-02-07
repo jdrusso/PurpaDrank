@@ -155,11 +155,11 @@ public class PurpleDrank extends IterativeRobot {
         MetaLog.update();
         Scheduler.getInstance().run();//
         
-        display.println(Line.kUser2, 1, "" + RobotMap.range  + ", " + metaTable.getConnections() + "            ");
-        display.println(Line.kUser3, 1, "" + RobotMap.top    + "                 ");
-        display.println(Line.kUser4, 1, "" + RobotMap.right  + "                 ");
-        display.println(Line.kUser5, 1, "" + RobotMap.bottom + "                 ");
-        display.println(Line.kUser6, 1, "" + RobotMap.left   + "                 ");
+        display.println(Line.kUser2, 1, "" + metaTable.dataMessage[0]  + ", " + metaTable.getConnections() + "            ");
+        display.println(Line.kUser3, 1, "" + RobotMap.top[0]    + ", " + RobotMap.top[1]    + "                 ");
+        display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]  + "                 ");
+        display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1] + "                 ");
+        display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]   + "                 ");
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
         System.out.println(RobotMap.top);
