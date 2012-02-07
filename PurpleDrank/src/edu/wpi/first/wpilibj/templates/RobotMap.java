@@ -109,10 +109,10 @@ public class RobotMap {
     /*
     * Target Values to be edited by Target Sorting thread
     */
-    public static double[] top;
-    public static double[] bottom;
-    public static double[] left;
-    public static double[] right;
+    public static double[] top = new double[2];
+    public static double[] bottom = new double[2];
+    public static double[] left = new double[2];
+    public static double[] right = new double[2];
     public static double range;
     
     
