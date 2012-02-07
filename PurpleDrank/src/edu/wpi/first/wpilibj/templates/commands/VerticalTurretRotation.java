@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 public class VerticalTurretRotation extends PIDCommand {
     private VerticalTurretAxis VerticalAxis;
     private Gyro gyro1;
+    private ShooterSpeed speedController;
     
     
     public VerticalTurretRotation(double Kp, double Ki, double Kd){
@@ -40,7 +41,8 @@ public class VerticalTurretRotation extends PIDCommand {
 
     protected void initialize() {
         VerticalTurretAxis.getCommandLog().setCommand(this.getName());
-        new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd).start(); //
+        speedController = new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd); //
+        speedController.start();
         
     }
 
@@ -56,6 +58,7 @@ public class VerticalTurretRotation extends PIDCommand {
     }
 
     protected void end() {
+        speedController.cancel();
     }
 
     protected void interrupted() {
@@ -85,5 +88,5 @@ public class VerticalTurretRotation extends PIDCommand {
         
         RobotMap.desiredAngle = 0;
     }
-    
 }
+  
