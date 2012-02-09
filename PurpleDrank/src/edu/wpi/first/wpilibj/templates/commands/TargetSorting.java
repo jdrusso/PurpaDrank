@@ -26,34 +26,37 @@ public class TargetSorting extends CommandBase {
 
     protected void execute()
     {
-        validTargets = 1;
+        validTargets = 0;
+        
         for(int i = 1; i<=4; i++){
+            
             X_values[(i-1)] = OI.getMdu().dataMessage[((i*2)-1)];
         }
         
         for(int i = 1; i<=4; i++){
+            
             Y_values[(i-1)] = OI.getMdu().dataMessage[(i*2)];
         }
         
-        if ((targetArray[0][0] > 0) || (targetArray[0][1] > 0)){
+        if ((X_values[0] > 0) || (Y_values[0] > 0)){
             
             targetArray[validTargets][0] = truncate(X_values[validTargets]);
             targetArray[validTargets][1] = truncate(Y_values[validTargets]);
             validTargets++;
         } 
-        if (targetArray[1][0] > 0 || targetArray[1][1] > 0){
+        if ((X_values[1] > 0) || (Y_values[1] > 0)){
             
             targetArray[validTargets][0] = truncate(X_values[validTargets]);
             targetArray[validTargets][1] = truncate(Y_values[validTargets]);
             validTargets++;
         } 
-        if (targetArray[2][0] > 0 || targetArray[2][1] > 0){
+        if ((X_values[2] > 0) || (Y_values[2] > 0)){
             
             targetArray[validTargets][0] = truncate(X_values[validTargets]);
             targetArray[validTargets][1] = truncate(Y_values[validTargets]);
             validTargets++;
         } 
-        if (targetArray[3][0] > 0 || targetArray[3][1] > 0){
+        if ((X_values[3] > 0) || (Y_values[3] > 0)){
             
             targetArray[validTargets][0] = truncate(X_values[validTargets]);
             targetArray[validTargets][1] = truncate(Y_values[validTargets]);
@@ -122,7 +125,7 @@ public class TargetSorting extends CommandBase {
             }
         }
 
-        System.out.println("Targets sorted!" + sortedArray[0][0]);
+        System.out.println("Targets sorted!" + truncate(sortedArray[0][0]) + ", " + validTargets);
         RobotMap.top[0] = sortedArray[0][0];
         RobotMap.top[1] = sortedArray[0][1];
         RobotMap.bottom[0] = sortedArray[1][0];
