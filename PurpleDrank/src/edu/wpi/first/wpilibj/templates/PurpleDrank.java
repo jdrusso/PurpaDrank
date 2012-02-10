@@ -82,12 +82,12 @@ public class PurpleDrank extends IterativeRobot {
         display = DriverStationLCD.getInstance();
         OI.initialize();
         display.updateLCD();
-        display.println(Line.kMain6, 1, "Initializing...                ");
-        display.println(Line.kUser2, 1, "                               ");
-        display.println(Line.kUser3, 1, "                               ");
-        display.println(Line.kUser4, 1, "                               ");
-        display.println(Line.kUser5, 1, "                               ");
-        display.println(Line.kUser6, 1, "                               ");
+        display.println(Line.kMain6, 1, "Initializing...                      ");
+        display.println(Line.kUser2, 1, "                                     ");
+        display.println(Line.kUser3, 1, "                                     ");
+        display.println(Line.kUser4, 1, "                                     ");
+        display.println(Line.kUser5, 1, "                                     ");
+        display.println(Line.kUser6, 1, "                                     ");
         metaTable = OI.getMdu();
         display.updateLCD();
         t = new TargetSorting();
@@ -106,11 +106,11 @@ public class PurpleDrank extends IterativeRobot {
  
         display.updateLCD();
         
-        display.println(Line.kUser2, 1, "" + metaTable.dataMessage[0] + ", " + metaTable.getConnections() + "            ");
-        display.println(Line.kUser3, 1, "" + truncate(MetaTCPVariables.dataMessage[1]) + ", " + truncate(MetaTCPVariables.dataMessage[2]) + "            ");
-        display.println(Line.kUser4, 1, "" + truncate(MetaTCPVariables.dataMessage[3]) + ", " + truncate(MetaTCPVariables.dataMessage[4]) + "            ");
-        display.println(Line.kUser5, 1, "" + truncate(MetaTCPVariables.dataMessage[5]) + ", " + truncate(MetaTCPVariables.dataMessage[6]) + "            ");
-        display.println(Line.kUser6, 1, "" + truncate(MetaTCPVariables.dataMessage[7]) + ", " + truncate(metaTable.dataMessage[8]) + "            ");
+        display.println(Line.kUser2, 1, "" + RobotMap.range     + ", " + metaTable.getConnections() + "                 ");
+        display.println(Line.kUser3, 1, "" + RobotMap.top[0]    + ", " + RobotMap.top[1]            + "                 ");
+        display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]          + "                 ");
+        display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1]         + "                 ");
+        display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
     }
@@ -118,11 +118,11 @@ public class PurpleDrank extends IterativeRobot {
         // schedule the autonomous command (example)
         autonomousCommand.start();
         System.out.println("Entering Autonomous...");              
-        display.println(Line.kUser2, 1, "                               ");
-        display.println(Line.kUser3, 1, "                               ");
-        display.println(Line.kUser4, 1, "                               ");
-        display.println(Line.kUser5, 1, "                               ");
-        display.println(Line.kUser6, 1, "                               ");
+        display.println(Line.kUser2, 1, "                                     ");
+        display.println(Line.kUser3, 1, "                                     ");
+        display.println(Line.kUser4, 1, "                                     ");
+        display.println(Line.kUser5, 1, "                                     ");
+        display.println(Line.kUser6, 1, "                                     ");
     }
 
     /**
@@ -141,11 +141,11 @@ public class PurpleDrank extends IterativeRobot {
         autonomousCommand.cancel();
         isDisabled = false;
         System.out.println("Entering TeleOp...");              
-        display.println(Line.kUser2, 1, "                               ");
-        display.println(Line.kUser3, 1, "                               ");
-        display.println(Line.kUser4, 1, "                               ");
-        display.println(Line.kUser5, 1, "                               ");
-        display.println(Line.kUser6, 1, "                               ");
+        display.println(Line.kUser2, 1, "                                     ");
+        display.println(Line.kUser3, 1, "                                     ");
+        display.println(Line.kUser4, 1, "                                     ");
+        display.println(Line.kUser5, 1, "                                     ");
+        display.println(Line.kUser6, 1, "                                     ");
     }
 
     /**
@@ -155,11 +155,11 @@ public class PurpleDrank extends IterativeRobot {
         MetaLog.update();
         Scheduler.getInstance().run();//
         
-        display.println(Line.kUser2, 1, "" + RobotMap.range  + ", " + metaTable.getConnections() + "            ");
-        display.println(Line.kUser3, 1, "" + RobotMap.top[0]    + ", " + RobotMap.top[1]    + "                 ");
-        display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]  + "                 ");
-        display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1] + "                 ");
-        display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]   + "                 ");
+        display.println(Line.kUser2, 1, "" + RobotMap.range     + ", " + metaTable.getConnections() + "                 ");
+        display.println(Line.kUser3, 1, "" + RobotMap.top[0]    + ", " + RobotMap.top[1]            + "                 ");
+        display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]          + "                 ");
+        display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1]         + "                 ");
+        display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
         display.println(Line.kMain6, 1, "Program is running...");
         display.updateLCD();
         System.out.println(RobotMap.top);
