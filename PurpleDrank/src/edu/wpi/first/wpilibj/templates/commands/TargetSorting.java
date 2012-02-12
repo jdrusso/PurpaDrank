@@ -69,6 +69,8 @@ public class TargetSorting extends CommandBase {
             RobotMap.range = 0;
         
         sortTargets();
+        
+        RobotMap.ultrasonicRange = PurpleDrank.getShooterController().getUltrasonicRange();
     }
 
     protected boolean isFinished() {
