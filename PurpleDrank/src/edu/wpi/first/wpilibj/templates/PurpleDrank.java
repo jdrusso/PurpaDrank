@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.DriverStationLCD.Line;
 import edu.team2035.meta.MetaTimer;
 import edu.wpi.first.wpilibj.templates.commands.TargetSorting;
+import edu.wpi.first.wpilibj.communication.FRCControl;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,8 +44,7 @@ public class PurpleDrank extends IterativeRobot {
     private ManualBalancing h;
     private static DriverStationLCD display;
     private static boolean isDisabled;
-    private TargetSorting t;
-    
+    private TargetSorting t;    
     
     public static DriveTrain getDriveTrain(){
         
@@ -106,13 +106,16 @@ public class PurpleDrank extends IterativeRobot {
  
         display.updateLCD();
         
-        display.println(Line.kUser2, 1, "" + RobotMap.range     + ", " + metaTable.getConnections() + "                 ");
-        display.println(Line.kUser3, 1, "" + RobotMap.top[0]    + ", " + RobotMap.top[1]            + "                 ");
-        display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]          + "                 ");
-        display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1]         + "                 ");
-        display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
-        display.println(Line.kMain6, 1, "Program is running...");
+        display.println(Line.kUser2, 1, "" + RobotMap.range      + ", " + metaTable.getConnections() + "                 ");
+        display.println(Line.kUser3, 1, "" + RobotMap.top[0]     + ", " + RobotMap.top[1]            + "                 ");
+        display.println(Line.kUser4, 1, "" + RobotMap.right[0]   + ", " + RobotMap.right[1]          + "                 ");
+        display.println(Line.kUser5, 1, "" + RobotMap.bottom[0]  + ", " + RobotMap.bottom[1]         + "                 ");
+        display.println(Line.kUser6, 1, "" + RobotMap.left[0]    + ", " + RobotMap.left[1]           + "                 ");
+        display.println(Line.kMain6, 1, "Program is running... " + truncate(shooterController.getUltrasonicRange()));
         display.updateLCD();
+        
+        System.out.println(shooterController.getUltrasonicRange());
+        System.out.println(shooterController.getUltrasonic());
     }
     public void autonomousInit() {
         // schedule the autonomous command (example)
@@ -155,6 +158,7 @@ public class PurpleDrank extends IterativeRobot {
         MetaLog.update();
         Scheduler.getInstance().run();//
         
+        //FRCControl.setErrorData("test error".getBytes(), "test error".length(), 100);
         display.println(Line.kUser2, 1, "" + RobotMap.range     + ", " + metaTable.getConnections() + "                 ");
         display.println(Line.kUser3, 1, "" + RobotMap.top[0]    + ", " + RobotMap.top[1]            + "                 ");
         display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]          + "                 ");
