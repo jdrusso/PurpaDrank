@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.DefaultDriveTrain;
+import edu.wpi.first.wpilibj.AnalogChannel;
 
 /**
  *
@@ -18,6 +19,8 @@ public class Shooter extends Subsystem {
 
     private Jaguar TopJaguar;
     private Jaguar BottomJaguar;
+    
+    private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
     
     public Shooter(){
         TopJaguar = new Jaguar(RobotMap.TopShooterMotor);
@@ -34,5 +37,15 @@ public class Shooter extends Subsystem {
         
     }
     
+    public double getUltrasonic(){
+     
+        return ultrasonic.getVoltage();
+    }
     
+    public double getUltrasonicRange(){
+        
+        double temp = ((5/512)*ultrasonic.getVoltage());
+        System.out.println(temp);
+        return (temp);
+    }
 }
