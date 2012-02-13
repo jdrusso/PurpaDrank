@@ -67,11 +67,11 @@ public class DriveTrain extends Subsystem {
     }
     
     public double getLeftOutput(){
-       return drive.getLeftOutputs();
+       return truncate(drive.getLeftOutputs());
     }
     
     public double getRightOutput(){
-       return drive.getRightOutputs();
+       return truncate(drive.getRightOutputs());
     }
     
     public void drive(double speed) {
@@ -90,6 +90,13 @@ public class DriveTrain extends Subsystem {
     public static void setMetaCommandOutputs(){
         Log.setOutputs("" + drive.getLeftOutputs() + "," + drive.getRightOutputs());
         
+    }
+    
+    public double truncate(double d){
+        
+        int temp = (int)(d*1000);
+        double result = (double)temp/1000;
+        return result;
     }
     
 
