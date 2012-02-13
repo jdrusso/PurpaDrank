@@ -59,6 +59,8 @@ public class RobotMap {
      */
     public static final int GyroInput = 1; // Gyro Analog Input is channel 1
     
+    public static final int ultrasonicInput = 3;
+    
     /* DIGITAL INPUTS 
      * These should be sequential.
      */
@@ -109,11 +111,13 @@ public class RobotMap {
     /*
     * Target Values to be edited by Target Sorting thread
     */
-    public static double[] top;
-    public static double[] bottom;
-    public static double[] left;
-    public static double[] right;
+    public static double[] top = new double[2];
+    public static double[] bottom = new double[2];
+    public static double[] left = new double[2];
+    public static double[] right = new double[2];
     public static double range;
+    
+    public static double ultrasonicRange;
     
     
     public static double desiredAngle = 0.0;
