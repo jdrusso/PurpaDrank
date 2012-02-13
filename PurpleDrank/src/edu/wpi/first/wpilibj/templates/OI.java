@@ -44,9 +44,9 @@ public class OI {
          manualShooter.whileHeld(new verticalDefaultCommand());
          manualShooter.whileHeld(new horizontalDefaultCommand());
         
-        //Balance = new JoystickButton( joystick1, 2);
-        //Balance.whileHeld(new ManualBalancing());
-        //Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
+        Balance = new JoystickButton( joystick1, 2);
+        Balance.whileHeld(new ManualBalancing());
+        Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
 //        ballCollector = new JoystickButton(joystick1, 5); 
 //        ballCollector.whilePressed(new BallCollectionOn());
