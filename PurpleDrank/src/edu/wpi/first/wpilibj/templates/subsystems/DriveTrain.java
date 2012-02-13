@@ -46,7 +46,7 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         super("Drive Train");
         Log = new MetaCommandLog("DriveTrain", "Gyro" , "Left Jaguars,Right Jaguars");
-        gyro1 = new Gyro(RobotMap.AnalogBreakout , RobotMap.DriveTrainGyroInput);
+        gyro1 = new Gyro(RobotMap.AnalogSideCar , RobotMap.DriveTrainGyroInput);
         lfJag = new Jaguar(RobotMap.frontLeftMotor);
         lfRearJag = new Jaguar(RobotMap.rearLeftMotor);
         rtJag = new Jaguar(RobotMap.frontRightMotor);
