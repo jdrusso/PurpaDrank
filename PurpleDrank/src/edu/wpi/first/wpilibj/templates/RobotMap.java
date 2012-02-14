@@ -58,8 +58,8 @@ public class RobotMap {
      * These should be sequential.
      */
     public static final int GyroInput = 1; // Gyro Analog Input is channel 1
-    
     public static final int ultrasonicInput = 3;
+    public static final int horRotEncoderPos = 4;
     
     /* DIGITAL INPUTS 
      * These should be sequential.

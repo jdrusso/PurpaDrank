@@ -44,7 +44,7 @@ public class PurpleDrank extends IterativeRobot {
     private ManualBalancing h;
     private static DriverStationLCD display;
     private static boolean isDisabled;
-    private TargetSorting t;    
+    private TargetSorting t;
     
     public static DriveTrain getDriveTrain(){
         
@@ -111,11 +111,10 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kUser4, 1, "" + RobotMap.right[0]   + ", " + RobotMap.right[1]          + "                 ");
         display.println(Line.kUser5, 1, "" + RobotMap.bottom[0]  + ", " + RobotMap.bottom[1]         + "                 ");
         display.println(Line.kUser6, 1, "" + RobotMap.left[0]    + ", " + RobotMap.left[1]           + "                 ");
-        display.println(Line.kMain6, 1, "Program is running... " + truncate(shooterController.getUltrasonicRange()));
+        display.println(Line.kMain6, 1, "Program is running... " + HorizontalAxis.getHorRotations());
         display.updateLCD();
         
-        System.out.println(shooterController.getUltrasonicRange());
-        System.out.println(shooterController.getUltrasonic());
+        System.out.println(HorizontalAxis.getHorRotations());
     }
     public void autonomousInit() {
         // schedule the autonomous command (example)
