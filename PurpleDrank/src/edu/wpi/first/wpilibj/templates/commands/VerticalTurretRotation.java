@@ -88,10 +88,7 @@ public class VerticalTurretRotation extends PIDCommand {
         
         RobotMap.desiredAngle = 0;
     }
-<<<<<<< HEAD
-    
-}
-=======
+
 }
   
->>>>>>> edbceb333e1010722c8bfdbda69766751e766eea
+

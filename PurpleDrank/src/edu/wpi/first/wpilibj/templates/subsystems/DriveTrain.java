@@ -92,6 +92,14 @@ public class DriveTrain extends Subsystem {
         
     }
     
+    public void disableSafety(){
+        drive.setSafetyEnabled(false);
+    }
+    
+    public void enableSafety(){
+        drive.setSafetyEnabled(true);
+    }
+    
     public double truncate(double d){
         
         int temp = (int)(d*1000);
