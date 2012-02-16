@@ -75,7 +75,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void drive(double speed) {
-        drive.drive(speed, 0);
+        drive.drive(speed, 0.0);
     }
     
 
