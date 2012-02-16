@@ -106,8 +106,12 @@ public class RobotMap {
     public static final String VTd = "VTd";//
     
    
-    public static final double cameraXOffset = 0.0;
-    public static final double cameraYOffset = 0.0;
+    public static int cameraXOffset = 0;
+    public static final int defaultCameraOffset = 0;
+    public static final int cameraYOffset = 0;
+    public static final int realignLeft = -1;
+    public static final int realignRight = 0;
+    public static final int realignCenter = 1;
     /*
     * Target Values to be edited by Target Sorting thread
     */

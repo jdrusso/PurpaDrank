@@ -30,6 +30,9 @@ public class OI {
     private DriveTrain DriveTrain;
     private static Button PushRamp;
     private static Button ballCollector;
+    private static Button ShooterRealignRight;
+    private static Button ShooterRealignLeft;
+    private static Button ShooterRealignCenter;
     
     public static void initialize() {
         mdu = new MetaTCPVariables();
@@ -47,6 +50,16 @@ public class OI {
         Balance = new JoystickButton( joystick1, 2);
         Balance.whileHeld(new ManualBalancing());
         Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
+        
+        ShooterRealignRight = new JoystickButton(joystick2 , 5);
+        ShooterRealignRight.whenReleased(new setpointRealignment(RobotMap.realignRight));
+        
+        ShooterRealignLeft = new JoystickButton(joystick2 , 4);
+        ShooterRealignLeft.whenReleased(new setpointRealignment(RobotMap.realignLeft));
+        
+        ShooterRealignCenter = new JoystickButton(joystick2 , 10);
+        ShooterRealignRight.whenReleased(new setpointRealignment(RobotMap.realignCenter));
+        
         
 //        ballCollector = new JoystickButton(joystick1, 5); 
 //        ballCollector.whilePressed(new BallCollectionOn());
