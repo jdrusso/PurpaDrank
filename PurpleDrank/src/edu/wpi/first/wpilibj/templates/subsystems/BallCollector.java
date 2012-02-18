@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 
 /**
@@ -21,7 +22,7 @@ public class BallCollector extends Subsystem {
     // here. Call these from Commands.
 
     public void initDefaultCommand() {
-        ballRelay = new Relay(1);
+        ballRelay = RobotMap.ballCollector;
         ballRelay.setDirection(Relay.Direction.kBoth);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -30,17 +31,20 @@ public class BallCollector extends Subsystem {
     /**
      * sets the motor to whichever direction the command calls for
      */
-//    public void collect(){
-//        
-//        ballRelay.set(Relay.Value.kForward);
-//    }
-//    
-//    public void stopCollect(){
-//        
-//        ballRelay.set(Relay.Value.kOff);
-//    }
+    public static void suckBalls(){
+        
+        ballRelay.set(Relay.Value.kForward);
+    }
     
+    public static void stopSucking(){
+        
+        ballRelay.set(Relay.Value.kOff);
+   }
     
+    public static void spitBalls(){
+        
+        ballRelay.set(Relay.Value.kReverse);
+    }
     
     /**
      * 
