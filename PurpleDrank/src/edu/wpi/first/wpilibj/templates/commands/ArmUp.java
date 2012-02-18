@@ -15,10 +15,10 @@ import edu.wpi.first.wpilibj.templates.subsystems.RampController;
  * 
  * @author plevinson
  */
-public class ArmReset extends CommandBase {
+public class ArmUp extends CommandBase {
     private RampController Ramp;
     
-    public ArmReset() {
+    public ArmUp() {
         super("Arm Reset");
         requires(Ramp);
         // Use requires() here to declare subsystem dependencies
@@ -29,14 +29,15 @@ public class ArmReset extends CommandBase {
      * This method makes the motor reverse before anything else happens. 
      */
     protected void initialize() {
-        RampController.getRelay1().setDirection(Relay.Direction.kReverse);
+        RampController.setDir();
+        RampController.getArmRelay().set(Relay.Value.kReverse);
     }
 
     /* 
      * The arm will move back to its original position and stop when it gets there.
      */
     protected void execute() {
-        Ramp.push();
+        //Ramp.push();
     }
 
     /*

@@ -33,8 +33,8 @@ public class ArmDown extends CommandBase {
      * It sets the motor direction to forward.
      */
     protected void initialize() {
-        RampController.getRelay1().setDirection(Relay.Direction.kForward); 
-
+        RampController.setDir(); 
+        RampController.getArmRelay().set(Relay.Value.kForward);
     }
 
     /*
@@ -42,7 +42,7 @@ public class ArmDown extends CommandBase {
      * It will run until told to stop by button4 being double pressed (I think).We haven't decided yet. 
      */
     protected void execute() {
-        Ramp.push();
+        //Ramp.push();
     }
 
     /*
