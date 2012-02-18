@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  *
  * @author abbottk
  */
-public class setpointRealignment extends CommandBase{
+public class SetpointRealignment extends CommandBase{
 
     int Direction;
     
-    public setpointRealignment(int d){
+    public SetpointRealignment(int d){
         Direction = d;
     }
     
