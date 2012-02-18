@@ -47,7 +47,6 @@ public class OI {
         manualShooter = RobotMap.shootTrigger;
         manualShooter.whileHeld(new verticalDefaultCommand());
         manualShooter.whileHeld(new horizontalDefaultCommand());
-        manualShooter.whenDoublePressed(new Shooting());
         
         ballCollector = RobotMap.dButton5;
         ballCollector.whenPressed(new BallCollectionOn());

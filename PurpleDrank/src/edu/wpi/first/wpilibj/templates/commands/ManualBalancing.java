@@ -40,7 +40,6 @@ public class ManualBalancing extends CommandBase{
         DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
         DriveTrain.setMetaCommandOutputs();
         DriveTrain.drive(-0.75);
-        this.DriveTrain.resetMotorTimers();
         
     }
 
