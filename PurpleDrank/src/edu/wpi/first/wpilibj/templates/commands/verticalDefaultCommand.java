@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
  *
  * @author abbottk
  */
-public class verticalDefaultCommand extends CommandBase {
+public class VerticalDefaultCommand extends CommandBase {
 
     private VerticalTurretAxis VerticalAxis;
     
-    public verticalDefaultCommand(){
+    public VerticalDefaultCommand(){
         super("verticalDefaultCommand");
         this.VerticalAxis = PurpleDrank.getVerticalTurretAxis();
         requires(this.VerticalAxis);
