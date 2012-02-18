@@ -8,6 +8,9 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.Joystick;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -46,7 +49,37 @@ public class RobotMap {
     /* DRIVER STATION CONTROLS
      * 
      */
-    public static final int DriverJoystick = 1; // Robot Driver's Joystick USB number
+    public static final int DriverJoystickNumber = 1; // Robot Driver's Joystick USB number
+    
+    public static final Joystick dStick = new Joystick(DriverJoystickNumber);
+    
+    public static final JoystickButton dTrigger = new JoystickButton(dStick, 1);
+    public static final JoystickButton dButton2 = new JoystickButton(dStick, 2);
+    public static final JoystickButton dButton3 = new JoystickButton(dStick, 3);
+    public static final JoystickButton dButton4 = new JoystickButton(dStick, 4);
+    public static final JoystickButton dButton5 = new JoystickButton(dStick, 5);
+    public static final JoystickButton dButton6 = new JoystickButton(dStick, 6);
+    public static final JoystickButton dButton7 = new JoystickButton(dStick, 7);
+    public static final JoystickButton dButton8 = new JoystickButton(dStick, 8);
+    public static final JoystickButton dButton9 = new JoystickButton(dStick, 9);
+    public static final JoystickButton dButton10 = new JoystickButton(dStick, 10);
+    public static final JoystickButton dButton11 = new JoystickButton(dStick, 11);
+    
+    public static final int shooterJoystickNumber = 1; // Robot Driver's Joystick USB number
+    
+    public static final Joystick shootStick = new Joystick(shooterJoystickNumber);
+    
+    public static final JoystickButton shootTrigger = new JoystickButton(shootStick, 1);
+    public static final JoystickButton shootButton2 = new JoystickButton(shootStick, 2);
+    public static final JoystickButton shootButton3 = new JoystickButton(shootStick, 3);
+    public static final JoystickButton shootButton4 = new JoystickButton(shootStick, 4);
+    public static final JoystickButton shootButton5 = new JoystickButton(shootStick, 5);
+    public static final JoystickButton shootButton6 = new JoystickButton(shootStick, 6);
+    public static final JoystickButton shootButton7 = new JoystickButton(shootStick, 7);
+    public static final JoystickButton shootButton8 = new JoystickButton(shootStick, 8);
+    public static final JoystickButton shootButton9 = new JoystickButton(shootStick, 9);
+    public static final JoystickButton shootButton10 = new JoystickButton(shootStick, 10);
+    public static final JoystickButton shootButton11 = new JoystickButton(shootStick, 11);
     
     /* cRIO SIDECARS
      * 
