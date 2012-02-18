@@ -9,6 +9,8 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.ArmUp;
 
 /**
  * 
@@ -17,24 +19,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author jrusso
  */
 public class RampController extends Subsystem {
-    private static Relay Relay1;
+    private static Relay armRelay = RobotMap.armSpike;;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public void initDefaultCommand() { 
-        Relay1= new Relay(1);      
+    public void initDefaultCommand() {    
         //Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());      
+        //setDefaultCommand(new MySpecialCommand());   
+        setDefaultCommand(new ArmUp());
     }  
     
     /*
      * moves the motor in a certain direction, determined by command.
      */
-    public void push() {
-        Relay1.setDirection(Relay.Direction.kBoth); 
+    public static void setDir() {
+        armRelay.setDirection(Relay.Direction.kBoth); 
     }
     
-    public static Relay getRelay1() {
-       return Relay1; 
+    public static Relay getArmRelay() {
+       return armRelay; 
     }
 }
