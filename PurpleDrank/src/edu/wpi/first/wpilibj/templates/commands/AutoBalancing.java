@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.templates.OI;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
@@ -56,7 +57,7 @@ public class AutoBalancing extends PIDCommand{
 
     protected boolean isFinished() {
         
-        if(OI.getButton3().get() || PurpleDrank.getIsDisabled()){
+        if(RobotMap.dButton3.get() || PurpleDrank.getIsDisabled()){
             return true;
         }    
         return false;
