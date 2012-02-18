@@ -10,6 +10,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Relay;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -36,6 +37,16 @@ public class RobotMap {
     public static final int VerTurretMotor = 6;
     public static final int TopShooterMotor = 7;
     public static final int BottomShooterMotor = 8;
+    
+    public static double defaultShooterSpeed = 0;
+    
+    /* Relay outputs for Spikes
+     * 
+     */
+    
+    public static final Relay armSpike = new Relay(1);
+    public static final Relay ballCollector = new Relay(2);
+    public static final Relay elevator = new Relay(3);
     
     /*
      * Height Constants for shooter in inches
@@ -155,8 +166,9 @@ public class RobotMap {
     public static double[] right = new double[2];
     public static double range;
     
-    public static double ultrasonicRange;
     
+    //This would be useful if the ultrasonic sensors didn't suck
+    public static double ultrasonicRange;
     
     public static double desiredAngle = 0.0;
     
