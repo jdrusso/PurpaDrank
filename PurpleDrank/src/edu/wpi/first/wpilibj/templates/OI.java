@@ -32,6 +32,8 @@ public class OI {
     private static Button ShooterRealignRight;
     private static Button ShooterRealignLeft;
     private static Button ShooterRealignCenter;
+    private static Button speedSetterUp;
+    private static Button speedSetterDown;
     
     public static void initialize() {
         
@@ -45,8 +47,9 @@ public class OI {
         //AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
         manualShooter = RobotMap.shootTrigger;
-        manualShooter.whileHeld(new verticalDefaultCommand());
-        manualShooter.whileHeld(new horizontalDefaultCommand());
+        manualShooter.whileHeld(new VerticalDefaultCommand());
+        manualShooter.whileHeld(new HorizontalDefaultCommand());
+        manualShooter.whenDoublePressed(new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd));
         
         ballCollector = RobotMap.dButton5;
         ballCollector.whenPressed(new BallCollectionOn());
@@ -54,17 +57,26 @@ public class OI {
         ballCollector.whenDoublePressed(new BallCollectionReverse());
 
         ShooterRealignRight = RobotMap.shootButton5;
-        ShooterRealignRight.whenReleased(new setpointRealignment(RobotMap.realignRight));
+        ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignRight));
         
         ShooterRealignLeft = RobotMap.shootButton4;
-        ShooterRealignLeft.whenReleased(new setpointRealignment(RobotMap.realignLeft));
+        ShooterRealignLeft.whenReleased(new SetpointRealignment(RobotMap.realignLeft));
         
         ShooterRealignCenter = RobotMap.shootButton10;
-        ShooterRealignRight.whenReleased(new setpointRealignment(RobotMap.realignCenter));
+        ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignCenter));
         
         PushRamp = RobotMap.dButton4;
         PushRamp.whenPressed(new ArmDown());
-        PushRamp.whenDoublePressed(new ArmReset());
+        PushRamp.whenDoublePressed(new ArmUp());
+        
+        speedSetterUp = RobotMap.shootButton6;
+        speedSetterDown = RobotMap.shootButton7;
+        speedSetterUp.whileHeld(new ChangeShooterSpeed('+'));
+        speedSetterDown.whileHeld(new ChangeShooterSpeed('-'));
+        speedSetterUp.whenReleased(new ChangeShooterSpeed(' '));
+        speedSetterDown.whenReleased(new ChangeShooterSpeed(' '));
+        speedSetterUp.whenDoublePressed(new ChangeShooterSpeed('r'));
+        speedSetterDown.whenDoublePressed(new ChangeShooterSpeed('r'));
     }
     
     public static Button getButton3(){
