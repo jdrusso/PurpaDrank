@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj.templates.subsystems.HorizontalTurretAxis;
  *
  * @author abbottk
  */
-public class horizontalDefaultCommand extends CommandBase {
+public class HorizontalDefaultCommand extends CommandBase {
 
     private HorizontalTurretAxis horizontalAxis;
-    public horizontalDefaultCommand(){
+    public HorizontalDefaultCommand(){
         super("HorizontalDefaultCommand");
         this.horizontalAxis = PurpleDrank.getHorizontalTurretAxis();
         requires(this.horizontalAxis);
