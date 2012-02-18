@@ -40,7 +40,7 @@ public class RobotMap {
     /*
      * Height Constants for shooter in inches
      */
-    public static final double target1Height = 28.0/12/0;
+    public static final double target1Height = 28.0/12.0;
     public static final double target2Height = 61.0/12.0;
     public static final double target3Height = 98.0/12.0;
     public static final double shooterHeight = 30.0/12.0; //default, TBD
@@ -90,7 +90,8 @@ public class RobotMap {
     /* ANALOG INPUTS 
      * These should be sequential.
      */
-    public static final int GyroInput = 1; // Gyro Analog Input is channel 1
+    public static final int DriveTrainGyroInput = 1; // Gyro Analog Input is channel 1
+    public static final int VerticalTurretGyroInput = 2; // Gyro Analog Input for Vertical Turret    
     public static final int ultrasonicInput = 3;
     public static final int horRotEncoderPos = 4;
     
@@ -139,8 +140,12 @@ public class RobotMap {
     public static final String VTd = "VTd";//
     
    
-    public static final double cameraXOffset = 0.0;
-    public static final double cameraYOffset = 0.0;
+    public static int cameraXOffset = 0;
+    public static final int defaultCameraOffset = 0;
+    public static final int cameraYOffset = 0;
+    public static final int realignLeft = -1;
+    public static final int realignRight = 0;
+    public static final int realignCenter = 1;
     /*
     * Target Values to be edited by Target Sorting thread
     */

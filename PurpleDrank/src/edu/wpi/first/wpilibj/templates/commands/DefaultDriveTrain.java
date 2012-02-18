@@ -50,6 +50,7 @@ public class DefaultDriveTrain extends CommandBase{
     }
 
     protected void end() {
+        drive.stopMotor();
     }
 
     protected void interrupted() {

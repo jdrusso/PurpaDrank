@@ -46,12 +46,13 @@ public class HorizontalTurretRotation extends PIDCommand {
     }
 
     protected void initialize() {
-        this.setSetpoint(RobotMap.cameraXOffset);
+        
         HorizontalTurretAxis.getCommandLog().setCommand(this.getName());
         
     }
 
     protected void execute() {
+        this.setSetpoint(RobotMap.cameraXOffset);
         
     }
 

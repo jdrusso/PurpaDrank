@@ -29,6 +29,9 @@ public class OI {
     private DriveTrain DriveTrain;
     private static Button PushRamp;
     private static Button ballCollector;
+    private static Button ShooterRealignRight;
+    private static Button ShooterRealignLeft;
+    private static Button ShooterRealignCenter;
     
     public static void initialize() {
         
@@ -50,6 +53,15 @@ public class OI {
         ballCollector.whenPressed(new BallCollectionOn());
         ballCollector.whenReleased(new BallCollectionOff());
         ballCollector.whenDoublePressed(new BallCollectionReverse());
+
+        ShooterRealignRight = RobotMap.shootButton5;
+        ShooterRealignRight.whenReleased(new setpointRealignment(RobotMap.realignRight));
+        
+        ShooterRealignLeft = RobotMap.shootButton4;
+        ShooterRealignLeft.whenReleased(new setpointRealignment(RobotMap.realignLeft));
+        
+        ShooterRealignCenter = RobotMap.shootButton10;
+        ShooterRealignRight.whenReleased(new setpointRealignment(RobotMap.realignCenter));
         
         PushRamp = RobotMap.dButton4;
         PushRamp.whenPressed(new ArmDown());

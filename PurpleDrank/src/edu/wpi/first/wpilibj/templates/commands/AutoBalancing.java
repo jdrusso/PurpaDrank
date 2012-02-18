@@ -33,7 +33,7 @@ public class AutoBalancing extends PIDCommand{
     }
     protected double returnPIDInput() {
         DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
-        return gyro1.getAngle();
+        return -gyro1.getAngle();
         
         
     }
@@ -45,6 +45,7 @@ public class AutoBalancing extends PIDCommand{
 
     protected void initialize() {
         DriveTrain.getCommandLog().setCommand(this.getName());
+        DriveTrain.disableSafety();
         
         
         
@@ -65,6 +66,7 @@ public class AutoBalancing extends PIDCommand{
     }
 
     protected void end() {
+        DriveTrain.enableSafety();
     }
 
     protected void interrupted() {
