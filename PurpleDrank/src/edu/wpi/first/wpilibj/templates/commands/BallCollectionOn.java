@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.subsystems.BallCollector;
 /**
  *
- * @author Rachel and Jenny who are awesome
+ * @author Rachel and Jenny who are awesome - Fixed by JD
  */
 public class BallCollectionOn extends CommandBase {
     private BallCollector ballCollection;
@@ -25,7 +25,7 @@ public class BallCollectionOn extends CommandBase {
      * sets the Motor direction to forward to pick up balls
      */
     protected void initialize() {
-        //BallCollector.getRelay().setDirection(Relay.Direction.kForward);
+        BallCollector.suckBalls();
     }
 
     /**
@@ -33,7 +33,6 @@ public class BallCollectionOn extends CommandBase {
      * motor keeps running
      */
     protected void execute() {
-        ballCollection.getRelay().set(Relay.Value.kForward);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -29,12 +29,11 @@ public class BallCollectionOff extends CommandBase {
      * turns the motor off
      */
     protected void initialize() {
-        //BallCollector.getRelay().setDirection(Relay.Direction.kBoth);
+        BallCollector.stopSucking();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        ballCollection.getRelay().set(Relay.Value.kOff);  
     }
 
     // Make this return true when this Command no longer needs to run execute()
