@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.team2035.meta.MetaTCPVariables;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -20,8 +21,6 @@ import edu.wpi.first.wpilibj.Joystick.ButtonType;
  */
 public class OI {
     // Process operator interface input here.
-    private static Joystick joystick1;
-    private static Joystick joystick2;
     private static Button Balance;
     private static Button AutoBalance;
     private static Button manualShooter;
@@ -32,29 +31,29 @@ public class OI {
     private static Button ballCollector;
     
     public static void initialize() {
+        
         mdu = new MetaTCPVariables();
         
-        joystick1 = new Joystick(1);
-        joystick2 =new Joystick(2);//
+        Balance = RobotMap.dButton2;
+        Balance.whileHeld(new ManualBalancing());
+        Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));        
         
-        AutoBalance = new JoystickButton(joystick1, 3);
+        //AutoBalance = RobotMap.dButton3;
         //AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
-         manualShooter = new JoystickButton( joystick2, 1);
-         manualShooter.whileHeld(new verticalDefaultCommand());
-         manualShooter.whileHeld(new horizontalDefaultCommand());
+        manualShooter = RobotMap.shootTrigger;
+        manualShooter.whileHeld(new verticalDefaultCommand());
+        manualShooter.whileHeld(new horizontalDefaultCommand());
+        manualShooter.whenDoublePressed(new Shooting());
         
-        //Balance = new JoystickButton( joystick1, 2);
-        //Balance.whileHeld(new ManualBalancing());
-        //Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
+        ballCollector = RobotMap.dButton5;
+        ballCollector.whenPressed(new BallCollectionOn());
+        ballCollector.whenReleased(new BallCollectionOff());
+        ballCollector.whenDoublePressed(new BallCollectionReverse());
         
-//        ballCollector = new JoystickButton(joystick1, 5); 
-//        ballCollector.whilePressed(new BallCollectionOn());
-//        ballCollector.whenDoublePressed(new BallCollectionOff());
-        //ballCollector.whileHeld(new BallCollectionReverse());
-        //PushRamp = new JoystickButton(joystick1, 4);
-        //PushRamp.whenPressed(new ArmDown());
-        //PushRamp.whenDoublePressed(new ArmReset());
+        PushRamp = RobotMap.dButton4;
+        PushRamp.whenPressed(new ArmDown());
+        PushRamp.whenDoublePressed(new ArmReset());
     }
     
     public static Button getButton3(){
@@ -62,11 +61,11 @@ public class OI {
     }
     
     public static Joystick getJoystick1(){
-        return joystick1;
+        return RobotMap.dStick;
     }
     
     public static Joystick getJoystick2(){
-        return joystick2;
+        return RobotMap.shootStick;
     }
     
     public static MetaTCPVariables getMdu(){
