@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.commands.DefaultDriveTrain;
 import edu.wpi.first.wpilibj.templates.commands.VerticalTurretRotation;
-import edu.wpi.first.wpilibj.templates.commands.verticalDefaultCommand;
+import edu.wpi.first.wpilibj.templates.commands.VerticalDefaultCommand;
 
 /**
  *
