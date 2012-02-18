@@ -28,12 +28,14 @@ public class HorizontalTurretRotation extends PIDCommand {
         
     }
     protected double returnPIDInput() {
+        
         if(RobotMap.top[0] != 0){
-            return RobotMap.top[0];
             
+            return RobotMap.top[0];
         }
         
         else{
+            
             HorizontalTurretAxis.getCommandLog().setOutputs("N/A");//
             return RobotMap.cameraXOffset;
         }
@@ -42,24 +44,23 @@ public class HorizontalTurretRotation extends PIDCommand {
     }
 
     protected void usePIDOutput(double output) {
+        
         HorizontalAxis.rotate(output);
     }
 
     protected void initialize() {
         
         HorizontalTurretAxis.getCommandLog().setCommand(this.getName());
-        
     }
 
     protected void execute() {
-        this.setSetpoint(RobotMap.cameraXOffset);
         
+        this.setSetpoint(RobotMap.cameraXOffset);
     }
 
     protected boolean isFinished() {
         
             return false;
-            
     }
 
     protected void end() {
