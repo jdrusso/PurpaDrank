@@ -25,12 +25,11 @@ public class BallCollectionReverse extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        BallCollector.getRelay().setDirection(Relay.Direction.kReverse);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        ballCollection.collect();
+        ballCollection.getRelay().set(Relay.Value.kReverse);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -22,6 +22,7 @@ public class BallCollector extends Subsystem {
 
     public void initDefaultCommand() {
         ballRelay = new Relay(1);
+        ballRelay.setDirection(Relay.Direction.kBoth);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
@@ -29,9 +30,17 @@ public class BallCollector extends Subsystem {
     /**
      * sets the motor to whichever direction the command calls for
      */
-    public void collect(){
-         ballRelay.setDirection(Relay.Direction.kBoth);
-    }
+//    public void collect(){
+//        
+//        ballRelay.set(Relay.Value.kForward);
+//    }
+//    
+//    public void stopCollect(){
+//        
+//        ballRelay.set(Relay.Value.kOff);
+//    }
+    
+    
     
     /**
      * 

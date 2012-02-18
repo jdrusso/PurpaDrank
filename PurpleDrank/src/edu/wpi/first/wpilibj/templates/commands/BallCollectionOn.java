@@ -25,7 +25,7 @@ public class BallCollectionOn extends CommandBase {
      * sets the Motor direction to forward to pick up balls
      */
     protected void initialize() {
-        BallCollector.getRelay().setDirection(Relay.Direction.kForward);
+        //BallCollector.getRelay().setDirection(Relay.Direction.kForward);
     }
 
     /**
@@ -33,7 +33,7 @@ public class BallCollectionOn extends CommandBase {
      * motor keeps running
      */
     protected void execute() {
-        ballCollection.collect();
+        ballCollection.getRelay().set(Relay.Value.kForward);
     }
 
     // Make this return true when this Command no longer needs to run execute()
