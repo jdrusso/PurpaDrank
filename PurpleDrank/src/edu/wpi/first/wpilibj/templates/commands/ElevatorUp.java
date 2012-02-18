@@ -5,7 +5,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.templates.subsystems.BallCollector;
+import edu.wpi.first.wpilibj.templates.subsystems.Elevator;
 
 
 /**
@@ -14,12 +14,12 @@ import edu.wpi.first.wpilibj.templates.subsystems.BallCollector;
  *
  * @author plevinson
  */
-public class BallCollectionOff extends CommandBase {
-    private BallCollector ballCollection;
+public class ElevatorUp extends CommandBase {
+    private Elevator elevator;
     
-    public BallCollectionOff() {
-        super ("Ball Collect Off");
-        requires (ballCollection);
+    public ElevatorUp() {
+        super ("Elevator Up");
+        requires (elevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -29,12 +29,11 @@ public class BallCollectionOff extends CommandBase {
      * turns the motor off
      */
     protected void initialize() {
-        //BallCollector.getRelay().setDirection(Relay.Direction.kBoth);
+        Elevator.raiseBalls();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        ballCollection.getRelay().set(Relay.Value.kOff);  
     }
 
     // Make this return true when this Command no longer needs to run execute()

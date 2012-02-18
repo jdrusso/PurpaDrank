@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 
 /**
@@ -16,13 +17,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * 
  * @author jrusso
  */
-public class BallCollector extends Subsystem {
-    private static Relay ballRelay;
+public class Elevator extends Subsystem {
+    private static Relay elevatorRelay;
     // here. Call these from Commands.
 
     public void initDefaultCommand() {
-        ballRelay = new Relay(1);
-        ballRelay.setDirection(Relay.Direction.kBoth);
+        elevatorRelay = RobotMap.elevator;
+        elevatorRelay.setDirection(Relay.Direction.kBoth);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
@@ -30,24 +31,27 @@ public class BallCollector extends Subsystem {
     /**
      * sets the motor to whichever direction the command calls for
      */
-//    public void collect(){
-//        
-//        ballRelay.set(Relay.Value.kForward);
-//    }
-//    
-//    public void stopCollect(){
-//        
-//        ballRelay.set(Relay.Value.kOff);
-//    }
+    public static void raiseBalls(){
+        
+        elevatorRelay.set(Relay.Value.kForward);
+    }
     
+    public static void stopRaising(){
+        
+        elevatorRelay.set(Relay.Value.kOff);
+   }
     
+    public static void lowerBalls(){
+        
+        elevatorRelay.set(Relay.Value.kReverse);
+    }
     
     /**
      * 
      * @return Relay
      */
     public static Relay getRelay(){
-        return ballRelay;
+        return elevatorRelay;
     }
            
 }
