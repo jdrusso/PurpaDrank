@@ -5,6 +5,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.templates.PurpleDrank;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.subsystems.BallCollector;
 /**
  *
@@ -15,6 +17,7 @@ public class BallCollectionOn extends CommandBase {
     
     public BallCollectionOn() {
         super("Ball Collect On");
+        ballCollection = PurpleDrank.getBallCollector();
         requires(ballCollection);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -36,8 +39,10 @@ public class BallCollectionOn extends CommandBase {
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {   
-            return false;
+    protected boolean isFinished() { //TODO: Add timer in purpledrank that resets when this finishes and only return true if it has been x amount of time since timer has been running, change button to always pull from the front roller and only from the elevator if switch is false
+        if (RobotMap.elevatorSwitch.get())
+            return true;
+        return false;
     }
 
     // Called once after isFinished returns true

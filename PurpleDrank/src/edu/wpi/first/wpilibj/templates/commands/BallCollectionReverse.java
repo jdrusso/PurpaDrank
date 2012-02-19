@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.subsystems.BallCollector;
+import edu.wpi.first.wpilibj.templates.PurpleDrank;
 
 /**
  * in case the robot picks up more than 3 balls, this command will reverse
@@ -17,7 +18,8 @@ public class BallCollectionReverse extends CommandBase {
     private BallCollector ballCollection;
     
     public BallCollectionReverse() {
-        super("Ball Collector Reverse");//
+        super("Ball Collector Reverse");
+        ballCollection = PurpleDrank.getBallCollector();
         requires(ballCollection);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
