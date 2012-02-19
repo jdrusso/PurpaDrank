@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.subsystems.RampController;
+import edu.wpi.first.wpilibj.templates.PurpleDrank;
 
 /**
  *Once the ramp is down, this command will be called to reset the arm to its original position. 
@@ -19,10 +20,10 @@ public class ArmUp extends CommandBase {
     private RampController Ramp;
     
     public ArmUp() {
+        
         super("Arm Reset");
+        Ramp = PurpleDrank.getRamp();
         requires(Ramp);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     /* 

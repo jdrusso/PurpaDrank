@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.templates.PurpleDrank;
 import edu.wpi.first.wpilibj.templates.subsystems.RampController;
 
 /**
@@ -23,6 +24,7 @@ public class ArmDown extends CommandBase {
      */
     public ArmDown() {
         super("Arm Down");
+        Ramp = PurpleDrank.getRamp();
         requires(Ramp);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
