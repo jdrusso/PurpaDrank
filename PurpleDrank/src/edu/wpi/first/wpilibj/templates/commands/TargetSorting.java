@@ -127,7 +127,7 @@ public class TargetSorting extends CommandBase {
             }
         }
 
-        System.out.println("Targets sorted!" + truncate(sortedArray[0][0]) + ", " + validTargets);
+        System.out.println("Targets sorted! " + truncate(sortedArray[0][0]) + ", " + validTargets);
         RobotMap.top[0] = sortedArray[0][0];
         RobotMap.top[1] = sortedArray[0][1];
         RobotMap.bottom[0] = sortedArray[1][0];
