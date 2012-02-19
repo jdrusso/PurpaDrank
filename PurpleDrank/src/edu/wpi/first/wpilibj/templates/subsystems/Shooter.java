@@ -17,23 +17,23 @@ import edu.wpi.first.wpilibj.AnalogChannel;
  */
 public class Shooter extends Subsystem {
 
-    private Jaguar TopJaguar;
-    private Jaguar BottomJaguar;
+    private Jaguar LeftJaguar;
+    private Jaguar RightJaguar;
     
     private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
     
     public Shooter(){
-        TopJaguar = new Jaguar(RobotMap.TopShooterMotor);
-        BottomJaguar = new Jaguar(RobotMap.BottomShooterMotor);
+        LeftJaguar = new Jaguar(RobotMap.LeftShooterMotor);
+        RightJaguar = new Jaguar(RobotMap.RightShooterMotor);
     }
     protected void initDefaultCommand() {
     
     
     }
     
-    public void rotate(double speed){
-        TopJaguar.set(speed);
-        BottomJaguar.set(speed);
+    public void setShooterMotors(double speed){
+        LeftJaguar.set(speed);
+        RightJaguar.set(speed);
         
     }
     
