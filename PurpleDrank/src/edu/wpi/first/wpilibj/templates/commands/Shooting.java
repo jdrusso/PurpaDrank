@@ -23,7 +23,7 @@ public class Shooting extends CommandBase{
 
     protected void initialize() {
         
-        //shooter.rotate(ShooterSpeed.);
+        //shooter.setShooterMotors(ShooterSpeed.);
     }
 
     protected void execute() {
