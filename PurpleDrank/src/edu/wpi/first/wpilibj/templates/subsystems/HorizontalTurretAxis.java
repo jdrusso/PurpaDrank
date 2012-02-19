@@ -24,7 +24,7 @@ public class HorizontalTurretAxis extends Subsystem{
     private static MetaCommandLog HorLog;
     private static AnalogTrigger horRotEncoder = new AnalogTrigger(RobotMap.horRotEncoderPos);
     //private static AnalogTriggerOutput horRotEncoderOutput = new AnalogTriggerOutput(horRotEncoder, AnalogTriggerOutput.Type.kRisingPulse);
-    private static Counter horRotCounter = new Counter(horRotEncoder, true, false);
+    private static Counter horRotCounter = new Counter(horRotEncoder, true, true);
     
     public HorizontalTurretAxis(){
         super("HorizontalTurretAxis");
@@ -34,10 +34,12 @@ public class HorizontalTurretAxis extends Subsystem{
     protected void initDefaultCommand() {
         HorLog.setCommand("Default");//
         super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+        horRotEncoder.setLimitsVoltage(0.08, 4.92);
+        horRotCounter.setUpDownCounterMode();
         horRotCounter.setDownSource(horRotEncoder, AnalogTriggerOutput.Type.kFallingPulse);
-        horRotCounter.setDownSourceEdge(false, true);
+        horRotCounter.setDownSourceEdge(true, true);
         horRotCounter.setUpSource(horRotEncoder, AnalogTriggerOutput.Type.kRisingPulse);
-        horRotCounter.setUpSourceEdge(true, false);
+        horRotCounter.setUpSourceEdge(true,true);
         horRotCounter.reset();
         horRotCounter.start();
     }
@@ -52,9 +54,9 @@ public class HorizontalTurretAxis extends Subsystem{
         return HorLog;
     }
     
-    public double getHorRotations(){
+    public int getHorRotations(){
         
-        return horRotCounter.get();
+        return horRotCounter.get()/2;
     }
     
 }
