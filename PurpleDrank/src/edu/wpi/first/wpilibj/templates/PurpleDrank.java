@@ -51,6 +51,7 @@ public class PurpleDrank extends IterativeRobot {
     private static Elevator elevator;
     private static BallCollector ballCollector;
     private static Shooter shooter;
+    private double shooterSpeed;
     
     public static DriveTrain getDriveTrain(){
         
@@ -176,12 +177,14 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kUser4, 1, "                                     ");
         display.println(Line.kUser5, 1, "                                     ");
         display.println(Line.kUser6, 1, "                                     ");
+        shooterSpeed = 0.0;
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	shooterSpeed = RobotMap.defaultShooterSpeed;
         MetaLog.update();
         Scheduler.getInstance().run();//
         
@@ -202,6 +205,15 @@ public class PurpleDrank extends IterativeRobot {
         else if (!RobotMap.dButton10.get() && !RobotMap.dButton11.get())
             RobotMap.motor.set(Relay.Value.kOff);
         System.out.println("Rotations: " + HorizontalAxis.getHorRotations());
+        
+        if (RobotMap.shootTrigger.get(){
+            shooterController.leftJaguar.set(shooterSpeed);
+            shooterController.rightJaguar.set(shooterSpeed);
+        }
+        else {
+            shooterController.leftJaguar.set(0.0);
+            shooterController.rightJaguar.set(0.0);
+        }
     }
     
     public double truncate(double d){
