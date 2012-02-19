@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.subsystems.Elevator;
+import edu.wpi.first.wpilibj.templates.PurpleDrank;
 
 
 /**
@@ -19,6 +20,7 @@ public class ElevatorDown extends CommandBase {
     
     public ElevatorDown() {
         super ("Elevator Up");
+        elevator = PurpleDrank.getElevator();
         requires (elevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
