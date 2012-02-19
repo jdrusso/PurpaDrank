@@ -41,13 +41,14 @@ public class ShooterSpeed extends PIDCommand {
         if (this.output <= -1.0)
             this.output = -1.0;
         
-        shootController.rotate(this.output);
+        shootController.setShooterMotors(this.output);
     }
 
     protected void initialize() {
         calculateVelocity();
         this.setSetpoint(setpoint);
         shooterTimer = new Timer();
+        this.setSetpointRange(setpoint-0.05, setpoint+0.05); //tolerance
     }
 
     protected void execute() {
@@ -67,5 +68,11 @@ public class ShooterSpeed extends PIDCommand {
         angleRadians = Math.toRadians(RobotMap.desiredAngle);
         setpoint = RobotMap.range*Math.sqrt(gravity/((RobotMap.range*Math.tan(angleRadians))-(RobotMap.target1Height)+RobotMap.shooterHeight))/(Math.sqrt(2.0)*Math.cos(angleRadians));
         //target 1 height tBD as well as shooter height
+    }
+    
+    protected boolean isSpunUp(){
+        
+        //TODO: check if motorspeeds are within tolerances
+        return true;
     }
 }
