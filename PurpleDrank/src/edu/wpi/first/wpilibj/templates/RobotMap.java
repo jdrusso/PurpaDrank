@@ -11,6 +11,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -35,8 +36,8 @@ public class RobotMap {
     public static final int rearRightMotor = 4;
     public static final int HorTurretMotor = 5;
     public static final int VerTurretMotor = 6;
-    public static final int TopShooterMotor = 7;
-    public static final int BottomShooterMotor = 8;
+    public static final int LeftShooterMotor = 7;  //Left when standing behind the robot
+    public static final int RightShooterMotor = 8; //Right when standing behind the robot
     
     public static double defaultShooterSpeed = 0;
     
@@ -45,8 +46,9 @@ public class RobotMap {
      */
     
     public static final Relay armSpike = new Relay(1);
-    public static final Relay ballCollector = new Relay(2);
-    public static final Relay elevator = new Relay(3);
+    public static final Relay ballCollector = new Relay(2); //TODO: Add actual values
+    public static final Relay elevator = new Relay(3);      //TODO: Add actual values
+    public static final Relay motor = new Relay(5);         //For testing
     
     /*
      * Height Constants for shooter in inches
@@ -109,6 +111,8 @@ public class RobotMap {
     /* DIGITAL INPUTS 
      * These should be sequential.
      */
+    
+    public static final DigitalInput elevatorSwitch = new DigitalInput(1); //Placeholder number
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for AutoBalancing.
@@ -179,4 +183,7 @@ public class RobotMap {
     public static final double fieldZone2DesiredAngle = 35.0;
     public static final double fieldZone3 = 54.0;
     public static final double fieldZone3DesiredAngle = 25.0;
+    
+    public static final int elevationEncoderPerTenthDegree = 5;
+    public static final int azimuthEncoderPerTenthDegree = 10;
 }
