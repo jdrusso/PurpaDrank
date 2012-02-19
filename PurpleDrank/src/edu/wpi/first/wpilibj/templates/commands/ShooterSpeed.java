@@ -46,11 +46,13 @@ public class ShooterSpeed extends PIDCommand {
 
     protected void initialize() {
         calculateVelocity();
-        this.setSetpoint(setpoint);
+        this.setSetpoint(0);
+        //this.setSetpoint(setpoint);
         shooterTimer = new Timer();
     }
 
     protected void execute() {
+        this.setSetpoint(RobotMap.defaultShooterSpeed); //Every time the loop runs, sets the shooter speed equal 
     }
 
     protected boolean isFinished() {
