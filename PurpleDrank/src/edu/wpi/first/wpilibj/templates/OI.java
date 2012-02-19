@@ -26,7 +26,6 @@ public class OI {
     private static Button manualShooter;
     private static MetaTCPVariables mdu;
     private static Button endAutoBalance;
-    private DriveTrain DriveTrain;
     private static Button PushRamp;
     private static Button ballCollector;
     private static Button ShooterRealignRight;
@@ -34,6 +33,8 @@ public class OI {
     private static Button ShooterRealignCenter;
     private static Button speedSetterUp;
     private static Button speedSetterDown;
+    private static Button elevatorController;
+    private static Button relayTest;
     
     public static void initialize() {
         
@@ -55,6 +56,11 @@ public class OI {
         ballCollector.whenPressed(new BallCollectionOn());
         ballCollector.whenReleased(new BallCollectionOff());
         ballCollector.whenDoublePressed(new BallCollectionReverse());
+        
+        elevatorController = RobotMap.dButton3;
+        elevatorController.whenPressed(new ElevatorUp());
+        elevatorController.whenDoublePressed(new ElevatorDown());
+        elevatorController.whenReleased(new ElevatorOff());
 
         ShooterRealignRight = RobotMap.shootButton5;
         ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignRight));
