@@ -22,8 +22,10 @@ import edu.wpi.first.wpilibj.templates.subsystems.*;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.DriverStationLCD.Line;
 import edu.team2035.meta.MetaTimer;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.commands.TargetSorting;
 import edu.wpi.first.wpilibj.communication.FRCControl;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,10 +43,14 @@ public class PurpleDrank extends IterativeRobot {
     private static Shooter shooterController;
     private MetaTimer timer;
     private MetaTCPVariables metaTable;
-    private ManualBalancing h;
+    private static ManualBalancing manualBalance;
     private static DriverStationLCD display;
     private static boolean isDisabled;
-    private TargetSorting t;
+    private static TargetSorting tSort;
+    private static RampController ramp;
+    private static Elevator elevator;
+    private static BallCollector ballCollector;
+    private static Shooter shooter;
     
     public static DriveTrain getDriveTrain(){
         
@@ -66,7 +72,24 @@ public class PurpleDrank extends IterativeRobot {
     
     public static boolean getIsDisabled(){
         return isDisabled;
-    }    
+    }   
+    
+    public static Elevator getElevator(){
+        return elevator;
+    }  
+    
+    public static BallCollector getBallCollector(){
+        
+        return ballCollector;
+    }
+
+    /**
+     * @return the ramp
+     */
+    public static RampController getRamp() {
+        return ramp;
+    }
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -79,6 +102,9 @@ public class PurpleDrank extends IterativeRobot {
         HorizontalAxis = new HorizontalTurretAxis();
         VerticalAxis = new VerticalTurretAxis();   
         shooterController = new Shooter();
+        ballCollector = new BallCollector();
+        elevator = new Elevator();
+        ramp = new RampController();
         display = DriverStationLCD.getInstance();
         OI.initialize();
         display.updateLCD();
@@ -90,8 +116,10 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kUser6, 1, "                                     ");
         metaTable = OI.getMdu();
         display.updateLCD();
-        t = new TargetSorting();
-        t.start();
+        tSort = new TargetSorting();
+        tSort.start();
+        RobotMap.motor.setDirection(Relay.Direction.kBoth);
+        RobotMap.motor.set(Relay.Value.kOff);
 
         // Initialize all subsystems
         //CommandBase.init();
@@ -139,7 +167,7 @@ public class PurpleDrank extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-        t.start();
+        tSort.start();
         autonomousCommand.cancel();
         isDisabled = false;
         System.out.println("Entering TeleOp...");              
@@ -158,14 +186,22 @@ public class PurpleDrank extends IterativeRobot {
         Scheduler.getInstance().run();//
         
         //FRCControl.setErrorData("test error".getBytes(), "test error".length(), 100);
-        display.println(Line.kUser2, 1, "" + RobotMap.range     + ", " + metaTable.getConnections() + "                 ");
-        display.println(Line.kUser3, 1, "" + RobotMap.top[0]    + ", " + RobotMap.top[1]            + "                 ");
-        display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]          + "                 ");
-        display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1]         + "                 ");
-        display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
-        display.println(Line.kMain6, 1, "Program is running...");
+        //display.println(Line.kUser2, 1, "" +   correctRange()   + ", " + metaTable.getConnections() + "                 ");
+        display.println(Line.kUser3, 1, "Top: " + RobotMap.top[0]    + ", " + RobotMap.top[1]            + "                 ");
+        //display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]          + "                 ");
+        //display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1]         + "                 ");
+        //display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
+        //display.println(Line.kMain6, 1, "Program is running...");
+        display.println(Line.kUser2, 1, "" + RobotMap.defaultShooterSpeed);
+        display.println(Line.kMain6, 1, "Rots: " + HorizontalAxis.getHorRotations());
         display.updateLCD();
-        System.out.println(RobotMap.top);
+        if (RobotMap.dButton10.get())
+            RobotMap.motor.set(Relay.Value.kForward);
+        if (RobotMap.dButton11.get())
+            RobotMap.motor.set(Relay.Value.kReverse);
+        else if (!RobotMap.dButton10.get() && !RobotMap.dButton11.get())
+            RobotMap.motor.set(Relay.Value.kOff);
+        System.out.println("Rotations: " + HorizontalAxis.getHorRotations());
     }
     
     public double truncate(double d){
@@ -173,5 +209,11 @@ public class PurpleDrank extends IterativeRobot {
         int temp = (int)(d*1000);
         double result = (double)temp/1000;
         return result;
+    }
+    
+    public double correctRange(){
+        
+        double x = RobotMap.range;
+        return x+((0.0053*(x*x))+(0.0026*x)+0.2168); //We made this using a trendline in Excel and empirical test results with a polynomial fit
     }
 }
