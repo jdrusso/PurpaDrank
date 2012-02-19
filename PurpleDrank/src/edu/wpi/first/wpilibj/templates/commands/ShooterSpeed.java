@@ -48,7 +48,6 @@ public class ShooterSpeed extends PIDCommand {
         calculateVelocity();
         this.setSetpoint(setpoint);
         shooterTimer = new Timer();
-        this.setSetpointRange(setpoint-0.05, setpoint+0.05); //tolerance
     }
 
     protected void execute() {
