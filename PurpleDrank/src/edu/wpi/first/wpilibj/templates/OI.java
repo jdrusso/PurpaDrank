@@ -49,9 +49,9 @@ public class OI {
         //AutoBalance = RobotMap.dButton3;
         //AutoBalance.whenDoublePressed(new BalancingAutomatic(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
-        manualShooter = RobotMap.shootTrigger;
-        manualShooter.whileHeld(new VerticalDefaultCommand());
-        manualShooter.whileHeld(new HorizontalDefaultCommand());
+        //manualShooter = RobotMap.shootTrigger;
+        //manualShooter.whileHeld(new VerticalDefaultCommand());
+        //manualShooter.whileHeld(new HorizontalDefaultCommand());
         //manualShooter.whenDoublePressed(new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd));
         
         ballCollector = RobotMap.dButton5;
