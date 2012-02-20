@@ -7,6 +7,7 @@ import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 
@@ -20,6 +21,8 @@ public class VerticalTurretAxis extends Subsystem  {
 //    private Relay VerTurretSpike;
     private static MetaCommandLog VerLog;
     private static Gyro gyro1;
+
+    private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.verRotEncoderPos);
 
     public VerticalTurretAxis(){
         super("VerticalTurretAxis");
@@ -51,6 +54,23 @@ public class VerticalTurretAxis extends Subsystem  {
     
     public static Gyro getGyro1(){
         return gyro1;//
+    }
+
+    /** Vertical rotations
+     *
+     * @return the integer number of complete rotations by the magnetic
+     * encoder.
+     */
+    public int getVerRotations(){
+        return magneticencoder.getIntegerCounter();
+    }
+
+    /**
+     * This is not fully tested yet.
+     * @return
+     */
+    public double getVerRotationsDouble(){
+        return magneticencoder.getDoubleCounter();
     }
     
 }
