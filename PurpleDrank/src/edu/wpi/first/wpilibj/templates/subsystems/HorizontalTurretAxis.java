@@ -5,11 +5,11 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.team2035.meta.MetaCommandLog;
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.HorizontalTurretRotation;
 import edu.wpi.first.wpilibj.templates.MagneticEncoder;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
@@ -34,7 +34,7 @@ public class HorizontalTurretAxis extends Subsystem{
     }
     protected void initDefaultCommand() {
         HorLog.setCommand("Default");//
-        super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+        //super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
 //        horRotEncoder.setLimitsVoltage(0.08, 4.92);
 //        horRotCounter.setUpDownCounterMode();
 //        horRotCounter.setDownSource(horRotEncoder, AnalogTriggerOutput.Type.kFallingPulse);
@@ -60,15 +60,22 @@ public class HorizontalTurretAxis extends Subsystem{
     public static MetaCommandLog getCommandLog(){
         return HorLog;
     }
-    
+
+    /**
+     *
+     * @return the integer number of complete rotations by the magnetic
+     * encoder.
+     */
     public int getHorRotations(){
         return magneticencoder.getIntegerCounter();
-//        return horRotCounter.get()/2;
     }
 
+    /**
+     * This is not completely tested yet.
+     * @return
+     */
     public double getHorRotationsDouble(){
         return magneticencoder.getDoubleCounter();
-//        return horRotCounter.get()/2;
     }
 
 }
