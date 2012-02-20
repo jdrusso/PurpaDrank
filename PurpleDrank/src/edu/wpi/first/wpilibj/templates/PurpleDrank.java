@@ -190,8 +190,8 @@ public class PurpleDrank extends IterativeRobot {
         //display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1]         + "                 ");
         //display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
         //display.println(Line.kMain6, 1, "Program is running...");
-        display.println(Line.kUser2, 1, "Shoot Speed: " + truncate(RobotMap.defaultShooterSpeed) + "                                      ");
-        display.println(Line.kMain6, 1, "Rots: " + HorizontalAxis.getHorRotations() + ", " + HorizontalAxis.getHorRotationsDouble() + "                      ");
+        display.println(Line.kUser2, 1, "Shoot Speed: " + (RobotMap.defaultShooterSpeed) + "                                      ");
+        display.println(Line.kMain6, 1, "H/V Rot: " + HorizontalAxis.getHorRotations() + ", " + VerticalAxis.getVerRotations() + "                      ");
         display.updateLCD();
 //        if (RobotMap.dButton10.get())
 //            RobotMap.motor.set(Relay.Value.kForward);
@@ -200,7 +200,7 @@ public class PurpleDrank extends IterativeRobot {
 //        else if (!RobotMap.dButton10.get() && !RobotMap.dButton11.get())
 //            RobotMap.motor.set(Relay.Value.kOff);
         
-        System.out.println("Rotations: " + HorizontalAxis.getHorRotations());
+//        System.out.println("Rotations: " + HorizontalAxis.getHorRotations());
         
         if (RobotMap.shootTrigger.get()) {
             
