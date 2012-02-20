@@ -19,14 +19,14 @@ import edu.wpi.first.wpilibj.templates.commands.ArmUp;
  * @author jrusso
  */
 public class RampController extends Subsystem {
-    private static Relay armRelay = RobotMap.armSpike;;
+    private static Relay armRelay = RobotMap.armSpike;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
     public void initDefaultCommand() {    
         //Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());   
-        setDefaultCommand(new ArmUp());
+        //setDefaultCommand(new ArmUp());
         setDir();
     }  
     
