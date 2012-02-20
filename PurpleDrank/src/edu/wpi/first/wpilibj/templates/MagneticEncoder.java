@@ -43,7 +43,7 @@ public class MagneticEncoder {
      */
     public int getIntegerCounter()
     {
-        return counter.get();
+        return counter.get()/2;
     }
     
     /**
@@ -53,8 +53,14 @@ public class MagneticEncoder {
      */
     public double getDoubleCounter()
     {
-        return (double)counter.get() + channel.getVoltage()/VOLTAGE_MAX;
+        return (double)truncate((counter.get()/2) + channel.getVoltage()/VOLTAGE_MAX);
     }
     
-    
+ 
+    private double truncate(double d){
+        
+        int temp = (int)(d*1000);
+        double result = (double)temp/1000;
+        return result;
+    }
 }
