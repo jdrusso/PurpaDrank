@@ -8,13 +8,9 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.team2035.meta.MetaTCPVariables;
-import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.*;
-import edu.wpi.first.wpilibj.Joystick.ButtonType;
 /**
  * 
  * @author Team 2035 Programmers
