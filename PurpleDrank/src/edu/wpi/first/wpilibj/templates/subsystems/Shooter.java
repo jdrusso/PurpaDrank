@@ -17,12 +17,12 @@ import edu.wpi.first.wpilibj.AnalogChannel;
  */
 public class Shooter extends Subsystem {
 
-    private Jaguar LeftJaguar;
-    private Jaguar RightJaguar;
+    public Jaguar LeftJaguar;
+    public Jaguar RightJaguar;
     
     private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
     
-    public Shooter(){
+    public Shooter() {
         LeftJaguar = new Jaguar(RobotMap.LeftShooterMotor);
         RightJaguar = new Jaguar(RobotMap.RightShooterMotor);
     }

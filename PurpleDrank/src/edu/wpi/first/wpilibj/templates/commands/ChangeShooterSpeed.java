@@ -28,6 +28,11 @@ public class ChangeShooterSpeed extends CommandBase {
             RobotMap.defaultShooterSpeed -= 0.02;
         else if (modifier == 'r')
             RobotMap.defaultShooterSpeed = 0;
+        
+        if (RobotMap.defaultShooterSpeed > 1.0)
+            RobotMap.defaultShooterSpeed = 1.0;
+        else if (RobotMap.defaultShooterSpeed < -1.0)
+            RobotMap.defaultShooterSpeed = -1.0;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,9 +41,9 @@ public class ChangeShooterSpeed extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (modifier == '-' || modifier == '+' || modifier == 'r')
-            return false;
-        else
+        //if (modifier == '-' || modifier == '+' || modifier == 'r')
+        //    return false;
+        //else
             return true;
     }
 

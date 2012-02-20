@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.subsystems.Elevator;
+import edu.wpi.first.wpilibj.Timer;
 
 
 /**
@@ -18,6 +19,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Elevator;
  */
 public class ElevatorUp extends CommandBase {
     private Elevator elevator;
+    private Timer timer;
     
     public ElevatorUp() {
         super ("Elevator Up");
@@ -25,6 +27,8 @@ public class ElevatorUp extends CommandBase {
         requires (elevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+//        timer = new Timer();
+//       timer.reset();
     }
     
     /**
@@ -33,6 +37,7 @@ public class ElevatorUp extends CommandBase {
      */
     protected void initialize() {
         Elevator.raiseBalls();
+//        timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -41,17 +46,23 @@ public class ElevatorUp extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (RobotMap.elevatorSwitch.get())
-            return true;
-        return false;
+//        if (RobotMap.elevatorSwitch.get()) && timer.get() > 50)
+//            return true;
+//        return false;
+        return true;
+        
     }
 
     // Called once after isFinished returns true
     protected void end() {
+//        timer.stop();
+//        Elevator.stopRaising();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+//        timer.stop();
+//        Elevator.stopRaising();
     }
 }

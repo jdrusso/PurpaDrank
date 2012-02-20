@@ -94,8 +94,8 @@ public class OI {
         HorTurretFwd.whileHeld(new HorizontalTurretRotationManual(1));
         HorTurretRev.whileHeld(new HorizontalTurretRotationManual(-1));
         
-        VerTurretFwd.whileHeld(new HorizontalTurretRotationManual(1));
-        VerTurretRev.whileHeld(new HorizontalTurretRotationManual(-1));
+        VerTurretFwd.whileHeld(new VerticalTurretRotationManual(1));
+        VerTurretRev.whileHeld(new VerticalTurretRotationManual(-1));
         
         
         

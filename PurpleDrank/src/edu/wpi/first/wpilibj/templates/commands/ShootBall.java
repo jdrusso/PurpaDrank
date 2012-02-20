@@ -11,10 +11,16 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class ShootBall extends CommandGroup {
     
     public ShootBall() {
-        ShooterSpeed shooterSpeed = new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd);
-        addSequential(shooterSpeed);
-        if (shooterSpeed.isSpunUp())
-            addParallel(new ElevatorUp());
+        // TODO: Check that the shooting motors are at the correct speed
+        // for now we are just using the motors as is.
+        //ShooterSpeed shooterSpeed = new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd);
+        //addSequential(shooterSpeed);
+        //if (shooterSpeed.isSpunUp())
+        //    addParallel(new ElevatorUp());
+        
+        addSequential(new ElevatorUp());
+        
+        
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

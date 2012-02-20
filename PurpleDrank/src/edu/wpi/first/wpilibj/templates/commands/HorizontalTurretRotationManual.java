@@ -53,5 +53,6 @@ public class HorizontalTurretRotationManual extends CommandBase {
     // subsystems is scheduled to run
     protected void interrupted() {
 //        HorTurretSpike.set(Relay.Value.kOff);
+        ht.rotate(0.0);
     }
 }

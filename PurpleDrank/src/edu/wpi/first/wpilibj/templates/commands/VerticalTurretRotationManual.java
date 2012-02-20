@@ -53,5 +53,6 @@ public class VerticalTurretRotationManual extends CommandBase {
     // subsystems is scheduled to run
     protected void interrupted() {
 //        VerTurretSpike.set(Relay.Value.kOff);
+        vt.rotate(0.0);
     }
 }

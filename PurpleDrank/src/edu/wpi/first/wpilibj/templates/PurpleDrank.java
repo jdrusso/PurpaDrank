@@ -190,7 +190,7 @@ public class PurpleDrank extends IterativeRobot {
         //display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1]         + "                 ");
         //display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
         //display.println(Line.kMain6, 1, "Program is running...");
-        display.println(Line.kUser2, 1, "" + RobotMap.defaultShooterSpeed);
+        display.println(Line.kUser2, 1, "Shoot Speed: " + truncate(RobotMap.defaultShooterSpeed) + "                                      ");
         display.println(Line.kMain6, 1, "Rots: " + HorizontalAxis.getHorRotations() + ", " + HorizontalAxis.getHorRotationsDouble() + "                      ");
         display.updateLCD();
 //        if (RobotMap.dButton10.get())
