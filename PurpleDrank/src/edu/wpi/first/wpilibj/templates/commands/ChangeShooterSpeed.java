@@ -44,7 +44,7 @@ public class ChangeShooterSpeed extends CommandBase {
         //if (modifier == '-' || modifier == '+' || modifier == 'r')
         //    return false;
         //else
-            return true;
+        return true;
     }
 
     // Called once after isFinished returns true

@@ -35,7 +35,7 @@ public class ArmDown extends CommandBase {
      * It sets the motor direction to forward.
      */
     protected void initialize() {
-        RampController.setDir(); 
+        //RampController.setDir();
         RampController.getArmRelay().set(Relay.Value.kForward);
     }
 
@@ -63,5 +63,6 @@ public class ArmDown extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        RampController.getArmRelay().set(Relay.Value.kOff);
     }
 }

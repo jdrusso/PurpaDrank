@@ -5,7 +5,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
-import edu.wpi.first.wpilibj.templates.commands.ShooterSpeed;
 
 /**
  *

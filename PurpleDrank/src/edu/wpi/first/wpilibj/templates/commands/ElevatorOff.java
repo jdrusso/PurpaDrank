@@ -19,9 +19,9 @@ public class ElevatorOff extends CommandBase {
     private Elevator elevator;
     
     public ElevatorOff() {
-        super ("Elevator Up");
+        super("Elevator Off");
         elevator = PurpleDrank.getElevator();
-        requires (elevator);
+        requires(elevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

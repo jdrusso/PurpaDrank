@@ -45,7 +45,7 @@ public class BallCollectionOn extends CommandBase {
         //change button to always pull from the front roller and only from the elevator if switch is false
         //if (RobotMap.elevatorSwitch.get())
         //    return true;
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

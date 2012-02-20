@@ -10,16 +10,16 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.team2035.meta.MetaLog;
 import edu.team2035.meta.MetaTCPVariables;
+import edu.team2035.meta.MetaTimer;
+import edu.wpi.first.wpilibj.DriverStationLCD;
+import edu.wpi.first.wpilibj.DriverStationLCD.Line;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.commands.BalancingManual;
-import edu.wpi.first.wpilibj.templates.subsystems.*;
-import edu.wpi.first.wpilibj.DriverStationLCD;
-import edu.wpi.first.wpilibj.DriverStationLCD.Line;
-import edu.team2035.meta.MetaTimer;
+import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.commands.TargetSorting;
+import edu.wpi.first.wpilibj.templates.subsystems.*;
 
 
 /**

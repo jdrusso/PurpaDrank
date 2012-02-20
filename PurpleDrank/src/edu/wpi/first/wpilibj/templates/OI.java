@@ -22,7 +22,8 @@ public class OI {
     private static Button manualShooter;
     private static MetaTCPVariables mdu;
     private static Button endAutoBalance;
-    private static Button PushRamp;
+    private static Button RampFwd;
+    private static Button RampRev;
     private static Button ballCollector;
     private static Button ShooterRealignRight;
     private static Button ShooterRealignLeft;
@@ -73,9 +74,15 @@ public class OI {
         ShooterRealignCenter = RobotMap.shootButton10;
         //ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignCenter));
         
-        PushRamp = RobotMap.dButton4;
-        PushRamp.whenPressed(new ArmDown());
-        PushRamp.whenDoublePressed(new ArmUp());
+        RampFwd = RobotMap.RampFwd;
+        RampRev = RobotMap.RampRev;
+        // below code tried to do this in one button but it wasnt working.
+        // so i swapped it out for two buttons.
+        //RampFwd.whenPressed(new ArmDown());
+        //RampFwd.whenDoublePressed(new ArmUp());
+        RampFwd.whileHeld(new ArmUp());
+        RampRev.whileHeld(new ArmDown());
+
         
         speedSetterUp = RobotMap.shootButton6;
         speedSetterDown = RobotMap.shootButton7;

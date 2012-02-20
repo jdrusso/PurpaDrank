@@ -8,8 +8,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.templates.subsystems.RampController;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
+import edu.wpi.first.wpilibj.templates.subsystems.RampController;
 
 /**
  *Once the ramp is down, this command will be called to reset the arm to its original position. 
@@ -30,7 +30,7 @@ public class ArmUp extends CommandBase {
      * This method makes the motor reverse before anything else happens. 
      */
     protected void initialize() {
-        RampController.setDir();
+        //RampController.setDir();
         RampController.getArmRelay().set(Relay.Value.kReverse);
     }
 
@@ -41,7 +41,7 @@ public class ArmUp extends CommandBase {
         //Ramp.push();
     }
 
-    /*
+    /**
      * When the arm is at its original position.
      * 
      * @return true to stop command, false to countinue execute()
@@ -57,5 +57,6 @@ public class ArmUp extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        RampController.getArmRelay().set(Relay.Value.kOff);
     }
 }

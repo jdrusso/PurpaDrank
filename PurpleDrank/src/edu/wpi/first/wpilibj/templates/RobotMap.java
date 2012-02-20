@@ -104,6 +104,10 @@ public class RobotMap {
     public static final JoystickButton HorTurretRev = new JoystickButton(turretStick, 7);
     public static final JoystickButton VerTurretFwd = new JoystickButton(turretStick, 11);
     public static final JoystickButton VerTurretRev = new JoystickButton(turretStick, 10);
+
+    public static final JoystickButton RampFwd = new JoystickButton(turretStick, 8);
+    public static final JoystickButton RampRev = new JoystickButton(turretStick, 9);
+
     
     /* cRIO SIDECARS
      * 
