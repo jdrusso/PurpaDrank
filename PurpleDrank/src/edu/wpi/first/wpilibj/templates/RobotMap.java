@@ -8,10 +8,10 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -48,7 +48,9 @@ public class RobotMap {
     public static final Relay armSpike = new Relay(1);
     public static final Relay ballCollector = new Relay(2); //TODO: Add actual values
     public static final Relay elevator = new Relay(3);      //TODO: Add actual values
-    public static final Relay motor = new Relay(5);         //For testing
+    //public static final Relay motor = new Relay(5);         //For testing
+    //public static final Relay HorTurretMotorSpike = new Relay(4);
+    //public static final Relay VerTurretMotorSpike = new Relay(5);
     
     /*
      * Height Constants for shooter in inches
@@ -93,6 +95,15 @@ public class RobotMap {
     public static final JoystickButton shootButton9 = new JoystickButton(shootStick, 9);
     public static final JoystickButton shootButton10 = new JoystickButton(shootStick, 10);
     public static final JoystickButton shootButton11 = new JoystickButton(shootStick, 11);
+    
+    public static final int turretJoystickNumber = 2; // Robot Driver's Joystick USB number
+    
+    public static final Joystick turretStick = new Joystick(turretJoystickNumber);
+    
+    public static final JoystickButton HorTurretFwd = new JoystickButton(turretStick, 6);
+    public static final JoystickButton HorTurretRev = new JoystickButton(turretStick, 7);
+    public static final JoystickButton VerTurretFwd = new JoystickButton(turretStick, 11);
+    public static final JoystickButton VerTurretRev = new JoystickButton(turretStick, 10);
     
     /* cRIO SIDECARS
      * 
@@ -184,6 +195,7 @@ public class RobotMap {
     public static final double fieldZone3 = 54.0;
     public static final double fieldZone3DesiredAngle = 25.0;
     
-    public static final int elevationEncoderPerTenthDegree = 5;
+    
+    public static final int elevationEncoderPerTenthDegree = 5;  // Actually is 2.5 now -TA 2/19/2012
     public static final int azimuthEncoderPerTenthDegree = 10;
 }
