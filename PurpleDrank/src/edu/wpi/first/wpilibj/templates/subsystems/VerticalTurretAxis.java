@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.commands.DefaultDriveTrain;
-import edu.wpi.first.wpilibj.templates.commands.VerticalTurretRotation;
-import edu.wpi.first.wpilibj.templates.commands.VerticalDefaultCommand;
+
 
 /**
  *
@@ -34,7 +33,7 @@ public class VerticalTurretAxis extends Subsystem  {
     }
     protected void initDefaultCommand() {
         
-        super.setDefaultCommand(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
+        //super.setDefaultCommand(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
         
     }
     

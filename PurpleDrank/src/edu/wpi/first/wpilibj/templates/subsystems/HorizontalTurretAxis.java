@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.HorizontalTurretRotation;
-import edu.wpi.first.wpilibj.templates.commands.HorizontalDefaultCommand;
-import edu.wpi.first.wpilibj.templates.commands.VerticalDefaultCommand;
 import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 
 /**
