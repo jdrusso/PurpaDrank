@@ -53,6 +53,11 @@ public class MagneticEncoder {
      */
     public double getDoubleCounter()
     {
+        // we can improve the estimate.
+        double voltage = channel.getVoltage();
+        if (voltage > VOLTAGE_MAX)
+            VOLTAGE_MAX = voltage;
+        
         return (double)truncate((counter.get()/2) + channel.getVoltage()/VOLTAGE_MAX);
     }
     
