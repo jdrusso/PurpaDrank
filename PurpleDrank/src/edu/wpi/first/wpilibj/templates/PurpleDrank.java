@@ -10,22 +10,17 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.team2035.meta.MetaLog;
 import edu.team2035.meta.MetaTCPVariables;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
-import edu.wpi.first.wpilibj.templates.commands.ManualBalancing;
-import edu.wpi.first.wpilibj.templates.commands.TargetSorting;
+import edu.wpi.first.wpilibj.templates.commands.BalancingManual;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.DriverStationLCD.Line;
 import edu.team2035.meta.MetaTimer;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.commands.TargetSorting;
-import edu.wpi.first.wpilibj.communication.FRCControl;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,7 +38,7 @@ public class PurpleDrank extends IterativeRobot {
     private static Shooter shooterController;
     private MetaTimer timer;
     private MetaTCPVariables metaTable;
-    private static ManualBalancing manualBalance;
+    private static BalancingManual manualBalance;
     private static DriverStationLCD display;
     private static boolean isDisabled;
     private static TargetSorting tSort;
@@ -119,8 +114,8 @@ public class PurpleDrank extends IterativeRobot {
         display.updateLCD();
         tSort = new TargetSorting();
         tSort.start();
-        RobotMap.motor.setDirection(Relay.Direction.kBoth);
-        RobotMap.motor.set(Relay.Value.kOff);
+//        RobotMap.motor.setDirection(Relay.Direction.kBoth);
+//        RobotMap.motor.set(Relay.Value.kOff);
 
         // Initialize all subsystems
         //CommandBase.init();
@@ -196,23 +191,25 @@ public class PurpleDrank extends IterativeRobot {
         //display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
         //display.println(Line.kMain6, 1, "Program is running...");
         display.println(Line.kUser2, 1, "" + RobotMap.defaultShooterSpeed);
-        display.println(Line.kMain6, 1, "Rots: " + HorizontalAxis.getHorRotations());
+        display.println(Line.kMain6, 1, "Rots: " + HorizontalAxis.getHorRotations() + ", " + HorizontalAxis.getHorRotationsDouble() + "                      ");
         display.updateLCD();
-        if (RobotMap.dButton10.get())
-            RobotMap.motor.set(Relay.Value.kForward);
-        if (RobotMap.dButton11.get())
-            RobotMap.motor.set(Relay.Value.kReverse);
-        else if (!RobotMap.dButton10.get() && !RobotMap.dButton11.get())
-            RobotMap.motor.set(Relay.Value.kOff);
+//        if (RobotMap.dButton10.get())
+//            RobotMap.motor.set(Relay.Value.kForward);
+//        if (RobotMap.dButton11.get())
+//            RobotMap.motor.set(Relay.Value.kReverse);
+//        else if (!RobotMap.dButton10.get() && !RobotMap.dButton11.get())
+//            RobotMap.motor.set(Relay.Value.kOff);
+        
         System.out.println("Rotations: " + HorizontalAxis.getHorRotations());
         
-        if (RobotMap.shootTrigger.get(){
-            shooterController.leftJaguar.set(shooterSpeed);
-            shooterController.rightJaguar.set(shooterSpeed);
+        if (RobotMap.shootTrigger.get()) {
+            
+            shooterController.LeftJaguar.set(shooterSpeed);
+            shooterController.RightJaguar.set(shooterSpeed);
         }
         else {
-            shooterController.leftJaguar.set(0.0);
-            shooterController.rightJaguar.set(0.0);
+            shooterController.LeftJaguar.set(0.0);
+            shooterController.RightJaguar.set(0.0);
         }
     }
     
