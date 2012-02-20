@@ -122,6 +122,7 @@ public class RobotMap {
     public static final int VerticalTurretGyroInput = 2; // Gyro Analog Input for Vertical Turret    
     public static final int ultrasonicInput = 3;
     public static final int horRotEncoderPos = 4;
+    public static final int verRotEncoderPos = 5;
     
     /* DIGITAL INPUTS 
      * These should be sequential.
