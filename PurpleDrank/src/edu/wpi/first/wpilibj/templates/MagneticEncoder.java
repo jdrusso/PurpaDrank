@@ -58,7 +58,7 @@ public class MagneticEncoder {
         if (voltage > VOLTAGE_MAX)
             VOLTAGE_MAX = voltage;
         
-        return (double)truncate((counter.get()/2) + channel.getVoltage()/VOLTAGE_MAX);
+        return (double)truncate((counter.get()/2) + voltage/VOLTAGE_MAX);
     }
     
  
