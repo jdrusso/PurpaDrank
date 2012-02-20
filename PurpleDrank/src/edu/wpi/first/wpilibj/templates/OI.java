@@ -36,16 +36,22 @@ public class OI {
     private static Button elevatorController;
     private static Button relayTest;
     
+    private static Button HorTurretFwd;
+    private static Button HorTurretRev;
+    private static Button VerTurretFwd;
+    private static Button VerTurretRev;
+    
+    
     public static void initialize() {
         
         mdu = new MetaTCPVariables();
         
         Balance = RobotMap.dButton2;
-        Balance.whileHeld(new ManualBalancing());
-        Balance.whenReleased(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));        
+        Balance.whileHeld(new BalancingManual());
+        Balance.whenReleased(new BalancingAutomatic(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));        
         
         //AutoBalance = RobotMap.dButton3;
-        //AutoBalance.whenDoublePressed(new AutoBalancing(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
+        //AutoBalance.whenDoublePressed(new BalancingAutomatic(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
         
         manualShooter = RobotMap.shootTrigger;
         manualShooter.whileHeld(new VerticalDefaultCommand());
@@ -63,13 +69,13 @@ public class OI {
         elevatorController.whenReleased(new ElevatorOff());
 
         ShooterRealignRight = RobotMap.shootButton5;
-        ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignRight));
+        //ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignRight));
         
         ShooterRealignLeft = RobotMap.shootButton4;
-        ShooterRealignLeft.whenReleased(new SetpointRealignment(RobotMap.realignLeft));
+        //ShooterRealignLeft.whenReleased(new SetpointRealignment(RobotMap.realignLeft));
         
         ShooterRealignCenter = RobotMap.shootButton10;
-        ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignCenter));
+        //ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignCenter));
         
         PushRamp = RobotMap.dButton4;
         PushRamp.whenPressed(new ArmDown());
@@ -83,6 +89,20 @@ public class OI {
         speedSetterDown.whenReleased(new ChangeShooterSpeed(' '));
         speedSetterUp.whenDoublePressed(new ChangeShooterSpeed('r'));
         speedSetterDown.whenDoublePressed(new ChangeShooterSpeed('r'));
+        
+        HorTurretFwd = RobotMap.HorTurretFwd;
+        HorTurretRev = RobotMap.HorTurretRev;
+        VerTurretFwd = RobotMap.VerTurretFwd;
+        VerTurretRev = RobotMap.VerTurretRev;
+        
+        HorTurretFwd.whileHeld(new HorizontalTurretRotationManual(1));
+        HorTurretRev.whileHeld(new HorizontalTurretRotationManual(-1));
+        
+        VerTurretFwd.whileHeld(new HorizontalTurretRotationManual(1));
+        VerTurretRev.whileHeld(new HorizontalTurretRotationManual(-1));
+        
+        
+        
     }
     
     public static Button getButton3(){
