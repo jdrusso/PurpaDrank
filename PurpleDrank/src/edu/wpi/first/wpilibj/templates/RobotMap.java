@@ -123,6 +123,7 @@ public class RobotMap {
     public static final int ultrasonicInput = 3;
     public static final int horRotEncoderPos = 4;
     public static final int verRotEncoderPos = 5;
+    public static final int shooterEncoderPos = 6;
     
     /* DIGITAL INPUTS 
      * These should be sequential.
@@ -171,6 +172,9 @@ public class RobotMap {
     public static final String VTd = "VTd";//
     
    
+    public static boolean HorTurretManualControl = false;
+    public static boolean VerTurretManualControl = false;
+
     public static int cameraXOffset = 0;
     public static final int defaultCameraOffset = 0;
     public static final int cameraYOffset = 0;
