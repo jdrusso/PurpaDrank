@@ -58,11 +58,11 @@ public class OI {
         ballCollector = RobotMap.dButton5;
         ballCollector.whenPressed(new BallCollectionOn());
         ballCollector.whenReleased(new BallCollectionOff());
-        ballCollector.whenDoublePressed(new BallCollectionReverse());
+        ballCollector.whenTriplePressed(new BallCollectionReverse());
         
         elevatorController = RobotMap.dButton3;
+        elevatorController.whenTriplePressed(new ElevatorDown());
         elevatorController.whenPressed(new ElevatorUp());
-        elevatorController.whenDoublePressed(new ElevatorDown());
         elevatorController.whenReleased(new ElevatorOff());
 
         ShooterRealignRight = RobotMap.shootButton5;
@@ -90,8 +90,8 @@ public class OI {
         speedSetterDown.whileHeld(new ChangeShooterSpeed('-'));
         speedSetterUp.whenReleased(new ChangeShooterSpeed(' '));
         speedSetterDown.whenReleased(new ChangeShooterSpeed(' '));
-        speedSetterUp.whenDoublePressed(new ChangeShooterSpeed('r'));
-        speedSetterDown.whenDoublePressed(new ChangeShooterSpeed('r'));
+        speedSetterUp.whenTriplePressed(new ChangeShooterSpeed('r'));
+        speedSetterDown.whenTriplePressed(new ChangeShooterSpeed('r'));
         
         HorTurretFwd = RobotMap.HorTurretFwd;
         HorTurretRev = RobotMap.HorTurretRev;
