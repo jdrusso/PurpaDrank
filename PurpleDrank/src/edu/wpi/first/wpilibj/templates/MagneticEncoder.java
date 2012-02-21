@@ -60,6 +60,11 @@ public class MagneticEncoder {
         
         return (double)truncate((counter.get()/2) + voltage/VOLTAGE_MAX);
     }
+
+    public double getPeriod()
+    {
+        return this.counter.getPeriod();
+    }
     
  
     private double truncate(double d){
