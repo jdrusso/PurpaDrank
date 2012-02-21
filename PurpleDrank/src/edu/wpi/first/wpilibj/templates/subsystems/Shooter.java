@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
@@ -20,6 +21,8 @@ public class Shooter extends Subsystem {
     
     private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
     
+    private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.shooterEncoderPos);
+
     public Shooter() {
         LeftJaguar = new Jaguar(RobotMap.LeftShooterMotor);
         RightJaguar = new Jaguar(RobotMap.RightShooterMotor);
@@ -46,4 +49,9 @@ public class Shooter extends Subsystem {
         System.out.println(temp);
         return (temp);
     }
+
+    public double getRotationsPeriod(){
+        return magneticencoder.getPeriod();
+    }
+
 }
