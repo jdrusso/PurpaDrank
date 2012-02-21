@@ -4,7 +4,6 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.subsystems.HorizontalTurretAxis;
@@ -28,6 +27,7 @@ public class HorizontalTurretRotationManual extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        RobotMap.HorTurretManualControl = true;
         ht.rotate(direction);
 //        if (direction > 0)
 //            HorTurretSpike.set(Relay.Value.kForward);
@@ -47,12 +47,14 @@ public class HorizontalTurretRotationManual extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        RobotMap.HorTurretManualControl = false;
 //        HorTurretSpike.set(Relay.Value.kOff);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        RobotMap.HorTurretManualControl = false;
 //        HorTurretSpike.set(Relay.Value.kOff);
         ht.rotate(0.0);
     }

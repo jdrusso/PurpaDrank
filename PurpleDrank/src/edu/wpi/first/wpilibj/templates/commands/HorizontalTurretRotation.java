@@ -34,7 +34,7 @@ public class HorizontalTurretRotation extends PIDCommand {
             return RobotMap.top[0];
         }
         
-        else{
+        else {
             
             HorizontalTurretAxis.getCommandLog().setOutputs("N/A");//
             return RobotMap.cameraXOffset;
@@ -44,8 +44,9 @@ public class HorizontalTurretRotation extends PIDCommand {
     }
 
     protected void usePIDOutput(double output) {
-        
-        HorizontalAxis.rotate(output);
+        // Only give the PIDcommand output if the manual control is not on.
+        if (!RobotMap.HorTurretManualControl)
+            HorizontalAxis.rotate(output);
     }
 
     protected void initialize() {

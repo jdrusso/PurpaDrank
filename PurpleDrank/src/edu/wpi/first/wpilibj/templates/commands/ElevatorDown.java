@@ -4,9 +4,9 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.templates.subsystems.Elevator;
 import edu.wpi.first.wpilibj.templates.PurpleDrank;
+import edu.wpi.first.wpilibj.templates.subsystems.BallCollector;
+import edu.wpi.first.wpilibj.templates.subsystems.Elevator;
 
 
 /**
@@ -17,11 +17,14 @@ import edu.wpi.first.wpilibj.templates.PurpleDrank;
  */
 public class ElevatorDown extends CommandBase {
     private Elevator elevator;
+    private BallCollector bc;
     
     public ElevatorDown() {
-        super ("Elevator Up");
+        super ("Elevator Down");
         elevator = PurpleDrank.getElevator();
+        bc = PurpleDrank.getBallCollector();
         requires (elevator);
+        requires(bc);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -32,6 +35,7 @@ public class ElevatorDown extends CommandBase {
      */
     protected void initialize() {
         Elevator.lowerBalls();
+        BallCollector.spitBalls();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -40,7 +44,7 @@ public class ElevatorDown extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

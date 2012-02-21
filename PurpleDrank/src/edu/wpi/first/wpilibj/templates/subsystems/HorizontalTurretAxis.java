@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.HorizontalTurretRotation;
 
 /**
  *
@@ -19,9 +20,6 @@ public class HorizontalTurretAxis extends Subsystem{
     private Jaguar HorTurretJag;
     private Relay HorTurretSpike;
     private static MetaCommandLog HorLog;
-//    private static AnalogTrigger horRotEncoder = new AnalogTrigger(RobotMap.horRotEncoderPos);
-//    private static AnalogTriggerOutput horRotEncoderOutput = new AnalogTriggerOutput(horRotEncoder, AnalogTriggerOutput.Type.kRisingPulse);
-//    private static Counter horRotCounter = new Counter(horRotEncoder, true, true);
     
     private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.horRotEncoderPos);
     
@@ -34,15 +32,8 @@ public class HorizontalTurretAxis extends Subsystem{
     }
     protected void initDefaultCommand() {
         HorLog.setCommand("Default");//
-        //super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
-//        horRotEncoder.setLimitsVoltage(0.08, 4.92);
-//        horRotCounter.setUpDownCounterMode();
-//        horRotCounter.setDownSource(horRotEncoder, AnalogTriggerOutput.Type.kFallingPulse);
-//        horRotCounter.setDownSourceEdge(true, true);
-//        horRotCounter.setUpSource(horRotEncoder, AnalogTriggerOutput.Type.kRisingPulse);
-//        horRotCounter.setUpSourceEdge(true,true);
-//        horRotCounter.reset();
-//        horRotCounter.start();
+        super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+
     }
     
     public void rotate(double speed){
