@@ -48,7 +48,7 @@ public class BallCollector extends Subsystem {
 
     public static boolean isSpitting()
     {
-        return (ballRelay.get() == 2);
+        return (ballRelay.get() == 3);
     }
     
     /**
@@ -58,5 +58,9 @@ public class BallCollector extends Subsystem {
     public static Relay getRelay(){
         return ballRelay;
     }
-           
+     
+    public static int getRelayValue()
+    {
+        return (ballRelay.get());
+    }
 }
