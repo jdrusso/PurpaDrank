@@ -193,6 +193,7 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kUser2, 1, "Shoot Speed: " + (RobotMap.defaultShooterSpeed) + "                                      ");
         display.println(Line.kMain6, 1, "H/V Rot: " + HorizontalAxis.getHorRotations() + ", " + VerticalAxis.getVerRotations() + "                      ");
         display.println(Line.kUser4, 1, "Shooter Period: " + shooterController.getRotationsPeriod() + "                 ");
+        
         display.updateLCD();
 //        if (RobotMap.dButton10.get())
 //            RobotMap.motor.set(Relay.Value.kForward);
