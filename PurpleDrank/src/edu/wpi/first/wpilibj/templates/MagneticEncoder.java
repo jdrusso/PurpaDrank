@@ -28,7 +28,8 @@ public class MagneticEncoder {
     public AnalogChannel channel;
     public AnalogTrigger trigger;
     public Counter counter;
-    public MagneticEncoder(int triggerAnalogInput) {
+    public MagneticEncoder(int triggerAnalogInput) 
+    {
         channel = new AnalogChannel(triggerAnalogInput);
         trigger = new AnalogTrigger(channel);
         counter = new Counter(trigger, true, true);    
