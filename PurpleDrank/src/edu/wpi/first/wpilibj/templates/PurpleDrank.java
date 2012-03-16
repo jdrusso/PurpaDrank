@@ -14,11 +14,10 @@ import edu.team2035.meta.MetaTimer;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.DriverStationLCD.Line;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.templates.commands.BalancingManual;
-import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
-import edu.wpi.first.wpilibj.templates.commands.TargetSorting;
+import edu.wpi.first.wpilibj.templates.commands.*;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
 
 
@@ -47,6 +46,8 @@ public class PurpleDrank extends IterativeRobot {
     private static BallCollector ballCollector;
     private static Shooter shooter;
     private double shooterSpeed;
+    private Timer t;
+    private boolean acting;
     
     public static DriveTrain getDriveTrain(){
         
@@ -93,7 +94,7 @@ public class PurpleDrank extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         timer = new MetaTimer();
-        autonomousCommand = new ExampleCommand();
+        autonomousCommand = new WinAutonomous();
         DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
         VerticalAxis = new VerticalTurretAxis();   
@@ -114,6 +115,7 @@ public class PurpleDrank extends IterativeRobot {
         display.updateLCD();
         tSort = new TargetSorting();
         tSort.start();
+        t = new Timer();
 //        RobotMap.motor.setDirection(Relay.Direction.kBoth);
 //        RobotMap.motor.set(Relay.Value.kOff);
 
@@ -141,14 +143,22 @@ public class PurpleDrank extends IterativeRobot {
         System.out.println(HorizontalAxis.getHorRotations());
     }
     public void autonomousInit() {
+        t.reset();
+        t.start();
+        acting = false;
         // schedule the autonomous command (example)
-        autonomousCommand.start();
         System.out.println("Entering Autonomous...");              
         display.println(Line.kUser2, 1, "                                     ");
         display.println(Line.kUser3, 1, "                                     ");
         display.println(Line.kUser4, 1, "                                     ");
         display.println(Line.kUser5, 1, "                                     ");
         display.println(Line.kUser6, 1, "                                     ");
+    }
+    
+    public void autonomousContinuous(){
+        
+        WinAutonomous();
+        System.out.println(t.get());
     }
 
     /**
@@ -159,12 +169,12 @@ public class PurpleDrank extends IterativeRobot {
     }
 
     public void teleopInit() {
+        t.stop();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
         tSort.start();
-        autonomousCommand.cancel();
         isDisabled = false;
         System.out.println("Entering TeleOp...");              
         display.println(Line.kUser2, 1, "                                     ");
@@ -213,6 +223,8 @@ public class PurpleDrank extends IterativeRobot {
             shooterController.LeftJaguar.set(0.0);
             shooterController.RightJaguar.set(0.0);
         }
+        
+        System.out.println("Rots: " + truncate(VerticalAxis.getVerRotationsDouble()) + ", " + truncate(shooterController.getRotationsDouble()));
     }
     
     public double truncate(double d){
@@ -226,5 +238,36 @@ public class PurpleDrank extends IterativeRobot {
         
         double x = RobotMap.range;
         return x+((0.0053*(x*x))+(0.0026*x)+0.2168); //We made this using a trendline in Excel and empirical test results with a polynomial fit
+    }
+    
+    public void WinAutonomous(){
+        double shootSpeed = RobotMap.autonomousSpeed;
+        
+        if(!acting)
+        {
+            getShooterController().LeftJaguar.set(shootSpeed);
+            getShooterController().RightJaguar.set(shootSpeed);
+        }
+            
+        if(t.get() > 3.0 && t.get() < 11.5)
+        {
+            
+            if(!acting)
+            {
+                System.out.println("ON");
+                new BallCollectionOn().start();
+                new ElevatorUp().start();
+                acting = true;
+            }
+        }
+        
+        if(t.get() > 12)
+        {
+            System.out.println("OFF");
+            new BallCollectionOff().start();
+            new ElevatorOff().start();
+            getShooterController().LeftJaguar.set(0.0);
+            getShooterController().RightJaguar.set(0.0);
+        }
     }
 }
