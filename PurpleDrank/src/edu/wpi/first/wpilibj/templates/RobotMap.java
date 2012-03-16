@@ -39,15 +39,15 @@ public class RobotMap {
     public static final int LeftShooterMotor = 7;  //Left when standing behind the robot
     public static final int RightShooterMotor = 8; //Right when standing behind the robot
     
-    public static double defaultShooterSpeed = 0;
+    public static double defaultShooterSpeed = 0.7;
     
     /* Relay outputs for Spikes
      * 
      */
     
     public static final Relay armSpike = new Relay(1);
-    public static final Relay ballCollector = new Relay(2); //TODO: Add actual values
-    public static final Relay elevator = new Relay(3);      //TODO: Add actual values
+    public static final Relay ballCollector = new Relay(2);
+    public static final Relay elevator = new Relay(3);
     //public static final Relay motor = new Relay(5);         //For testing
     //public static final Relay HorTurretMotorSpike = new Relay(4);
     //public static final Relay VerTurretMotorSpike = new Relay(5);
@@ -80,7 +80,7 @@ public class RobotMap {
     public static final JoystickButton dButton10 = new JoystickButton(dStick, 10);
     public static final JoystickButton dButton11 = new JoystickButton(dStick, 11);
     
-    public static final int shooterJoystickNumber = 1; // Robot Driver's Joystick USB number
+    public static final int shooterJoystickNumber = 2; // Robot Driver's Joystick USB number
     
     public static final Joystick shootStick = new Joystick(shooterJoystickNumber);
     
@@ -96,19 +96,6 @@ public class RobotMap {
     public static final JoystickButton shootButton10 = new JoystickButton(shootStick, 10);
     public static final JoystickButton shootButton11 = new JoystickButton(shootStick, 11);
     
-    public static final int turretJoystickNumber = 2; // Robot Driver's Joystick USB number
-    
-    public static final Joystick turretStick = new Joystick(turretJoystickNumber);
-    
-    public static final JoystickButton HorTurretFwd = new JoystickButton(turretStick, 6);
-    public static final JoystickButton HorTurretRev = new JoystickButton(turretStick, 7);
-    public static final JoystickButton VerTurretFwd = new JoystickButton(turretStick, 11);
-    public static final JoystickButton VerTurretRev = new JoystickButton(turretStick, 10);
-
-    public static final JoystickButton RampFwd = new JoystickButton(turretStick, 8);
-    public static final JoystickButton RampRev = new JoystickButton(turretStick, 9);
-
-    
     /* cRIO SIDECARS
      * 
      */
@@ -120,7 +107,7 @@ public class RobotMap {
      */
     public static final int DriveTrainGyroInput = 1; // Gyro Analog Input is channel 1
     public static final int VerticalTurretGyroInput = 2; // Gyro Analog Input for Vertical Turret    
-    public static final int ultrasonicInput = 3;
+    //public static final int ultrasonicInput = 3;
     public static final int horRotEncoderPos = 4;
     public static final int verRotEncoderPos = 5;
     public static final int shooterEncoderPos = 6;
@@ -207,4 +194,6 @@ public class RobotMap {
     
     public static final int elevationEncoderPerTenthDegree = 5;  // Actually is 2.5 now -TA 2/19/2012
     public static final int azimuthEncoderPerTenthDegree = 10;
+    
+    public static final double autonomousSpeed = .948;
 }
