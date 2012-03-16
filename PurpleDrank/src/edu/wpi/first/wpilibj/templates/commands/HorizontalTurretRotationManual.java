@@ -13,22 +13,21 @@ import edu.wpi.first.wpilibj.templates.subsystems.HorizontalTurretAxis;
  * @author jrusso
  */
 public class HorizontalTurretRotationManual extends CommandBase {
-    public int direction;
+    public double direction;
     //public Relay HorTurretSpike;
     public HorizontalTurretAxis ht;
     
-    public HorizontalTurretRotationManual(int directionIn) {
+    public HorizontalTurretRotationManual() {
         ht = PurpleDrank.getHorizontalTurretAxis();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        direction = directionIn;
+        requires(ht);
         //HorTurretSpike = RobotMap.HorTurretMotorSpike;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
         RobotMap.HorTurretManualControl = true;
-        ht.rotate(direction);
 //        if (direction > 0)
 //            HorTurretSpike.set(Relay.Value.kForward);
 //        else
@@ -37,6 +36,7 @@ public class HorizontalTurretRotationManual extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        direction = RobotMap.shootStick.getX();
         ht.rotate(direction);
     }
 
