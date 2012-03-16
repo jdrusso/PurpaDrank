@@ -17,14 +17,11 @@ import edu.wpi.first.wpilibj.templates.subsystems.Elevator;
  */
 public class ElevatorOff extends CommandBase {
     private Elevator elevator;
-    private BallCollector bc;
     
     public ElevatorOff() {
         super("Elevator Off");
         elevator = PurpleDrank.getElevator();
-        bc = PurpleDrank.getBallCollector();
         requires(elevator);
-        requires(bc);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -36,8 +33,8 @@ public class ElevatorOff extends CommandBase {
     protected void initialize() {
         Elevator.stopRaising();
         // also turn off the ball collector motor if it is spitting out.
-        if (BallCollector.isSpitting())
-            BallCollector.stopSucking();
+        //if (BallCollector.isSpitting())
+        //    BallCollector.stopSucking();
     }
 
     // Called repeatedly when this Command is scheduled to run
