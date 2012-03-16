@@ -19,7 +19,7 @@ public class Shooter extends Subsystem {
     public Jaguar LeftJaguar;
     public Jaguar RightJaguar;
     
-    private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
+    //private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
     
     private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.shooterEncoderPos);
 
@@ -38,20 +38,28 @@ public class Shooter extends Subsystem {
         
     }
     
-    public double getUltrasonic(){
-     
-        return ultrasonic.getVoltage();
-    }
+//    public double getUltrasonic(){
+//     
+//        return ultrasonic.getVoltage();
+//    }
     
-    public double getUltrasonicRange(){
-        
-        double temp = ((5/512)*ultrasonic.getVoltage());
-        System.out.println(temp);
-        return (temp);
-    }
+//    public double getUltrasonicRange(){
+//        
+//        double temp = ((5/512)*ultrasonic.getVoltage());
+//        System.out.println(temp);
+//        return (temp);
+//    }
 
     public double getRotationsPeriod(){
         return magneticencoder.getPeriod();
+    }
+    
+    public double getRotations(){
+        return magneticencoder.getIntegerCounter();
+    }
+    
+    public double getRotationsDouble(){
+        return magneticencoder.getDoubleCounter();
     }
 
 }
