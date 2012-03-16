@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.Gyro;
@@ -9,6 +5,8 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.HorizontalTurretRotationManual;
+import edu.wpi.first.wpilibj.templates.commands.VerticalTurretRotationManual;
 
 
 /**
@@ -32,7 +30,7 @@ public class VerticalTurretAxis extends Subsystem  {
         //this.VerTurretSpike = RobotMap.VerTurretMotorSpike;
     }
     protected void initDefaultCommand() {
-        
+        super.setDefaultCommand(new VerticalTurretRotationManual());
         //super.setDefaultCommand(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
         
     }
