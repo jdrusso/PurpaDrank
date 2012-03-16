@@ -46,9 +46,9 @@ public class BallCollector extends Subsystem {
         ballRelay.set(Relay.Value.kReverse);
     }
 
-    public static boolean isSpitting()
+    public static boolean isActing()
     {
-        return (ballRelay.get() == 3);
+        return (ballRelay.get() != 0);
     }
     
     /**
