@@ -23,9 +23,9 @@ public class ChangeShooterSpeed extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         if (modifier == '+')
-            RobotMap.defaultShooterSpeed += 0.02;
+            RobotMap.defaultShooterSpeed += 0.005;
         else if (modifier == '-')
-            RobotMap.defaultShooterSpeed -= 0.02;
+            RobotMap.defaultShooterSpeed -= 0.005;
         else if (modifier == 'r')
             RobotMap.defaultShooterSpeed = 0;
         
