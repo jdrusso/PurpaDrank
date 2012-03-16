@@ -6,7 +6,6 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import com.sun.squawk.util.Arrays;
 import edu.wpi.first.wpilibj.templates.OI;
-import edu.wpi.first.wpilibj.templates.PurpleDrank;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
@@ -70,7 +69,7 @@ public class TargetSorting extends CommandBase {
         
         sortTargets();
         
-        RobotMap.ultrasonicRange = PurpleDrank.getShooterController().getUltrasonicRange();
+        //RobotMap.ultrasonicRange = PurpleDrank.getShooterController().getUltrasonicRange();
     }
 
     protected boolean isFinished() {
