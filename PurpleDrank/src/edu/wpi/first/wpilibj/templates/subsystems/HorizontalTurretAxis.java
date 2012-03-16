@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.HorizontalTurretRotation;
+import edu.wpi.first.wpilibj.templates.commands.HorizontalTurretRotationManual;
 
 /**
  *
@@ -32,7 +33,8 @@ public class HorizontalTurretAxis extends Subsystem{
     }
     protected void initDefaultCommand() {
         HorLog.setCommand("Default");//
-        super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+        //super.setDefaultCommand(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+        super.setDefaultCommand(new HorizontalTurretRotationManual());
 
     }
     
