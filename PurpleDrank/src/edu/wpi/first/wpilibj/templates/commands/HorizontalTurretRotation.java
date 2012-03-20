@@ -27,13 +27,17 @@ public class HorizontalTurretRotation extends PIDCommand {
         requires(this.HorizontalAxis);
         
     }
+    
+    //Takes X coordinate of top detected target centroid and feeds it to PID loop
     protected double returnPIDInput() {
         
+        //If a top target is detected, give it's X coord
         if(RobotMap.top[0] != 0){
             
             return RobotMap.top[0];
         }
         
+        //if not, this effectively stops the loop from moving anything.
         else {
             
             HorizontalTurretAxis.getCommandLog().setOutputs("N/A");//
@@ -43,10 +47,11 @@ public class HorizontalTurretRotation extends PIDCommand {
         
     }
 
+    //PID loop controls horizontalaxis jags
     protected void usePIDOutput(double output) {
         // Only give the PIDcommand output if the manual control is not on.
-        if (!RobotMap.HorTurretManualControl)
-            HorizontalAxis.rotate(output);
+        
+        HorizontalAxis.rotate(output);
     }
 
     protected void initialize() {
