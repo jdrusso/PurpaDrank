@@ -18,11 +18,11 @@ import edu.wpi.first.wpilibj.Counter;
  */
 public class MagneticEncoder {
     
-    private static double VOLTAGE_MAX = 4.0;
+    private static double VOLTAGE_MAX = 5.0;
 
     private final static double TRIGGER_MIN = 0.08;
     private final static double TRIGGER_MAX = 4.8; // TBD
-    // We had used 4.92 on the test board, but testing on the robot Travis
+    // We had used 4.92 on the test board, but     testing on the robot Travis
     // saw a max of 4.96 volts.  The value 4.92 may be too close to that.
 
     public AnalogChannel channel;
@@ -32,13 +32,13 @@ public class MagneticEncoder {
     {
         channel = new AnalogChannel(triggerAnalogInput);
         trigger = new AnalogTrigger(channel);
-        counter = new Counter(trigger, true, true);    
         trigger.setLimitsVoltage(TRIGGER_MIN, TRIGGER_MAX);
+        counter = new Counter(trigger, true, false);
         counter.setUpDownCounterMode();
         counter.setDownSource(trigger, AnalogTriggerOutput.Type.kFallingPulse);
-        counter.setDownSourceEdge(true, true);
+        counter.setDownSourceEdge(false, true);
         counter.setUpSource(trigger, AnalogTriggerOutput.Type.kRisingPulse);
-        counter.setUpSourceEdge(true,true);
+        counter.setUpSourceEdge(true,false);
         counter.reset();
         counter.start();
     }
