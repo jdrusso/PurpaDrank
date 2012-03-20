@@ -17,14 +17,11 @@ import edu.wpi.first.wpilibj.templates.subsystems.Elevator;
  */
 public class ElevatorDown extends CommandBase {
     private Elevator elevator;
-    private BallCollector bc;
     
     public ElevatorDown() {
         super ("Elevator Down");
         elevator = PurpleDrank.getElevator();
-        bc = PurpleDrank.getBallCollector();
         requires (elevator);
-        requires(bc);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -35,7 +32,6 @@ public class ElevatorDown extends CommandBase {
      */
     protected void initialize() {
         Elevator.lowerBalls();
-        BallCollector.spitBalls();
     }
 
     // Called repeatedly when this Command is scheduled to run
