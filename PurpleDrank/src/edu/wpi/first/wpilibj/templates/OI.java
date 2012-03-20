@@ -30,13 +30,16 @@ public class OI {
     private static Button ShooterRealignCenter;
     private static Button speedSetterUp;
     private static Button speedSetterDown;
-    private static Button elevatorController;
+    private static Button elevatorUpButton;
     private static Button relayTest;
-    
+    private static Button elevatorDownButton;
+    private static Button ballSpitter;;
     private static Button HorTurretFwd;
     private static Button HorTurretRev;
     private static Button VerTurretFwd;
     private static Button VerTurretRev;
+    private static Button autoTargeter;
+    private static Button autoTargeterDisable;
     
     
     public static void initialize() {
@@ -59,14 +62,17 @@ public class OI {
         ballCollector.whenPressed(new BallCollectionOn());
         ballCollector.whenReleased(new BallCollectionOff());
         
-        RobotMap.dButton4.whenPressed(new BallCollectionReverse());
-        RobotMap.dButton4.whenReleased(new BallCollectionOff());
+        ballSpitter = RobotMap.dButton4;
+        ballSpitter.whenPressed(new BallCollectionReverse());
+        ballSpitter.whenReleased(new BallCollectionOff());
         
-        elevatorController = RobotMap.shootButton3;
-        RobotMap.shootButton2.whenPressed(new ElevatorDown());
-        elevatorController.whenPressed(new ElevatorUp());
-        elevatorController.whenReleased(new ElevatorOff());
-        RobotMap.shootButton2.whenReleased(new ElevatorOff());
+        elevatorUpButton = RobotMap.shootButton3;
+        elevatorUpButton.whenPressed(new ElevatorUp());
+        elevatorUpButton.whenReleased(new ElevatorOff());
+        
+        elevatorDownButton = RobotMap.shootButton2;
+        elevatorDownButton.whenPressed(new ElevatorDown());       
+        elevatorDownButton.whenReleased(new ElevatorOff());
 
         ShooterRealignRight = RobotMap.shootButton5;
         ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignRight));
@@ -77,12 +83,12 @@ public class OI {
         ShooterRealignCenter = RobotMap.shootButton10;
         ShooterRealignRight.whenReleased(new SetpointRealignment(RobotMap.realignCenter));
         
-        RampUp = RobotMap.shootButton8;
-        RampDown = RobotMap.shootButton9;
+        RampUp = RobotMap.dButton8;
+        RampDown = RobotMap.dButton9;
         // below code tried to do this in one button but it wasnt working.
         // so i swapped it out for two buttons.
-        RampUp.whenPressed(new ArmDown());
-        RampUp.whenTriplePressed(new ArmUp());
+        //RampUp.whenPressed(new ArmDown());
+        //RampUp.whenTriplePressed(new ArmUp());
         RampUp.whileHeld(new ArmUp());
         RampDown.whileHeld(new ArmDown());
 
@@ -101,13 +107,16 @@ public class OI {
         HorTurretFwd.whenReleased(new HorizontalTurretRotationManual());
         
         //change thsi to be like horturret, default automatic off, use joysticks
+        //Modified to work with joysticks instead of butans
         //VerTurretFwd = RobotMap.shootButton11;
         //VerTurretRev = RobotMap.shootButton10;
         //VerTurretFwd.whileHeld(new VerticalTurretRotationManual(1));
         //VerTurretRev.whileHeld(new VerticalTurretRotationManual(-1));
         
-        
-        
+        autoTargeter = RobotMap.shootButton8;
+        autoTargeterDisable = RobotMap.shootButton9;
+        autoTargeter.whenPressed(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
+        autoTargeterDisable.whenPressed(new HorizontalTurretRotationManual());
     }
     
     public static Button getButton3(){
@@ -127,4 +136,3 @@ public class OI {
     }
     
 }
-
