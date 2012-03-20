@@ -36,8 +36,25 @@ public class VerticalTurretAxis extends Subsystem  {
     }
     
     public void rotate(double speed){
-        VerTurretJag.set(speed);
-        VerLog.setOutputs("" + speed);
+        if(RobotMap.vertLimit.get())
+        {
+            VerTurretJag.set(speed);
+            VerLog.setOutputs("" + speed);
+            
+        } else if (!RobotMap.vertLimit.get())
+        {
+            if(speed >= 0){
+                
+                VerTurretJag.set(speed);
+                VerLog.setOutputs("" + speed);
+            
+            }
+            else if (speed < 0){
+                VerTurretJag.set(0);
+                VerLog.setOutputs("" + speed);
+            }
+            
+        }
 //        if (speed > 0.1)
 //            VerTurretSpike.set(Relay.Value.kForward);
 //        else if (speed < 0.1)
