@@ -33,6 +33,10 @@ public class ChangeShooterSpeed extends CommandBase {
             RobotMap.defaultShooterSpeed = 1.0;
         else if (RobotMap.defaultShooterSpeed < -1.0)
             RobotMap.defaultShooterSpeed = -1.0;
+        
+        if (modifier == 'j') {
+            RobotMap.defaultShooterSpeed = (100-((RobotMap.shootStick.getRawAxis(3)+1)*15))/100;
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run
