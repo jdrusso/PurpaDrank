@@ -39,7 +39,7 @@ public class RobotMap {
     public static final int LeftShooterMotor = 7;  //Left when standing behind the robot
     public static final int RightShooterMotor = 8; //Right when standing behind the robot
     
-    public static double defaultShooterSpeed = 0.7;
+    public static double defaultShooterSpeed = 0.80;
     
     /* Relay outputs for Spikes
      * 
@@ -116,15 +116,15 @@ public class RobotMap {
      * These should be sequential.
      */
     
-    public static final DigitalInput elevatorSwitch = new DigitalInput(1); //Placeholder number
+    //public static final DigitalInput elevatorSwitch = new DigitalInput(1); //Placeholder number
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for AutoBalancing.
-    public static final double AutoBalKp = (double) (0.25 / 45);
+    public static final double AutoBalKp = (double) (0.5 / 45);
     // Ki - K integral value for AutoBalancing.
     public static final double AutoBalKi = (double) (0);
     // Kd - K differential value for AutoBalancing.
-    public static final double AutoBalKd = (double) (0.1 / 20);
+    public static final double AutoBalKd = (double) (0.25 / 20);
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for HorizontalTurretRotation.
@@ -162,7 +162,7 @@ public class RobotMap {
     public static boolean HorTurretManualControl = false;
     public static boolean VerTurretManualControl = false;
 
-    public static int cameraXOffset = 0;
+    public static int cameraXOffset = 120;
     public static final int defaultCameraOffset = 0;
     public static final int cameraYOffset = 0;
     public static final int realignLeft = -1;
@@ -195,5 +195,10 @@ public class RobotMap {
     public static final int elevationEncoderPerTenthDegree = 5;  // Actually is 2.5 now -TA 2/19/2012
     public static final int azimuthEncoderPerTenthDegree = 10;
     
-    public static final double autonomousSpeed = .948;
+    public static final double autonomousSpeed = .96;
+    
+    //Turret rotation limit switches
+    public static final DigitalInput leftLimit = new DigitalInput(1); //DIO 1, Normally Closed
+    public static final DigitalInput rightLimit = new DigitalInput(2); //DIO 2, Normally Closed
+    public static final DigitalInput vertLimit = new DigitalInput(3); //DIO 3, limit switch Normally open
 }
