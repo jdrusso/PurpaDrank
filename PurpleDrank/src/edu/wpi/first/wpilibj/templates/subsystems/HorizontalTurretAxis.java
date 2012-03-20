@@ -39,7 +39,33 @@ public class HorizontalTurretAxis extends Subsystem{
     }
     
     public void rotate(double speed){
-        HorTurretJag.set(speed);
+        System.out.println(RobotMap.leftLimit.get() +", " + RobotMap.rightLimit.get());
+        if(RobotMap.leftLimit.get() == true && RobotMap.rightLimit.get() == true) //These switches are false when high
+        {
+            
+            HorTurretJag.set(speed);
+        }
+        
+        else if(RobotMap.leftLimit.get() == false || RobotMap.rightLimit.get() == false)
+        {
+            if(RobotMap.leftLimit.get() == false)
+            {
+                if(speed >= 0)
+                    HorTurretJag.set(speed);
+                else
+                    HorTurretJag.set(0);
+            }
+            else if(RobotMap.rightLimit.get() == false)
+            {
+                if(speed <= 0)
+                    HorTurretJag.set(speed);
+                else
+                    HorTurretJag.set(0);
+            }
+                
+                
+        }
+        
         HorLog.setOutputs("" + speed);
 //        if (speed > 0.1)
 //            HorTurretSpike.set(Relay.Value.kForward);
