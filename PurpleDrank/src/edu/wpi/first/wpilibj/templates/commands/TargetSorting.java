@@ -4,9 +4,10 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import com.sun.squawk.util.Arrays;
+//import com.sun.squawk.util.Arrays;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+//import java.util.Arrays;
 
 /**
  *
@@ -16,6 +17,8 @@ public class TargetSorting extends CommandBase {
 
     private double[] X_values = new double[4];
     private double[] Y_values = new double[4];
+    private double[] xIn = new double[4];
+    private double[] yIn = new double[4];
     private double[][] targetArray = new double [4][2];
     private int targets;
     private int validTargets;
@@ -25,6 +28,7 @@ public class TargetSorting extends CommandBase {
 
     protected void execute()
     {
+//        OI.getMdu().update();
         validTargets = 0;
         
         for(int i = 1; i<=4; i++){
@@ -92,8 +96,23 @@ public class TargetSorting extends CommandBase {
             
             y_sort[i] = targetArray[i][1];
         }
-        Arrays.sort(x_sort);
-        Arrays.sort(y_sort);
+
+        double[] sortedX = arraySort(x_sort);
+        for(int i = 0; i < 4; i++)
+        {
+            
+            sortedArray[i][0] = sortedX[i];
+        }
+        x_sort = sortedX;
+
+        double[] sortedY = arraySort(y_sort);
+        for(int i = 0; i < 4; i++)
+        {
+
+            sortedArray[i][1] = sortedY[i];
+        }
+        y_sort = sortedY;
+
         for (int i = 0; i<validTargets; i++){
 
             if (targetArray[i][1] == y_sort[0]){ //find top
@@ -146,5 +165,29 @@ public class TargetSorting extends CommandBase {
         int temp = (int)(d*1000);
         double result = (double)temp/1000;
         return result;
+    }
+
+    public double[] arraySort(double[] unsorted)
+    {
+        double[] sorted;
+
+        for(int i=0; i<unsorted.length; i++)
+        {
+            for(int j = i=1; j < unsorted.length-1; j++)
+            {
+
+                if(unsorted[j] > unsorted[i])
+                {
+
+                    double temp = unsorted[i];
+                    unsorted[i] = unsorted[j];
+                    unsorted[j] = temp;
+                }
+            }
+        }
+
+        sorted = unsorted;
+
+        return sorted;
     }
 }
