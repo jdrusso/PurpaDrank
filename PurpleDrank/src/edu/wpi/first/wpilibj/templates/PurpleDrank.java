@@ -40,7 +40,7 @@ public class PurpleDrank extends IterativeRobot {
     private static BalancingManual manualBalance;
     private static DriverStationLCD display;
     private static boolean isDisabled;
-    private static TargetSorting tSort;
+    private static TargetSorting targetSort;
     private static RampController ramp;
     private static Elevator elevator;
     private static BallCollector ballCollector;
@@ -113,8 +113,7 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kUser6, 1, "                                     ");
         metaTable = OI.getMdu();
         display.updateLCD();
-        tSort = new TargetSorting();
-        tSort.start();
+        targetSort = new TargetSorting();
         t = new Timer();
 //        RobotMap.motor.setDirection(Relay.Direction.kBoth);
 //        RobotMap.motor.set(Relay.Value.kOff);
@@ -140,9 +139,12 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kMain6, 1, "Program is running... " + HorizontalAxis.getHorRotations());
         display.updateLCD();
         
-        System.out.println(HorizontalAxis.getHorRotations());
+        //System.out.println(HorizontalAxis.getHorRotations());
     }
     public void autonomousInit() {
+        //if(targetSort.isRunning())
+        //    targetSort.cancel();
+        //targetSort.start();
         t.reset();
         t.start();
         acting = false;
@@ -158,7 +160,7 @@ public class PurpleDrank extends IterativeRobot {
     public void autonomousContinuous(){
         
         WinAutonomous();
-        System.out.println(t.get());
+        //System.out.println(t.get());
     }
 
     /**
@@ -169,12 +171,15 @@ public class PurpleDrank extends IterativeRobot {
     }
 
     public void teleopInit() {
+        //if(targetSort.isRunning())
+        //    targetSort.cancel();
+        //targetSort.start();
         t.stop();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-        tSort.start();
+        targetSort.start();
         isDisabled = false;
         System.out.println("Entering TeleOp...");              
         display.println(Line.kUser2, 1, "                                     ");
@@ -201,7 +206,7 @@ public class PurpleDrank extends IterativeRobot {
         //display.println(Line.kUser6, 1, "" + RobotMap.left[0]   + ", " + RobotMap.left[1]           + "                 ");
         //display.println(Line.kMain6, 1, "Program is running...");
         display.println(Line.kUser2, 1, "Shoot Speed: " + (RobotMap.defaultShooterSpeed) + "                                      ");
-        display.println(Line.kMain6, 1, "H/V Rot: " + HorizontalAxis.getHorRotations() + ", " + VerticalAxis.getVerRotations() + "                      ");
+        display.println(Line.kMain6, 1, "H/V Rot: " + truncate(HorizontalAxis.getHorRotationsDouble()) + ", " + truncate(VerticalAxis.getVerRotationsDouble()) + "                      ");
         display.println(Line.kUser4, 1, "Shooter Period: " + shooterController.getRotationsPeriod() + "                 ");
         
         display.updateLCD();
@@ -224,6 +229,7 @@ public class PurpleDrank extends IterativeRobot {
             shooterController.RightJaguar.set(0.0);
         }
         
+        new ChangeShooterSpeed('j').start();
         System.out.println("Rots: " + truncate(VerticalAxis.getVerRotationsDouble()) + ", " + truncate(shooterController.getRotationsDouble()));
     }
     
@@ -254,7 +260,6 @@ public class PurpleDrank extends IterativeRobot {
             
             if(!acting)
             {
-                System.out.println("ON");
                 new BallCollectionOn().start();
                 new ElevatorUp().start();
                 acting = true;
