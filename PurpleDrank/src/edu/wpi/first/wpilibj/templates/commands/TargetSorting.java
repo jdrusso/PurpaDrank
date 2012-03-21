@@ -4,10 +4,9 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-//import com.sun.squawk.util.Arrays;
+import edu.team2035.meta.MetaTCPVariables;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-//import java.util.Arrays;
 
 /**
  *
@@ -24,21 +23,19 @@ public class TargetSorting extends CommandBase {
     private int validTargets;
     
     protected void initialize() {
-    }
-
-    protected void execute()
-    {
-//        OI.getMdu().update();
+        System.out.println("Target sorting initialized.");
+        System.out.println("Initiating sort");
+        OI.getMdu().update();
         validTargets = 0;
         
         for(int i = 1; i<=4; i++){
             
-            X_values[(i-1)] = OI.getMdu().dataMessage[((i*2)-1)];
+            X_values[(i-1)] = MetaTCPVariables.dataMessage[((i*2)-1)];
         }
         
         for(int i = 1; i<=4; i++){
             
-            Y_values[(i-1)] = OI.getMdu().dataMessage[(i*2)];
+            Y_values[(i-1)] = MetaTCPVariables.dataMessage[(i*2)];
         }
         
         if ((X_values[0] > 0) || (Y_values[0] > 0)){
@@ -66,12 +63,61 @@ public class TargetSorting extends CommandBase {
             validTargets++;
         }
 
-        if (OI.getMdu().dataMessage[0] < 5300)
-            RobotMap.range = truncate(OI.getMdu().dataMessage[0]);
+        if (MetaTCPVariables.dataMessage[0] < 5300)
+            RobotMap.range = truncate(MetaTCPVariables.dataMessage[0]);
         else
             RobotMap.range = 0;
         
         sortTargets();
+    }
+
+    protected void execute()
+    {
+//        System.out.println("Initiating sort");
+////        OI.getMdu().update();
+//        validTargets = 0;
+//        
+//        for(int i = 1; i<=4; i++){
+//            
+//            X_values[(i-1)] = MetaTCPVariables.dataMessage[((i*2)-1)];
+//        }
+//        
+//        for(int i = 1; i<=4; i++){
+//            
+//            Y_values[(i-1)] = MetaTCPVariables.dataMessage[(i*2)];
+//        }
+//        
+//        if ((X_values[0] > 0) || (Y_values[0] > 0)){
+//            
+//            targetArray[validTargets][0] = truncate(X_values[validTargets]);
+//            targetArray[validTargets][1] = truncate(Y_values[validTargets]);
+//            validTargets++;
+//        } 
+//        if ((X_values[1] > 0) || (Y_values[1] > 0)){
+//            
+//            targetArray[validTargets][0] = truncate(X_values[validTargets]);
+//            targetArray[validTargets][1] = truncate(Y_values[validTargets]);
+//            validTargets++;
+//        } 
+//        if ((X_values[2] > 0) || (Y_values[2] > 0)){
+//            
+//            targetArray[validTargets][0] = truncate(X_values[validTargets]);
+//            targetArray[validTargets][1] = truncate(Y_values[validTargets]);
+//            validTargets++;
+//        } 
+//        if ((X_values[3] > 0) || (Y_values[3] > 0)){
+//            
+//            targetArray[validTargets][0] = truncate(X_values[validTargets]);
+//            targetArray[validTargets][1] = truncate(Y_values[validTargets]);
+//            validTargets++;
+//        }
+//
+//        if (MetaTCPVariables.dataMessage[0] < 5300)
+//            RobotMap.range = truncate(MetaTCPVariables.dataMessage[0]);
+//        else
+//            RobotMap.range = 0;
+//        
+//        sortTargets();
         
         //RobotMap.ultrasonicRange = PurpleDrank.getShooterController().getUltrasonicRange();
     }
