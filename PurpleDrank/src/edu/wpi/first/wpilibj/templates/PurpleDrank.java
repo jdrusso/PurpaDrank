@@ -114,6 +114,7 @@ public class PurpleDrank extends IterativeRobot {
         metaTable = OI.getMdu();
         display.updateLCD();
         targetSort = new TargetSorting();
+        //targetSort.start();
         t = new Timer();
 //        RobotMap.motor.setDirection(Relay.Direction.kBoth);
 //        RobotMap.motor.set(Relay.Value.kOff);
@@ -172,14 +173,13 @@ public class PurpleDrank extends IterativeRobot {
 
     public void teleopInit() {
         //if(targetSort.isRunning())
-        //    targetSort.cancel();
-        //targetSort.start();
+            //targetSort.cancel();
         t.stop();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-        targetSort.start();
+        //targetSort.start();
         isDisabled = false;
         System.out.println("Entering TeleOp...");              
         display.println(Line.kUser2, 1, "                                     ");
@@ -194,10 +194,10 @@ public class PurpleDrank extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+        System.out.println("\n MDU: " + metaTable.x1 + "\n");
     	shooterSpeed = RobotMap.defaultShooterSpeed;
         MetaLog.update();
-        Scheduler.getInstance().run();//
-        
+        targetSort.start();
         //FRCControl.setErrorData("test error".getBytes(), "test error".length(), 100);
         //display.println(Line.kUser2, 1, "" +   correctRange()   + ", " + metaTable.getConnections() + "                 ");
         display.println(Line.kUser3, 1, "Top: " + RobotMap.top[0]    + ", " + RobotMap.top[1]            + "                 ");
@@ -210,14 +210,6 @@ public class PurpleDrank extends IterativeRobot {
         display.println(Line.kUser4, 1, "Shooter Period: " + shooterController.getRotationsPeriod() + "                 ");
         
         display.updateLCD();
-//        if (RobotMap.dButton10.get())
-//            RobotMap.motor.set(Relay.Value.kForward);
-//        if (RobotMap.dButton11.get())
-//            RobotMap.motor.set(Relay.Value.kReverse);
-//        else if (!RobotMap.dButton10.get() && !RobotMap.dButton11.get())
-//            RobotMap.motor.set(Relay.Value.kOff);
-        
-//        System.out.println("Rotations: " + HorizontalAxis.getHorRotations());
         
         if (RobotMap.shootTrigger.get()) {
             
@@ -231,6 +223,7 @@ public class PurpleDrank extends IterativeRobot {
         
         new ChangeShooterSpeed('j').start();
         System.out.println("Rots: " + truncate(VerticalAxis.getVerRotationsDouble()) + ", " + truncate(shooterController.getRotationsDouble()));
+        Scheduler.getInstance().run();
     }
     
     public double truncate(double d){
